@@ -34,6 +34,10 @@ using namespace std;
 
 ofstream anaGENIEuB;
 TFile *outGENIEuB;
+TFile *uBtune;
+Double_t TunedCentralValue_UBGenie;
+Double_t rw;
+Double_t tune;
 
 //////////////////////////////////////////////////////////////////// DECLARING HISTOGRAMS /////////////////////////////////////////////////////////////////
 
@@ -129,6 +133,24 @@ TH1D *EnuRes_CCDIS_GENIE;
 TH1D *EnuRes_CCCOH_GENIE;
 TH1D *EnuRes_other_GENIE;
 
+///// true neutrino energy
+
+TH1D *TrueEnu_CCQE_GENIEnorw;
+TH1D *TrueEnu_CCMEC_GENIEnorw;
+TH1D *TrueEnu_CCRES_GENIEnorw;
+TH1D *TrueEnu_CCDIS_GENIEnorw;
+TH1D *TrueEnu_CCCOH_GENIEnorw;
+TH1D *TrueEnu_other_GENIEnorw;
+
+///// true neutrino energy, reweighted
+
+TH1D *TrueEnu_CCQE_GENIE;
+TH1D *TrueEnu_CCMEC_GENIE;
+TH1D *TrueEnu_CCRES_GENIE;
+TH1D *TrueEnu_CCDIS_GENIE;
+TH1D *TrueEnu_CCCOH_GENIE;
+TH1D *TrueEnu_other_GENIE;
+
 //////////////////////////////////// RESOLUTIONS in neutrino energy reconstruction ////////////////////////////
 
 //// 2-D histograms. We plot difference of true-reconstructed with respect to true quantity. The resolution would be: (true-reconstructed)/true
@@ -141,6 +163,10 @@ TH2D *Resolution_EnuRes_GENIE;
 TProfile *hprof_EnuCCQE_GENIE;
 TProfile *hprof_EnuCalo_GENIE;
 TProfile *hprof_EnuRes_GENIE;
+
+TProfile *hprof_EnuCCQE_GENIEnorw;
+TProfile *hprof_EnuCalo_GENIEnorw;
+TProfile *hprof_EnuRes_GENIEnorw;
 
 ///////////////////////////////////////////////////////////////////// END of DECLARING HISTROGRAMS ///////////////////////////////////////////////////
 
@@ -360,9 +386,14 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   Long64_t nentries = fChain->GetEntriesFast();
 
    /////////// output files location and histogram definitions /////////////// **** CHANGE TO YOUR OWN PATH   *** //////////////
-  outGENIEuB = new TFile("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning/output/analysis_GENIE.root","RECREATE");
-  anaGENIEuB.open("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning/output/info_uBGENIE.txt");
+  outGENIEuB = new TFile("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning/output/analysis_GENIErw.root","RECREATE");
+  anaGENIEuB.open("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning/output/info_uBGENIErw.txt");
 
+  uBtune = new TFile("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning/merged_rw_weights.root","READ");
+
+  TTree *weights = (TTree*)uBtune->Get("weights");
+  weights->SetBranchAddress("TunedCentralValue_UBGenie",&TunedCentralValue_UBGenie);
+  
   //// histograms must include range and number of bins ////
   //// be careful when using TStack you need all histograms with the same range and number of bins
 
@@ -436,16 +467,34 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   EnuRes_CCCOH_GENIE = new TH1D("EnuRes_CCCOH_GENIE", "EnuRes_CCCOH_GENIE", 60, 0, 3);
   EnuRes_other_GENIE = new TH1D("EnuRes_other_GENIE", "EnuRes_other_GENIE", 60, 0, 3);
 
+  TrueEnu_CCQE_GENIE = new TH1D("TrueEnu_CCQE_GENIE", "TrueEnu_CCQE_GENIE", 60, 0, 3);
+  TrueEnu_CCMEC_GENIE = new TH1D("TrueEnu_CCMEC_GENIE", "TrueEnu_CCMEC_GENIE", 60, 0, 3);
+  TrueEnu_CCRES_GENIE = new TH1D("TrueEnu_CCRES_GENIE", "TrueEnu_CCRES_GENIE", 60, 0, 3);
+  TrueEnu_CCDIS_GENIE = new TH1D("TrueEnu_CCDIS_GENIE", "TrueEnu_CCDIS_GENIE", 60, 0, 3);
+  TrueEnu_CCCOH_GENIE = new TH1D("TrueEnu_CCCOH_GENIE", "TrueEnu_CCCOH_GENIE", 60, 0, 3);
+  TrueEnu_other_GENIE = new TH1D("TrueEnu_other_GENIE", "TrueEnu_other_GENIE", 60, 0, 3);
+
+  TrueEnu_CCQE_GENIEnorw = new TH1D("TrueEnu_CCQE_GENIEnorw", "TrueEnu_CCQE_GENIEnorw", 60, 0, 3);
+  TrueEnu_CCMEC_GENIEnorw = new TH1D("TrueEnu_CCMEC_GENIEnorw", "TrueEnu_CCMEC_GENIEnorw", 60, 0, 3);
+  TrueEnu_CCRES_GENIEnorw = new TH1D("TrueEnu_CCRES_GENIEnorw", "TrueEnu_CCRES_GENIEnorw", 60, 0, 3);
+  TrueEnu_CCDIS_GENIEnorw = new TH1D("TrueEnu_CCDIS_GENIEnorw", "TrueEnu_CCDIS_GENIEnorw", 60, 0, 3);
+  TrueEnu_CCCOH_GENIEnorw = new TH1D("TrueEnu_CCCOH_GENIEnorw", "TrueEnu_CCCOH_GENIEnorw", 60, 0, 3);
+  TrueEnu_other_GENIEnorw = new TH1D("TrueEnu_other_GENIEnorw", "TrueEnu_other_GENIEnorw", 60, 0, 3);
+  
   //// resolution neutrino energy reconstruction //// 2-D histograms has the range in X and Y
   
   Resolution_EnuCCQE_GENIE= new TH2D("Resolution_EnuCCQE_GENIE", "Resolution_EnuCCQE_GENIE",40,0.,2., 80, -2,2.);
   Resolution_EnuCalo_GENIE= new TH2D("Resolution_EnuCalo_GENIE", "Resolution_EnuCalo_GENIE",40,0.,2., 80, -2,2.);
   Resolution_EnuRes_GENIE= new TH2D("Resolution_EnuRes_GENIE", "Resolution_EnuRes_GENIE",40,0.,2., 80, -2,2.);
 
-  hprof_EnuCCQE_GENIE = new TProfile("hprof_EnuCCQE_GENIE;", "",50,0,1.5,-2.,2.);
-  hprof_EnuCalo_GENIE = new TProfile("hprof_EnuCalo_GENIE;", "",50,0,1.5,-2.,2.);
-  hprof_EnuRes_GENIE = new TProfile("hprof_EnuRes_GENIE;", "",50,0,1.5,-2.,2.);
+  hprof_EnuCCQE_GENIE = new TProfile("hprof_EnuCCQE_GENIE", "",50,0,1.5,-2.,2.);
+  hprof_EnuCalo_GENIE = new TProfile("hprof_EnuCalo_GENIE", "",50,0,1.5,-2.,2.);
+  hprof_EnuRes_GENIE = new TProfile("hprof_EnuRes_GENIE", "",50,0,1.5,-2.,2.);
 
+  hprof_EnuCCQE_GENIEnorw = new TProfile("hprof_EnuCCQE_GENIEnorw", "",50,0,1.5,-2.,2.);
+  hprof_EnuCalo_GENIEnorw = new TProfile("hprof_EnuCalo_GENIEnorw", "",50,0,1.5,-2.,2.);
+  hprof_EnuRes_GENIEnorw = new TProfile("hprof_EnuRes_GENIEnorw", "",50,0,1.5,-2.,2.);
+  
 ///////////////////////////////////////////
 
   /////// and here starts the real loop event by event
@@ -455,6 +504,13 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
       // if (Cut(ientry) < 0) continue;
+      weights->GetEntry(jentry);
+      rw = TunedCentralValue_UBGenie;
+      //tune = TunedCentralValue_UBGenie;
+
+      //rw = reweight(tune, Ev);//// this is the tune and flux is also incorporated
+
+      //if(rw !=0) std::cout<<" weight "<< rw<<std::endl;
 
       numuCC = false; /// re-initiate the boolean to false, so we don't select  events by mistake
 
@@ -515,100 +571,127 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
 	 nCCQE++;
 
 	 //// true kinematics /////
-	 truemuon_truemom_CCQE_GENIE->Fill(sqrt(pow(pxl,2)+ pow(pyl,2)+pow(pzl,2)));
-	 truemuon_truecostheta_CCQE_GENIE->Fill(cosine(pxl, pyl , pzl));
-	 truemuon_truephi_CCQE_GENIE->Fill(Getphi(pxl, pyl, pzl));
-	 trueNh_CCQE_GENIE->Fill(Nh(nneutron, nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho));
-	 trueNvish_CCQE_GENIE->Fill(Nvish(nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho));
-	 trueW_CCQE_GENIE->Fill(InvMass(q2, omega));
-	 pT_CCQE_GENIE->Fill(PTmiss);/// assuming 1muon + protons in the final state
-	 EnuCCQE_CCQE_GENIE->Fill(GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu));
-	 EnuCalo_CCQE_GENIE->Fill(GetEcalomiss(Esum, PTmiss, 0));/// assuming 1muon + protons int eh final state, Ar40 (np=0)
-	 EnuRes_CCQE_GENIE->Fill(GetEnuRes(emu, cosine(pxl, pyl , pzl)));
+	 truemuon_truemom_CCQE_GENIE->Fill(sqrt(pow(pxl,2)+ pow(pyl,2)+pow(pzl,2)), rw);
+	 truemuon_truecostheta_CCQE_GENIE->Fill(cosine(pxl, pyl , pzl),rw);
+	 truemuon_truephi_CCQE_GENIE->Fill(Getphi(pxl, pyl, pzl),rw);
+	 trueNh_CCQE_GENIE->Fill(Nh(nneutron, nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho),rw);
+	 trueNvish_CCQE_GENIE->Fill(Nvish(nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho),rw);
+	 trueW_CCQE_GENIE->Fill(InvMass(q2, omega),rw);
+	 pT_CCQE_GENIE->Fill(PTmiss,rw);/// assuming 1muon + protons in the final state
+	 EnuCCQE_CCQE_GENIE->Fill(GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 EnuCalo_CCQE_GENIE->Fill(GetEcalomiss(Esum, PTmiss, 0),rw);/// assuming 1muon + protons int eh final state, Ar40 (np=0)
+	 EnuRes_CCQE_GENIE->Fill(GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
+	 TrueEnu_CCQE_GENIEnorw->Fill(EvRF);
+	 TrueEnu_CCQE_GENIE->Fill(EvRF,rw);
 
 	 ///// filling resolution histograms in all interaction types
-	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu));
-	 Resolution_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0));
-	 Resolution_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)));
+	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 Resolution_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),rw);
+	 Resolution_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
 
-	 hprof_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),1);
-	 hprof_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),1);
-	 hprof_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),1);
+	 hprof_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 hprof_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),rw);
+	 hprof_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
+	 
+	 hprof_EnuCCQE_GENIEnorw->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),1);
+	 hprof_EnuCalo_GENIEnorw->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),1);
+	 hprof_EnuRes_GENIEnorw->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),1);
+
        }
 
        else if(mec==true){
 	 nCCMEC++;
 
 	 /// true kinematics /////
-	 truemuon_truemom_CCMEC_GENIE->Fill(sqrt(pow(pxl,2)+ pow(pyl,2)+pow(pzl,2)));
-	 truemuon_truecostheta_CCMEC_GENIE->Fill(cosine(pxl, pyl , pzl));
-	 truemuon_truephi_CCMEC_GENIE->Fill(Getphi(pxl, pyl, pzl));
-	 trueNh_CCMEC_GENIE->Fill(Nh(nneutron, nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho));
-	 trueNvish_CCMEC_GENIE->Fill(Nvish(nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho));
-	 trueW_CCMEC_GENIE->Fill(InvMass(q2, omega));
-	 pT_CCMEC_GENIE->Fill(PTmiss);/// assuming 1muon + protons int he final state
-	 EnuCCQE_CCMEC_GENIE->Fill(GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu));
-	 EnuCalo_CCMEC_GENIE->Fill(GetEcalomiss(Esum, PTmiss, 0));/// assuming 1muon + protons int eh final state, Ar40 (np=0)
-	 EnuRes_CCMEC_GENIE->Fill(GetEnuRes(emu, cosine(pxl, pyl , pzl)));
+	 truemuon_truemom_CCMEC_GENIE->Fill(sqrt(pow(pxl,2)+ pow(pyl,2)+pow(pzl,2)),rw);
+	 truemuon_truecostheta_CCMEC_GENIE->Fill(cosine(pxl, pyl , pzl),rw);
+	 truemuon_truephi_CCMEC_GENIE->Fill(Getphi(pxl, pyl, pzl),rw);
+	 trueNh_CCMEC_GENIE->Fill(Nh(nneutron, nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho),rw);
+	 trueNvish_CCMEC_GENIE->Fill(Nvish(nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho),rw);
+	 trueW_CCMEC_GENIE->Fill(InvMass(q2, omega),rw);
+	 pT_CCMEC_GENIE->Fill(PTmiss,rw);/// assuming 1muon + protons int he final state
+	 EnuCCQE_CCMEC_GENIE->Fill(GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 EnuCalo_CCMEC_GENIE->Fill(GetEcalomiss(Esum, PTmiss, 0),rw);/// assuming 1muon + protons int eh final state, Ar40 (np=0)
+	 EnuRes_CCMEC_GENIE->Fill(GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
+	 TrueEnu_CCMEC_GENIEnorw->Fill(EvRF);
+	 TrueEnu_CCMEC_GENIE->Fill(EvRF,rw);
 
 	 //// filling resolution histograms in all interaction types
-	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu));
-	 Resolution_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0));
-	 Resolution_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)));
+	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 Resolution_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),rw);
+	 Resolution_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
 
-	 hprof_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),1);
-	 hprof_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),1);
-	 hprof_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),1);
+	 hprof_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 hprof_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),rw);
+	 hprof_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
+
+	 hprof_EnuCCQE_GENIEnorw->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),1);
+	 hprof_EnuCalo_GENIEnorw->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),1);
+	 hprof_EnuRes_GENIEnorw->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),1);
+
        }
 
        else if(res==true){
 	 nCCRes++;
 
 	////// true kinematics /////
-	 truemuon_truemom_CCRES_GENIE->Fill(sqrt(pow(pxl,2)+ pow(pyl,2)+pow(pzl,2)));
-	 truemuon_truecostheta_CCRES_GENIE->Fill(cosine(pxl, pyl , pzl));
-	 truemuon_truephi_CCRES_GENIE->Fill(Getphi(pxl, pyl, pzl));
-	 trueNh_CCRES_GENIE->Fill(Nh(nneutron, nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho));
-	 trueNvish_CCRES_GENIE->Fill(Nvish(nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho));
-	 trueW_CCRES_GENIE->Fill(InvMass(q2, omega));
-	 pT_CCRES_GENIE->Fill(PTmiss);/// assuming 1muon + protons int he final state
-	 EnuCCQE_CCRES_GENIE->Fill(GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu));
-	 EnuCalo_CCRES_GENIE->Fill(GetEcalomiss(Esum, PTmiss, 0));/// assuming 1muon + protons int eh final state, Ar40 (np=0)
-	 EnuRes_CCRES_GENIE->Fill(GetEnuRes(emu, cosine(pxl, pyl , pzl)));
+	 truemuon_truemom_CCRES_GENIE->Fill(sqrt(pow(pxl,2)+ pow(pyl,2)+pow(pzl,2)),rw);
+	 truemuon_truecostheta_CCRES_GENIE->Fill(cosine(pxl, pyl , pzl),rw);
+	 truemuon_truephi_CCRES_GENIE->Fill(Getphi(pxl, pyl, pzl),rw);
+	 trueNh_CCRES_GENIE->Fill(Nh(nneutron, nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho),rw);
+	 trueNvish_CCRES_GENIE->Fill(Nvish(nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho),rw);
+	 trueW_CCRES_GENIE->Fill(InvMass(q2, omega),rw);
+	 pT_CCRES_GENIE->Fill(PTmiss,rw);/// assuming 1muon + protons int he final state
+	 EnuCCQE_CCRES_GENIE->Fill(GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 EnuCalo_CCRES_GENIE->Fill(GetEcalomiss(Esum, PTmiss, 0),rw);/// assuming 1muon + protons int eh final state, Ar40 (np=0)
+	 EnuRes_CCRES_GENIE->Fill(GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
+	 TrueEnu_CCRES_GENIEnorw->Fill(EvRF);
+	 TrueEnu_CCRES_GENIE->Fill(EvRF,rw);
 
 	 //// filling resolution histograms in all interaction types
-	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu));
-	 Resolution_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0));
-	 Resolution_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)));
+	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 Resolution_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),rw);
+	 Resolution_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
 
-	 hprof_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),1);
-	 hprof_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),1);
-	 hprof_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),1);
+	 hprof_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 hprof_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),rw);
+	 hprof_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
+
+	 hprof_EnuCCQE_GENIEnorw->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),1);
+	 hprof_EnuCalo_GENIEnorw->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),1);
+	 hprof_EnuRes_GENIEnorw->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),1);
+
        }
 
        else if(dis==true){
 	 nCCDIS++;
 
 	 //// true kinematics /////
-	 truemuon_truemom_CCDIS_GENIE->Fill(sqrt(pow(pxl,2)+ pow(pyl,2)+pow(pzl,2)));
-	 truemuon_truecostheta_CCDIS_GENIE->Fill(cosine(pxl, pyl , pzl));
-	 truemuon_truephi_CCDIS_GENIE->Fill(Getphi(pxl, pyl, pzl));
-	 trueNh_CCDIS_GENIE->Fill(Nh(nneutron, nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho));
-	 trueNvish_CCDIS_GENIE->Fill(Nvish(nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho));
-	 trueW_CCDIS_GENIE->Fill(InvMass(q2, omega));
-	 pT_CCDIS_GENIE->Fill(PTmiss);/// assuming 1muon + protons int he final state
-	 EnuCCQE_CCDIS_GENIE->Fill(GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu));
-	 EnuCalo_CCDIS_GENIE->Fill(GetEcalomiss(Esum, PTmiss, 0));/// assuming 1muon + protons int eh final state, Ar40 (np=0)
-	 EnuRes_CCDIS_GENIE->Fill(GetEnuRes(emu, cosine(pxl, pyl , pzl)));
+	 truemuon_truemom_CCDIS_GENIE->Fill(sqrt(pow(pxl,2)+ pow(pyl,2)+pow(pzl,2)),rw);
+	 truemuon_truecostheta_CCDIS_GENIE->Fill(cosine(pxl, pyl , pzl),rw);
+	 truemuon_truephi_CCDIS_GENIE->Fill(Getphi(pxl, pyl, pzl),rw);
+	 trueNh_CCDIS_GENIE->Fill(Nh(nneutron, nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho),rw);
+	 trueNvish_CCDIS_GENIE->Fill(Nvish(nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho),rw);
+	 trueW_CCDIS_GENIE->Fill(InvMass(q2, omega),rw);
+	 pT_CCDIS_GENIE->Fill(PTmiss,rw);/// assuming 1muon + protons int he final state
+	 EnuCCQE_CCDIS_GENIE->Fill(GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 EnuCalo_CCDIS_GENIE->Fill(GetEcalomiss(Esum, PTmiss, 0),rw);/// assuming 1muon + protons int eh final state, Ar40 (np=0)
+	 EnuRes_CCDIS_GENIE->Fill(GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
+	 TrueEnu_CCDIS_GENIEnorw->Fill(EvRF);
+	 TrueEnu_CCDIS_GENIE->Fill(EvRF,rw);
 
 	////// filling resolution histograms in all interaction types
-	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu));
-	 Resolution_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0));
-	 Resolution_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)));
+	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 Resolution_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),rw);
+	 Resolution_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
 
-	 hprof_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),1);
-	 hprof_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),1);
-	 hprof_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),1);
+	 hprof_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 hprof_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),rw);
+	 hprof_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
+
+	 hprof_EnuCCQE_GENIEnorw->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),1);
+	 hprof_EnuCalo_GENIEnorw->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),1);
+	 hprof_EnuRes_GENIEnorw->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),1);
 
        }
 
@@ -616,50 +699,64 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
 	 nCCCOH++;
 
 	 /// true kinematics /////
-	 truemuon_truemom_CCCOH_GENIE->Fill(sqrt(pow(pxl,2)+ pow(pyl,2)+pow(pzl,2)));
-	 truemuon_truecostheta_CCCOH_GENIE->Fill(cosine(pxl, pyl , pzl));
-	 truemuon_truephi_CCCOH_GENIE->Fill(Getphi(pxl, pyl, pzl));
-	 trueNh_CCCOH_GENIE->Fill(Nh(nneutron, nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho));
-	 trueNvish_CCCOH_GENIE->Fill(Nvish(nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho));
-	 trueW_CCCOH_GENIE->Fill(InvMass(q2, omega));
-	 pT_CCCOH_GENIE->Fill(PTmiss);/// assuming 1muon + protons int he final state
-	 EnuCCQE_CCCOH_GENIE->Fill(GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu));
-	 EnuCalo_CCCOH_GENIE->Fill(GetEcalomiss(Esum, PTmiss, 0));/// assuming 1muon + protons int eh final state, Ar40 (np=0)
-	 EnuRes_CCCOH_GENIE->Fill(GetEnuRes(emu, cosine(pxl, pyl , pzl)));
+	 truemuon_truemom_CCCOH_GENIE->Fill(sqrt(pow(pxl,2)+ pow(pyl,2)+pow(pzl,2)),rw);
+	 truemuon_truecostheta_CCCOH_GENIE->Fill(cosine(pxl, pyl , pzl),rw);
+	 truemuon_truephi_CCCOH_GENIE->Fill(Getphi(pxl, pyl, pzl),rw);
+	 trueNh_CCCOH_GENIE->Fill(Nh(nneutron, nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho),rw);
+	 trueNvish_CCCOH_GENIE->Fill(Nvish(nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho),rw);
+	 trueW_CCCOH_GENIE->Fill(InvMass(q2, omega),rw);
+	 pT_CCCOH_GENIE->Fill(PTmiss,rw);/// assuming 1muon + protons int he final state
+	 EnuCCQE_CCCOH_GENIE->Fill(GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 EnuCalo_CCCOH_GENIE->Fill(GetEcalomiss(Esum, PTmiss, 0),rw);/// assuming 1muon + protons int eh final state, Ar40 (np=0)
+	 EnuRes_CCCOH_GENIE->Fill(GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
+	 TrueEnu_CCCOH_GENIEnorw->Fill(EvRF);
+	 TrueEnu_CCCOH_GENIE->Fill(EvRF,rw);
 
 	 //// filling resolution histograms in all interaction types
-	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu));
-	 Resolution_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0));
-	 Resolution_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)));
+	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 Resolution_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),rw);
+	 Resolution_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
 
-	 hprof_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),1);
-	 hprof_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),1);
-	 hprof_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),1);
+	 hprof_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 hprof_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),rw);
+	 hprof_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
+
+	 hprof_EnuCCQE_GENIEnorw->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),1);
+	 hprof_EnuCalo_GENIEnorw->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),1);
+	 hprof_EnuRes_GENIEnorw->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),1);
+
        }
 
        else{
 	 nother++;
 
 	///// true kinematics /////
-	 truemuon_truemom_other_GENIE->Fill(sqrt(pow(pxl,2)+ pow(pyl,2)+pow(pzl,2)));
-	 truemuon_truecostheta_other_GENIE->Fill(cosine(pxl, pyl , pzl));
-	 truemuon_truephi_other_GENIE->Fill(Getphi(pxl, pyl, pzl));
-	 trueNh_other_GENIE->Fill(Nh(nneutron, nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho));
-	 trueNvish_other_GENIE->Fill(Nvish(nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho));
-	 trueW_other_GENIE->Fill(InvMass(q2, omega));
-	 pT_other_GENIE->Fill(PTmiss);/// assuming 1muon + protons int he final state
-	 EnuCCQE_other_GENIE->Fill(GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu));
-	 EnuCalo_other_GENIE->Fill(GetEcalomiss(Esum, PTmiss, 0));/// assuming 1muon + protons int eh final state, Ar40 (np=0)
-	 EnuRes_other_GENIE->Fill(GetEnuRes(emu, cosine(pxl, pyl , pzl)));
+	 truemuon_truemom_other_GENIE->Fill(sqrt(pow(pxl,2)+ pow(pyl,2)+pow(pzl,2)),rw);
+	 truemuon_truecostheta_other_GENIE->Fill(cosine(pxl, pyl , pzl),rw);
+	 truemuon_truephi_other_GENIE->Fill(Getphi(pxl, pyl, pzl),rw);
+	 trueNh_other_GENIE->Fill(Nh(nneutron, nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho),rw);
+	 trueNvish_other_GENIE->Fill(Nvish(nnegpion, nnpion, npospion, nproton, nkaon, neta, nrho),rw);
+	 trueW_other_GENIE->Fill(InvMass(q2, omega),rw);
+	 pT_other_GENIE->Fill(PTmiss,rw);/// assuming 1muon + protons int he final state
+	 EnuCCQE_other_GENIE->Fill(GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 EnuCalo_other_GENIE->Fill(GetEcalomiss(Esum, PTmiss, 0),rw);/// assuming 1muon + protons int eh final state, Ar40 (np=0)
+	 EnuRes_other_GENIE->Fill(GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
+	 TrueEnu_other_GENIEnorw->Fill(EvRF);
+	 TrueEnu_other_GENIE->Fill(EvRF,rw);
 
 	 /////// filling resolution histograms in all interaction types
-	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu));
-	 Resolution_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0));
-	 Resolution_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)));
+	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 Resolution_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),rw);
+	 Resolution_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
 
-	 hprof_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),1);
-	 hprof_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),1);
-	 hprof_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),1);
+	 hprof_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
+	 hprof_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),rw);
+	 hprof_EnuRes_GENIE->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
+
+	 hprof_EnuCCQE_GENIEnorw->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),1);
+	 hprof_EnuCalo_GENIEnorw->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),1);
+	 hprof_EnuRes_GENIEnorw->Fill(EvRF,EvRF - GetEnuRes(emu, cosine(pxl, pyl , pzl)),1);
+
        }
       
    } /// END LOOP OF ENTRIES ///////
@@ -732,10 +829,10 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   truemuon_truemom_GENIE-> Add(truemuon_truemom_CCDIS_GENIE);
   truemuon_truemom_GENIE-> Add(truemuon_truemom_CCCOH_GENIE); 
   //truemuon_truemom_GENIE-> SetMaximum(100);  
-  truemuon_truemom_GENIE-> Draw();
+  truemuon_truemom_GENIE-> Draw("hist");
   truemuon_truemom_GENIE->GetXaxis()->SetTitle("p_{#mu} [GeV/c]");
   truemuon_truemom_GENIE->GetYaxis()->SetTitle("number of events");
-
+  
   TLegend *l1 = new TLegend(0.5, 0.7, 0.9, 0.9);
   l1 -> AddEntry(truemuon_truemom_CCQE_GENIE, "CCQE", "f");
   l1 -> AddEntry(truemuon_truemom_CCMEC_GENIE, "CCMEC", "f");
@@ -743,12 +840,12 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   l1 -> AddEntry(truemuon_truemom_CCCOH_GENIE, "CC-Coh", "f");
   l1 -> AddEntry(truemuon_truemom_CCDIS_GENIE, "CCDIS", "f");
   l1 -> Draw();
-
+  
   c1->Update();
-  c1->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truemom_GENIE.pdf");
-  c1->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truemom_GENIE.eps");
-  c1->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truemom_GENIE.png");
-  c1->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truemom_GENIE.C");
+  c1->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truemom_GENIErw.pdf");
+  c1->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truemom_GENIErw.eps");
+  c1->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truemom_GENIErw.png");
+  c1->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truemom_GENIErw.C");
   
   TCanvas *c2 = new TCanvas("c2", "c2", 900, 900);
   
@@ -765,7 +862,7 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   truemuon_truecostheta_GENIE-> Add(truemuon_truecostheta_CCDIS_GENIE);
   truemuon_truecostheta_GENIE-> Add(truemuon_truecostheta_CCCOH_GENIE); 
   //truemuon_truemom_GENIE-> SetMaximum(100);  
-  truemuon_truecostheta_GENIE-> Draw();
+  truemuon_truecostheta_GENIE-> Draw("hist");
   truemuon_truecostheta_GENIE->GetXaxis()->SetTitle("cos #theta_{#mu}");
   truemuon_truecostheta_GENIE->GetYaxis()->SetTitle("number of events");
 
@@ -778,10 +875,10 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   l2 -> Draw();
 
   c2->Update();
-  c2->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truecostheta_GENIE.pdf");
-  c2->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truecostheta_GENIE.eps");
-  c2->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truecostheta_GENIE.png");
-  c2->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truecostheta_GENIE.C");
+  c2->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truecostheta_GENIErw.pdf");
+  c2->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truecostheta_GENIErw.eps");
+  c2->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truecostheta_GENIErw.png");
+  c2->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truecostheta_GENIErw.C");
 
   TCanvas *c3 = new TCanvas("c3", "c3", 900, 900);
   
@@ -798,7 +895,7 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   truemuon_truephi_GENIE-> Add(truemuon_truephi_CCDIS_GENIE);
   truemuon_truephi_GENIE-> Add(truemuon_truephi_CCCOH_GENIE); 
   //truemuon_truemom_GENIE-> SetMaximum(100);  
-  truemuon_truephi_GENIE-> Draw();
+  truemuon_truephi_GENIE-> Draw("hist");
   truemuon_truephi_GENIE->GetXaxis()->SetTitle("#phi_{#mu}");
   truemuon_truephi_GENIE->GetYaxis()->SetTitle("number of events");
 
@@ -811,10 +908,10 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   l3 -> Draw();
 
   c3->Update();
-  c3->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truephi_GENIE.pdf");
-  c3->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truephi_GENIE.eps");
-  c3->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truephi_GENIE.png");
-  c3->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truephi_GENIE.C");
+  c3->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truephi_GENIErw.pdf");
+  c3->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truephi_GENIErw.eps");
+  c3->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truephi_GENIErw.png");
+  c3->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/truemuon_truephi_GENIErw.C");
 
   TCanvas *c4 = new TCanvas("c4", "c4", 900, 900);
   
@@ -831,7 +928,7 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   trueNh_GENIE-> Add(trueNh_CCDIS_GENIE);
   trueNh_GENIE-> Add(trueNh_CCCOH_GENIE); 
   //truemuon_truemom_GENIE-> SetMaximum(100);  
-  trueNh_GENIE-> Draw();
+  trueNh_GENIE-> Draw("hist");
   trueNh_GENIE->GetXaxis()->SetTitle("number of hadrons in the final state");
   trueNh_GENIE->GetYaxis()->SetTitle("number of events");
 
@@ -844,10 +941,10 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   l4 -> Draw();
 
   c4->Update();
-  c4->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueNh_GENIE.pdf");
-  c4->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueNh_GENIE.eps");
-  c4->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueNh_GENIE.png");
-  c4->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueNh_GENIE.C");
+  c4->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueNh_GENIErw.pdf");
+  c4->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueNh_GENIErw.eps");
+  c4->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueNh_GENIErw.png");
+  c4->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueNh_GENIErw.C");
 
   TCanvas *c5 = new TCanvas("c5", "c5", 900, 900);
   
@@ -864,7 +961,7 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   trueNvish_GENIE-> Add(trueNvish_CCDIS_GENIE);
   trueNvish_GENIE-> Add(trueNvish_CCCOH_GENIE); 
   //truemuon_truemom_GENIE-> SetMaximum(100);  
-  trueNvish_GENIE-> Draw();
+  trueNvish_GENIE-> Draw("hist");
   trueNvish_GENIE->GetXaxis()->SetTitle("number of hadrons in the final state (without neutrons)");
   trueNvish_GENIE->GetYaxis()->SetTitle("number of events");
 
@@ -877,10 +974,10 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   l5 -> Draw();
 
   c5->Update();
-  c5->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueNvish_GENIE.pdf");
-  c5->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueNvish_GENIE.eps");
-  c5->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueNvish_GENIE.png");
-  c5->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueNvish_GENIE.C");
+  c5->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueNvish_GENIErw.pdf");
+  c5->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueNvish_GENIErw.eps");
+  c5->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueNvish_GENIErw.png");
+  c5->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueNvish_GENIErw.C");
 
   TCanvas *c6 = new TCanvas("c6", "c6", 900, 900);
   
@@ -897,7 +994,7 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   trueW_GENIE-> Add(trueW_CCDIS_GENIE);
   trueW_GENIE-> Add(trueW_CCCOH_GENIE); 
   //truemuon_truemom_GENIE-> SetMaximum(100);  
-  trueW_GENIE-> Draw();
+  trueW_GENIE-> Draw("hist");
   trueW_GENIE->GetXaxis()->SetTitle("invariant mass");
   trueW_GENIE->GetYaxis()->SetTitle("number of events");
 
@@ -910,10 +1007,10 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   l6 -> Draw();
 
   c6->Update();
-  c6->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueW_GENIE.pdf");
-  c6->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueW_GENIE.eps");
-  c6->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueW_GENIE.png");
-  c6->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueW_GENIE.C");
+  c6->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueW_GENIErw.pdf");
+  c6->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueW_GENIErw.eps");
+  c6->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueW_GENIErw.png");
+  c6->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/trueW_GENIErw.C");
 
   TCanvas *c7 = new TCanvas("c7", "c7", 900, 900);
   
@@ -930,7 +1027,7 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   pT_GENIE-> Add(pT_CCDIS_GENIE);
   pT_GENIE-> Add(pT_CCCOH_GENIE); 
   //truemuon_truemom_GENIE-> SetMaximum(100);  
-  pT_GENIE-> Draw();
+  pT_GENIE-> Draw("hist");
   pT_GENIE->GetXaxis()->SetTitle("missing momentum transfer [GeV/c]");
   pT_GENIE->GetYaxis()->SetTitle("number of events");
 
@@ -943,10 +1040,10 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   l7 -> Draw();
 
   c7->Update();
-  c7->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/pT_GENIE.pdf");
-  c7->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/pT_GENIE.eps");
-  c7->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/pT_GENIE.png");
-  c7->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/pT_GENIE.C");
+  c7->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/pT_GENIErw.pdf");
+  c7->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/pT_GENIErw.eps");
+  c7->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/pT_GENIErw.png");
+  c7->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/pT_GENIErw.C");
   
   TCanvas *c8 = new TCanvas("c8", "c8", 900, 900);
   
@@ -963,7 +1060,7 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   EnuCCQE_GENIE-> Add(EnuCCQE_CCDIS_GENIE);
   EnuCCQE_GENIE-> Add(EnuCCQE_CCCOH_GENIE); 
   //truemuon_truemom_GENIE-> SetMaximum(100);  
-  EnuCCQE_GENIE-> Draw();
+  EnuCCQE_GENIE-> Draw("hist");
   EnuCCQE_GENIE->GetXaxis()->SetTitle("reconstructed neutrino energy in CCQE aproach [GeV/c]");
   EnuCCQE_GENIE->GetYaxis()->SetTitle("number of events");
 
@@ -976,10 +1073,10 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   l8 -> Draw();
 
   c8->Update();
-  c8->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuCCQE_GENIE.pdf");
-  c8->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuCCQE_GENIE.eps");
-  c8->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuCCQE_GENIE.png");
-  c8->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuCCQE_GENIE.C");
+  c8->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuCCQE_GENIErw.pdf");
+  c8->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuCCQE_GENIErw.eps");
+  c8->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuCCQE_GENIErw.png");
+  c8->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuCCQE_GENIErw.C");
 
   TCanvas *c9 = new TCanvas("c9", "c9", 900, 900);
   
@@ -996,7 +1093,7 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   EnuCalo_GENIE-> Add(EnuCalo_CCDIS_GENIE);
   EnuCalo_GENIE-> Add(EnuCalo_CCCOH_GENIE); 
   //truemuon_truemom_GENIE-> SetMaximum(100);  
-  EnuCalo_GENIE-> Draw();
+  EnuCalo_GENIE-> Draw("hist");
   EnuCalo_GENIE->GetXaxis()->SetTitle("calorimetric reconstructed neutrino energy [GeV/c]");
   EnuCalo_GENIE->GetYaxis()->SetTitle("number of events");
 
@@ -1009,10 +1106,10 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   l9 -> Draw();
 
   c9->Update();
-  c9->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuCalo_GENIE.pdf");
-  c9->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuCalo_GENIE.eps");
-  c9->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuCalo_GENIE.png");
-  c9->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuCalo_GENIE.C");
+  c9->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuCalo_GENIErw.pdf");
+  c9->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuCalo_GENIErw.eps");
+  c9->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuCalo_GENIErw.png");
+  c9->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuCalo_GENIErw.C");
 
   TCanvas *c10 = new TCanvas("c10", "c10", 900, 900);
   
@@ -1029,7 +1126,7 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   EnuRes_GENIE-> Add(EnuRes_CCDIS_GENIE);
   EnuRes_GENIE-> Add(EnuRes_CCCOH_GENIE); 
   //truemuon_truemom_GENIE-> SetMaximum(100);  
-  EnuRes_GENIE-> Draw();
+  EnuRes_GENIE-> Draw("hist");
   EnuRes_GENIE->GetXaxis()->SetTitle("reconstructed neutrino energy in resonant approach [GeV/c]");
   EnuRes_GENIE->GetYaxis()->SetTitle("number of events");
 
@@ -1042,10 +1139,10 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   l10 -> Draw();
 
   c10->Update();
-  c10->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuRes_GENIE.pdf");
-  c10->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuRes_GENIE.eps");
-  c10->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuRes_GENIE.png");
-  c10->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuRes_GENIE.C");  
+  c10->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuRes_GENIErw.pdf");
+  c10->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuRes_GENIErw.eps");
+  c10->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuRes_GENIErw.png");
+  c10->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuRes_GENIErw.C");  
 
   /////////////// 2-D plots for the resolutions in reconstructed neutrino energy
   
@@ -1057,10 +1154,10 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   Resolution_EnuCCQE_GENIE->Draw("colz");
 
   c11->Update();
-  c11->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuCCQE_GENIE.pdf");
-  c11->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuCCQE_GENIE.eps");
-  c11->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuCCQE_GENIE.png");
-  c11->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuCCQE_GENIE.C");  
+  c11->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuCCQE_GENIErw.pdf");
+  c11->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuCCQE_GENIErw.eps");
+  c11->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuCCQE_GENIErw.png");
+  c11->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuCCQE_GENIErw.C");  
 
   TCanvas *c12 = new TCanvas("c12", "c12", 900, 900);
   gStyle->SetOptStat(kFALSE);
@@ -1070,10 +1167,10 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   Resolution_EnuCalo_GENIE->Draw("colz");
 
   c12->Update();
-  c12->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuCalo_GENIE.pdf");
-  c12->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuCalo_GENIE.eps");
-  c12->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuCalo_GENIE.png");
-  c12->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuCalo_GENIE.C");  
+  c12->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuCalo_GENIErw.pdf");
+  c12->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuCalo_GENIErw.eps");
+  c12->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuCalo_GENIErw.png");
+  c12->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuCalo_GENIErw.C");  
   
   TCanvas *c13 = new TCanvas("c13", "c13", 900, 900);
   gStyle->SetOptStat(kFALSE);
@@ -1083,10 +1180,10 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   Resolution_EnuRes_GENIE->Draw("colz");
 
   c13->Update();
-  c13->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuRes_GENIE.pdf");
-  c13->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuRes_GENIE.eps");
-  c13->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuRes_GENIE.png");
-  c13->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuRes_GENIE.C");  
+  c13->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuRes_GENIErw.pdf");
+  c13->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuRes_GENIErw.eps");
+  c13->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuRes_GENIErw.png");
+  c13->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/Resolution_EnuRes_GENIErw.C");  
 
   ///// profile plots
   
@@ -1126,9 +1223,127 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   l14 -> Draw();
 
   c14->Update();
-  c14->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIE.pdf");
-  c14->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIE.eps");
-  c14->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIE.png");
-  c14->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIE.C");
+  c14->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIErw.pdf");
+  c14->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIErw.eps");
+  c14->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIErw.png");
+  c14->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIErw.C");
 
+  TCanvas *c15 = new TCanvas("c15", "c15", 900, 900);
+  
+  TrueEnu_CCQE_GENIE-> SetFillColor(kRed);
+  TrueEnu_CCMEC_GENIE-> SetFillColor(kGreen);
+  TrueEnu_CCRES_GENIE-> SetFillColor(kYellow);
+  TrueEnu_CCDIS_GENIE-> SetFillColor(kBlue);
+  TrueEnu_CCCOH_GENIE-> SetFillColor(kMagenta);
+ 
+  THStack *TrueEnu_GENIE = new THStack("TrueEnu_GENIE","");
+  TrueEnu_GENIE-> Add(TrueEnu_CCQE_GENIE);
+  TrueEnu_GENIE-> Add(TrueEnu_CCMEC_GENIE);
+  TrueEnu_GENIE-> Add(TrueEnu_CCRES_GENIE);
+  TrueEnu_GENIE-> Add(TrueEnu_CCDIS_GENIE);
+  TrueEnu_GENIE-> Add(TrueEnu_CCCOH_GENIE); 
+  //truemuon_truemom_GENIE-> SetMaximum(100);  
+  TrueEnu_GENIE-> Draw("hist");
+  TrueEnu_GENIE->GetXaxis()->SetTitle("reconstructed neutrino energy in resonant approach [GeV/c]");
+  TrueEnu_GENIE->GetYaxis()->SetTitle("number of events");
+
+  TLegend *l15 = new TLegend(0.5, 0.7, 0.9, 0.9);
+  l15 -> AddEntry(TrueEnu_CCQE_GENIE, "CCQE", "f");
+  l15 -> AddEntry(TrueEnu_CCMEC_GENIE, "CCMEC", "f");
+  l15 -> AddEntry(TrueEnu_CCRES_GENIE, "CCRES", "f");
+  l15 -> AddEntry(TrueEnu_CCCOH_GENIE, "CC-Coh", "f");
+  l15 -> AddEntry(TrueEnu_CCDIS_GENIE, "CCDIS", "f");
+  l15 -> Draw();
+
+  c15->Update();
+  c15->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TrueEnu_GENIE.pdf");
+  c15->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TrueEnu_GENIE.eps");
+  c15->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TrueEnu_GENIE.png");
+  c15->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TrueEnu_GENIE.C");  
+
+  TCanvas *c16 = new TCanvas("c16", "c16", 900, 900);
+  
+  TrueEnu_CCQE_GENIEnorw-> SetFillColor(kRed);
+  TrueEnu_CCMEC_GENIEnorw-> SetFillColor(kGreen);
+  TrueEnu_CCRES_GENIEnorw-> SetFillColor(kYellow);
+  TrueEnu_CCDIS_GENIEnorw-> SetFillColor(kBlue);
+  TrueEnu_CCCOH_GENIEnorw-> SetFillColor(kMagenta);
+ 
+  THStack *TrueEnu_GENIEnorw = new THStack("TrueEnu_GENIEnorw","");
+  TrueEnu_GENIEnorw-> Add(TrueEnu_CCQE_GENIEnorw);
+  TrueEnu_GENIEnorw-> Add(TrueEnu_CCMEC_GENIEnorw);
+  TrueEnu_GENIEnorw-> Add(TrueEnu_CCRES_GENIEnorw);
+  TrueEnu_GENIEnorw-> Add(TrueEnu_CCDIS_GENIEnorw);
+  TrueEnu_GENIEnorw-> Add(TrueEnu_CCCOH_GENIEnorw); 
+  TrueEnu_GENIEnorw-> Draw("hist");
+  TrueEnu_GENIEnorw->GetXaxis()->SetTitle("reconstructed neutrino energy in resonant approach [GeV/c]");
+  TrueEnu_GENIEnorw->GetYaxis()->SetTitle("number of events");
+
+  TLegend *l16 = new TLegend(0.5, 0.7, 0.9, 0.9);
+  l16 -> AddEntry(TrueEnu_CCQE_GENIEnorw, "CCQE", "f");
+  l16 -> AddEntry(TrueEnu_CCMEC_GENIEnorw, "CCMEC", "f");
+  l16 -> AddEntry(TrueEnu_CCRES_GENIEnorw, "CCRES", "f");
+  l16 -> AddEntry(TrueEnu_CCCOH_GENIEnorw, "CC-Coh", "f");
+  l16 -> AddEntry(TrueEnu_CCDIS_GENIEnorw, "CCDIS", "f");
+  l16 -> Draw();
+
+  c16->Update();
+  c16->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TrueEnu_GENIEnorw.pdf");
+  c16->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TrueEnu_GENIEnorw.eps");
+  c16->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TrueEnu_GENIEnorw.png");
+  c16->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TrueEnu_GENIEnorw.C");  
+
+  /////// TProfile zooming in
+  
+  TCanvas *c17 = new TCanvas("c17","",900, 900); 
+
+  c17->SetGrid();
+
+  hprof_EnuCCQE_GENIE->SetTitle("");
+  hprof_EnuCCQE_GENIE->GetXaxis()->SetTitle("true neutrino energy [GeV]");
+  hprof_EnuCCQE_GENIE->GetYaxis()->SetTitle("(true - reconstructed) neutrino energy [GeV]");
+  hprof_EnuCCQE_GENIE->SetLineColor(kRed);
+  hprof_EnuCCQE_GENIE->SetLineWidth(2);
+  hprof_EnuCCQE_GENIE->SetMarkerColor(kRed);
+  hprof_EnuCCQE_GENIE->SetMarkerStyle(20);
+
+  hprof_EnuCCQE_GENIE->GetYaxis()->SetLimits(-0.1, 0.5);
+  hprof_EnuCCQE_GENIE->GetYaxis()->SetRangeUser(-0.1, 0.5);
+  hprof_EnuCCQE_GENIE->Draw("e1");
+
+  hprof_EnuCalo_GENIE->SetLineColor(kBlack);
+  hprof_EnuCalo_GENIE->SetLineWidth(2);
+  hprof_EnuCalo_GENIE->SetMarkerColor(kBlack);
+  hprof_EnuCalo_GENIE->SetMarkerStyle(20);
+  hprof_EnuCalo_GENIE->Draw("e1same");  
+
+  hprof_EnuCalo_GENIEnorw->SetLineColor(kGreen);
+  hprof_EnuCalo_GENIEnorw->SetLineWidth(2);
+  hprof_EnuCalo_GENIEnorw->SetMarkerColor(kGreen);
+  hprof_EnuCalo_GENIEnorw->SetMarkerStyle(20);
+  hprof_EnuCalo_GENIEnorw->Draw("e1same");  
+
+  hprof_EnuCCQE_GENIEnorw->SetLineColor(kCyan);
+  hprof_EnuCCQE_GENIEnorw->SetLineWidth(2);
+  hprof_EnuCCQE_GENIEnorw->SetMarkerColor(kCyan);
+  hprof_EnuCCQE_GENIEnorw->SetMarkerStyle(20);
+  hprof_EnuCCQE_GENIEnorw->Draw("e1same");  
+  
+  
+  TLegend *l17 = new TLegend(0.50, 0.25, 0.9, 0.1);
+  l17 -> AddEntry(hprof_EnuCCQE_GENIE, "CCQE approach", "l");
+  l17 -> AddEntry(hprof_EnuCalo_GENIE, "Calorimetry approach", "l");
+  l17 -> AddEntry(hprof_EnuCCQE_GENIEnorw, "CCQE approach, no tune", "l");
+  l17 -> AddEntry(hprof_EnuCalo_GENIEnorw, "Calorimetry approach, no tune", "l");
+
+  l17 -> Draw();
+
+  c17->Update();
+  c17->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIEcomp.pdf");
+  c17->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIEcomp.eps");
+  c17->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIEcomp.png");
+  c17->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIEcomp.C");
+
+
+  
 }
