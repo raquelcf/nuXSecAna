@@ -29,6 +29,7 @@ using namespace std;
 #define PI 3.14159265
 #define mumass 0.1056583755 // GeV/c2
 #define protonmass 0.93827208816 //GeV/c2
+#define pionmass 0.1349768  //GeV/c2
 
 /////////////////////////////// defining output files. one ROOT file (TFile format) and one text file (txt file) ///////////////////////////
 
@@ -133,6 +134,75 @@ TH1D *EnuRes_CCDIS_GENIE;
 TH1D *EnuRes_CCCOH_GENIE;
 TH1D *EnuRes_other_GENIE;
 
+////////////////////////////////////////  *********** reconstructed neutrino energy in uB *****************************************************
+
+///// ---- reconstructed neutrino energy in the Deep Learning analysis for 1muon+ 1 proton selection --- 
+
+TH1D *EnuDL_CCQE_GENIE;
+TH1D *EnuDL_CCMEC_GENIE;
+TH1D *EnuDL_CCRES_GENIE;
+TH1D *EnuDL_CCDIS_GENIE;
+TH1D *EnuDL_CCCOH_GENIE;
+TH1D *EnuDL_other_GENIE;
+
+TH1D *EnuDL_CCQE_GENIEnorw;
+TH1D *EnuDL_CCMEC_GENIEnorw;
+TH1D *EnuDL_CCRES_GENIEnorw;
+TH1D *EnuDL_CCDIS_GENIEnorw;
+TH1D *EnuDL_CCCOH_GENIEnorw;
+TH1D *EnuDL_other_GENIEnorw;
+
+///// ---- reconstructed neutrino energy in the Pandora analysis for 1muon+ N(>0) proton selection --- 
+
+TH1D *EnuPanN_CCQE_GENIE;
+TH1D *EnuPanN_CCMEC_GENIE;
+TH1D *EnuPanN_CCRES_GENIE;
+TH1D *EnuPanN_CCDIS_GENIE;
+TH1D *EnuPanN_CCCOH_GENIE;
+TH1D *EnuPanN_other_GENIE;
+
+TH1D *EnuPanN_CCQE_GENIEnorw;
+TH1D *EnuPanN_CCMEC_GENIEnorw;
+TH1D *EnuPanN_CCRES_GENIEnorw;
+TH1D *EnuPanN_CCDIS_GENIEnorw;
+TH1D *EnuPanN_CCCOH_GENIEnorw;
+TH1D *EnuPanN_other_GENIEnorw;
+
+///// ---- reconstructed neutrino energy in the Pandora analysis for 1muon+ 0 proton selection --- 
+
+TH1D *EnuPan0_CCQE_GENIE;
+TH1D *EnuPan0_CCMEC_GENIE;
+TH1D *EnuPan0_CCRES_GENIE;
+TH1D *EnuPan0_CCDIS_GENIE;
+TH1D *EnuPan0_CCCOH_GENIE;
+TH1D *EnuPan0_other_GENIE;
+
+TH1D *EnuPan0_CCQE_GENIEnorw;
+TH1D *EnuPan0_CCMEC_GENIEnorw;
+TH1D *EnuPan0_CCRES_GENIEnorw;
+TH1D *EnuPan0_CCDIS_GENIEnorw;
+TH1D *EnuPan0_CCCOH_GENIEnorw;
+TH1D *EnuPan0_other_GENIEnorw;
+
+///// ---- reconstructed neutrino energy in the Wire Cell analysis for 1muon+ X (any) proton selection  (numu CC inclusive)--- 
+
+TH1D *EnuWC_CCQE_GENIE;
+TH1D *EnuWC_CCMEC_GENIE;
+TH1D *EnuWC_CCRES_GENIE;
+TH1D *EnuWC_CCDIS_GENIE;
+TH1D *EnuWC_CCCOH_GENIE;
+TH1D *EnuWC_other_GENIE;
+
+TH1D *EnuWC_CCQE_GENIEnorw;
+TH1D *EnuWC_CCMEC_GENIEnorw;
+TH1D *EnuWC_CCRES_GENIEnorw;
+TH1D *EnuWC_CCDIS_GENIEnorw;
+TH1D *EnuWC_CCCOH_GENIEnorw;
+TH1D *EnuWC_other_GENIEnorw;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 ///// true neutrino energy
 
 TH1D *TrueEnu_CCQE_GENIEnorw;
@@ -163,6 +233,16 @@ TH2D *Resolution_EnuRes_GENIE;
 TProfile *hprof_EnuCCQE_GENIE;
 TProfile *hprof_EnuCalo_GENIE;
 TProfile *hprof_EnuRes_GENIE;
+
+TProfile *hprof_EnuDL_GENIE;
+TProfile *hprof_EnuPanN_GENIE;
+TProfile *hprof_EnuPan0_GENIE;
+TProfile *hprof_EnuWC_GENIE;
+
+TProfile *hprof_EnuDL_GENIEnorw;
+TProfile *hprof_EnuPanN_GENIEnorw;
+TProfile *hprof_EnuPan0_GENIEnorw;
+TProfile *hprof_EnuWC_GENIEnorw;
 
 TProfile *hprof_EnuCCQE_GENIEnorw;
 TProfile *hprof_EnuCalo_GENIEnorw;
@@ -221,6 +301,25 @@ double GetEnuCCQE(double emu, double cosmu, double pmu){
   return (Enum/Eden); // return result in GeV
   
 }
+
+double GetEuB(double Epion, double Esum, int X , int np) {
+
+  double enu = 0.;
+
+  if (X == 1){ /// Pandora approach
+    enu = Esum;
+  }
+  else if (X == 2){ /// Depp Learning approach
+    enu = Esum + 0.040;
+  }
+  else if (X == 3){ /// Wire Cell approach
+    enu = Esum + Epion + np*0.0086;
+  }
+ 
+  return enu; // return result in GeV
+
+}
+
 
 ///// formula of the reconstructed neutrino energy assuming all events are produced via resonant pion production interaction, and the pions were absorved by the nucleus.
 
@@ -469,6 +568,62 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   EnuRes_CCCOH_GENIE = new TH1D("EnuRes_CCCOH_GENIE", "EnuRes_CCCOH_GENIE", 60, 0, 3);
   EnuRes_other_GENIE = new TH1D("EnuRes_other_GENIE", "EnuRes_other_GENIE", 60, 0, 3);
 
+  EnuDL_CCQE_GENIE = new TH1D("EnuDL_CCQE_GENIE", "EnuDL_CCQE_GENIE", 60, 0, 3);
+  EnuDL_CCMEC_GENIE = new TH1D("EnuDL_CCMEC_GENIE", "EnuDL_CCMEC_GENIE", 60, 0, 3);
+  EnuDL_CCRES_GENIE = new TH1D("EnuDL_CCRES_GENIE", "EnuDL_CCRES_GENIE", 60, 0, 3);
+  EnuDL_CCDIS_GENIE = new TH1D("EnuDL_CCDIS_GENIE", "EnuDL_CCDIS_GENIE", 60, 0, 3);
+  EnuDL_CCCOH_GENIE = new TH1D("EnuDL_CCCOH_GENIE", "EnuDL_CCCOH_GENIE", 60, 0, 3);
+  EnuDL_other_GENIE = new TH1D("EnuDL_other_GENIE", "EnuDL_other_GENIE", 60, 0, 3);
+
+  EnuPanN_CCQE_GENIE = new TH1D("EnuPanN_CCQE_GENIE", "EnuPanN_CCQE_GENIE", 60, 0, 3);
+  EnuPanN_CCMEC_GENIE = new TH1D("EnuPanN_CCMEC_GENIE", "EnuPanN_CCMEC_GENIE", 60, 0, 3);
+  EnuPanN_CCRES_GENIE = new TH1D("EnuPanN_CCRES_GENIE", "EnuPanN_CCRES_GENIE", 60, 0, 3);
+  EnuPanN_CCDIS_GENIE = new TH1D("EnuPanN_CCDIS_GENIE", "EnuPanN_CCDIS_GENIE", 60, 0, 3);
+  EnuPanN_CCCOH_GENIE = new TH1D("EnuPanN_CCCOH_GENIE", "EnuPanN_CCCOH_GENIE", 60, 0, 3);
+  EnuPanN_other_GENIE = new TH1D("EnuPanN_other_GENIE", "EnuPanN_other_GENIE", 60, 0, 3);
+
+  EnuPan0_CCQE_GENIE = new TH1D("EnuPan0_CCQE_GENIE", "EnuPan0_CCQE_GENIE", 60, 0, 3);
+  EnuPan0_CCMEC_GENIE = new TH1D("EnuPan0_CCMEC_GENIE", "EnuPan0_CCMEC_GENIE", 60, 0, 3);
+  EnuPan0_CCRES_GENIE = new TH1D("EnuPan0_CCRES_GENIE", "EnuPan0_CCRES_GENIE", 60, 0, 3);
+  EnuPan0_CCDIS_GENIE = new TH1D("EnuPan0_CCDIS_GENIE", "EnuPan0_CCDIS_GENIE", 60, 0, 3);
+  EnuPan0_CCCOH_GENIE = new TH1D("EnuPan0_CCCOH_GENIE", "EnuPan0_CCCOH_GENIE", 60, 0, 3);
+  EnuPan0_other_GENIE = new TH1D("EnuPan0_other_GENIE", "EnuPan0_other_GENIE", 60, 0, 3);
+
+  EnuWC_CCQE_GENIE = new TH1D("EnuWC_CCQE_GENIE", "EnuWC_CCQE_GENIE", 60, 0, 3);
+  EnuWC_CCMEC_GENIE = new TH1D("EnuWC_CCMEC_GENIE", "EnuWC_CCMEC_GENIE", 60, 0, 3);
+  EnuWC_CCRES_GENIE = new TH1D("EnuWC_CCRES_GENIE", "EnuWC_CCRES_GENIE", 60, 0, 3);
+  EnuWC_CCDIS_GENIE = new TH1D("EnuWC_CCDIS_GENIE", "EnuWC_CCDIS_GENIE", 60, 0, 3);
+  EnuWC_CCCOH_GENIE = new TH1D("EnuWC_CCCOH_GENIE", "EnuWC_CCCOH_GENIE", 60, 0, 3);
+  EnuWC_other_GENIE = new TH1D("EnuWC_other_GENIE", "EnuWC_other_GENIE", 60, 0, 3);
+
+  EnuDL_CCQE_GENIEnorw = new TH1D("EnuDL_CCQE_GENIEnorw", "EnuDL_CCQE_GENIEnorw", 60, 0, 3);
+  EnuDL_CCMEC_GENIEnorw = new TH1D("EnuDL_CCMEC_GENIEnorw", "EnuDL_CCMEC_GENIEnorw", 60, 0, 3);
+  EnuDL_CCRES_GENIEnorw = new TH1D("EnuDL_CCRES_GENIEnorw", "EnuDL_CCRES_GENIEnorw", 60, 0, 3);
+  EnuDL_CCDIS_GENIEnorw = new TH1D("EnuDL_CCDIS_GENIEnorw", "EnuDL_CCDIS_GENIEnorw", 60, 0, 3);
+  EnuDL_CCCOH_GENIEnorw = new TH1D("EnuDL_CCCOH_GENIEnorw", "EnuDL_CCCOH_GENIEnorw", 60, 0, 3);
+  EnuDL_other_GENIEnorw = new TH1D("EnuDL_other_GENIEnorw", "EnuDL_other_GENIEnorw", 60, 0, 3);
+
+  EnuPanN_CCQE_GENIEnorw = new TH1D("EnuPanN_CCQE_GENIEnorw", "EnuPanN_CCQE_GENIEnorw", 60, 0, 3);
+  EnuPanN_CCMEC_GENIEnorw = new TH1D("EnuPanN_CCMEC_GENIEnorw", "EnuPanN_CCMEC_GENIEnorw", 60, 0, 3);
+  EnuPanN_CCRES_GENIEnorw = new TH1D("EnuPanN_CCRES_GENIEnorw", "EnuPanN_CCRES_GENIEnorw", 60, 0, 3);
+  EnuPanN_CCDIS_GENIEnorw = new TH1D("EnuPanN_CCDIS_GENIEnorw", "EnuPanN_CCDIS_GENIEnorw", 60, 0, 3);
+  EnuPanN_CCCOH_GENIEnorw = new TH1D("EnuPanN_CCCOH_GENIEnorw", "EnuPanN_CCCOH_GENIEnorw", 60, 0, 3);
+  EnuPanN_other_GENIEnorw = new TH1D("EnuPanN_other_GENIEnorw", "EnuPanN_other_GENIEnorw", 60, 0, 3);
+
+  EnuPan0_CCQE_GENIEnorw = new TH1D("EnuPan0_CCQE_GENIEnorw", "EnuPan0_CCQE_GENIEnorw", 60, 0, 3);
+  EnuPan0_CCMEC_GENIEnorw = new TH1D("EnuPan0_CCMEC_GENIEnorw", "EnuPan0_CCMEC_GENIEnorw", 60, 0, 3);
+  EnuPan0_CCRES_GENIEnorw = new TH1D("EnuPan0_CCRES_GENIEnorw", "EnuPan0_CCRES_GENIEnorw", 60, 0, 3);
+  EnuPan0_CCDIS_GENIEnorw = new TH1D("EnuPan0_CCDIS_GENIEnorw", "EnuPan0_CCDIS_GENIEnorw", 60, 0, 3);
+  EnuPan0_CCCOH_GENIEnorw = new TH1D("EnuPan0_CCCOH_GENIEnorw", "EnuPan0_CCCOH_GENIEnorw", 60, 0, 3);
+  EnuPan0_other_GENIEnorw = new TH1D("EnuPan0_other_GENIEnorw", "EnuPan0_other_GENIEnorw", 60, 0, 3);
+
+  EnuWC_CCQE_GENIEnorw = new TH1D("EnuWC_CCQE_GENIEnorw", "EnuWC_CCQE_GENIEnorw", 60, 0, 3);
+  EnuWC_CCMEC_GENIEnorw = new TH1D("EnuWC_CCMEC_GENIEnorw", "EnuWC_CCMEC_GENIEnorw", 60, 0, 3);
+  EnuWC_CCRES_GENIEnorw = new TH1D("EnuWC_CCRES_GENIEnorw", "EnuWC_CCRES_GENIEnorw", 60, 0, 3);
+  EnuWC_CCDIS_GENIEnorw = new TH1D("EnuWC_CCDIS_GENIEnorw", "EnuWC_CCDIS_GENIEnorw", 60, 0, 3);
+  EnuWC_CCCOH_GENIEnorw = new TH1D("EnuWC_CCCOH_GENIEnorw", "EnuWC_CCCOH_GENIEnorw", 60, 0, 3);
+  EnuWC_other_GENIEnorw = new TH1D("EnuWC_other_GENIEnorw", "EnuWC_other_GENIEnorw", 60, 0, 3);
+  
   TrueEnu_CCQE_GENIE = new TH1D("TrueEnu_CCQE_GENIE", "TrueEnu_CCQE_GENIE", 60, 0, 3);
   TrueEnu_CCMEC_GENIE = new TH1D("TrueEnu_CCMEC_GENIE", "TrueEnu_CCMEC_GENIE", 60, 0, 3);
   TrueEnu_CCRES_GENIE = new TH1D("TrueEnu_CCRES_GENIE", "TrueEnu_CCRES_GENIE", 60, 0, 3);
@@ -496,6 +651,16 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   hprof_EnuCCQE_GENIEnorw = new TProfile("hprof_EnuCCQE_GENIEnorw", "",50,0,1.5,-2.,2.);
   hprof_EnuCalo_GENIEnorw = new TProfile("hprof_EnuCalo_GENIEnorw", "",50,0,1.5,-2.,2.);
   hprof_EnuRes_GENIEnorw = new TProfile("hprof_EnuRes_GENIEnorw", "",50,0,1.5,-2.,2.);
+
+  hprof_EnuDL_GENIEnorw = new TProfile("hprof_EnuDL_GENIEnorw", "",50,0,1.5,-2.,2.);
+  hprof_EnuPanN_GENIEnorw = new TProfile("hprof_EnuPanN_GENIEnorw", "",50,0,1.5,-2.,2.);
+  hprof_EnuPan0_GENIEnorw = new TProfile("hprof_EnuPan0_GENIEnorw", "",50,0,1.5,-2.,2.);
+  hprof_EnuWC_GENIEnorw = new TProfile("hprof_EnuWC_GENIEnorw", "",50,0,1.5,-2.,2.);
+
+  hprof_EnuDL_GENIE = new TProfile("hprof_EnuDL_GENIE", "",50,0,1.5,-2.,2.);
+  hprof_EnuPanN_GENIE = new TProfile("hprof_EnuPanN_GENIE", "",50,0,1.5,-2.,2.);
+  hprof_EnuPan0_GENIE = new TProfile("hprof_EnuPan0_GENIE", "",50,0,1.5,-2.,2.);
+  hprof_EnuWC_GENIE = new TProfile("hprof_EnuWC_GENIE", "",50,0,1.5,-2.,2.);
   
 ///////////////////////////////////////////
 
@@ -541,6 +706,10 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
       double q2 = GetQ2(Ev, emu, pzl); /// 4-momentum transfer from true kinematics
       double omega = w(emu, Ev); /// true energy transfer
       double protonmom =0; //// momentum of the proton
+      double pionmom = 0.;
+      double Epionplus = 0.;
+      double Epionneg = 0.;
+      double Epion = 0.;
 
       //////// loop over all final state hadrons per event // later we decide the interaction type ///
 
@@ -548,20 +717,37 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
  
       for(Int_t ki=0; ki<nf; ++ki ){
 	if (pdgf[ki] == 2212) {/// we look at each particle type using their PDG codes (https://pdg.lbl.gov/2007/reviews/montecarlorpp.pdf)
+	  protonmom = sqrt(pxf[ki]*pxf[ki] + pyf[ki]*pyf[ki] + pzf[ki]*pzf[ki]);
+	  if(protonmom < 0.256) continue; //// ************************** proton detection threshold KE> 35 MeV/c ************************************
 	  nproton++;
 	  deltax= deltax + pxf[ki]; /// adding protons px
 	  deltay= deltay + pyf[ki]; // addin protons py
 	  protonmom = sqrt(pxf[ki]*pxf[ki] + pyf[ki]*pyf[ki] + pzf[ki]*pzf[ki]);
-	  Esum= Esum + protonmom*protonmom/(2*protonmass); /// summatory of protons kinetic energy    
+	  Esum= Esum + protonmom*protonmom/(2*protonmass); /// summatory of protons kinetic energy
+	  protonmom =0;
 	}
 	else if (pdgf[ki] == 2112) nneutron++;
-	else if (pdgf[ki] == 211) npospion++;
-	else if (pdgf[ki] == -211) nnegpion++;
+	else if (pdgf[ki] == 211){
+	  pionmom = sqrt(pxf[ki]*pxf[ki] + pyf[ki]*pyf[ki] + pzf[ki]*pzf[ki]);
+	  if(pionmom < 0.053) continue; //// ************************** proton detection threshold KE> 10 MeV/c ************************************
+	  Epionplus = Epionplus + sqrt(pionmass*pionmass + pionmom*pionmom); /// summatory of pions energy
+	  pionmom =0;
+	  npospion++;
+	}
+	else if (pdgf[ki] == -211) {
+	  pionmom = sqrt(pxf[ki]*pxf[ki] + pyf[ki]*pyf[ki] + pzf[ki]*pzf[ki]);
+	  if(pionmom < 0.053) continue; //// ************************** proton detection threshold KE> 10 MeV/c ************************************
+	  Epionneg = Epionneg + sqrt(pionmass*pionmass + pionmom*pionmom); /// summatory of pions energy
+	  pionmom =0;
+	  nnegpion++;
+	}
 	else if (pdgf[ki] == 111) nnpion++;
 	else if (abs(pdgf[ki]) == 321) nkaon++;
 	else if (abs(pdgf[ki]) == 211) neta++;
 	else if (abs(pdgf[ki]) == 213) nrho++;
 	}
+
+      Epion = Epionneg + Epionplus;
     
       //////////  end loop final state hadrons ///////////////
 
@@ -586,7 +772,38 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
 	 EnuRes_CCQE_GENIE->Fill(GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
 	 TrueEnu_CCQE_GENIEnorw->Fill(EvRF);
 	 TrueEnu_CCQE_GENIE->Fill(EvRF,rw);
+	 
+	 /// 1muon+ X proton //// Wire Cell signal (any number of protons)
+	 EnuWC_CCQE_GENIE->Fill(GetEuB(Epion, Esum, 3 , nproton), rw);
+	 EnuWC_CCQE_GENIEnorw->Fill(GetEuB(Epion, Esum, 3 , nproton));
+	 hprof_EnuWC_GENIE->Fill(EvRF,EvRF - GetEuB(Epion, Esum, 3 , nproton),rw);
+	 hprof_EnuWC_GENIEnorw->Fill(EvRF,EvRF - GetEuB(Epion, Esum, 3 , nproton),1);
+	 
+	 /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
+	 if ((npospion + nnegpion + nproton) ==0){
+	   EnuPan0_CCQE_GENIE->Fill(GetEuB(0, Esum, 1 , nproton), rw);
+	   EnuPan0_CCQE_GENIEnorw->Fill(GetEuB(0, Esum, 1 , nproton));
+	   hprof_EnuPan0_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),rw);
+	   hprof_EnuPan0_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),1);
+	 }
+	 
+	 /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
+	 if ((npospion + nnegpion)== 0 && nproton > 0) {
+	   EnuPanN_CCQE_GENIE->Fill(GetEuB(0, Esum, 1 , nproton), rw);
+	   EnuPanN_CCQE_GENIEnorw->Fill(GetEuB(0, Esum, 1 , nproton));
+	   hprof_EnuPanN_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),rw);
+	   hprof_EnuPanN_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),1);
+	 }
+	 
+	 //// 1muon+1 proton //// Deep Learning signal
+	 if ((npospion + nnegpion)== 0 && nproton ==1) {
+	   EnuDL_CCQE_GENIE->Fill(GetEuB(0, Esum, 2 , nproton), rw);
+	   EnuDL_CCQE_GENIEnorw->Fill(GetEuB(0, Esum, 2 , nproton));
+	   hprof_EnuDL_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 2 , nproton),rw);
+	   hprof_EnuDL_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 2 , nproton),1);
+	 }
 
+			    
 	 ///// filling resolution histograms in all interaction types
 	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
 	 Resolution_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),rw);
@@ -619,6 +836,36 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
 	 TrueEnu_CCMEC_GENIEnorw->Fill(EvRF);
 	 TrueEnu_CCMEC_GENIE->Fill(EvRF,rw);
 
+	 /// 1muon+ X proton //// Wire Cell signal (any number of protons)
+	 EnuWC_CCMEC_GENIE->Fill(GetEuB(Epion, Esum, 3 , nproton), rw);
+	 EnuWC_CCMEC_GENIEnorw->Fill(GetEuB(Epion, Esum, 3 , nproton));
+	 hprof_EnuWC_GENIE->Fill(EvRF,EvRF - GetEuB(Epion, Esum, 3 , nproton),rw);
+	 hprof_EnuWC_GENIEnorw->Fill(EvRF,EvRF - GetEuB(Epion, Esum, 3 , nproton),1);
+	 
+	 /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
+	 if ((npospion + nnegpion + nproton) ==0){
+	   EnuPan0_CCMEC_GENIE->Fill(GetEuB(0, Esum, 1 , nproton), rw);
+	   EnuPan0_CCMEC_GENIEnorw->Fill(GetEuB(0, Esum, 1 , nproton));
+	   hprof_EnuPan0_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),rw);
+	   hprof_EnuPan0_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),1);
+	 }
+	 
+	 /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
+	 if ((npospion + nnegpion)== 0 && nproton > 0) {
+	   EnuPanN_CCMEC_GENIE->Fill(GetEuB(0, Esum, 1 , nproton), rw);
+	   EnuPanN_CCMEC_GENIEnorw->Fill(GetEuB(0, Esum, 1 , nproton));
+	   hprof_EnuPanN_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),rw);
+	   hprof_EnuPanN_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),1);
+	 }
+	 
+	 //// 1muon+1 proton //// Deep Learning signal
+	 if ((npospion + nnegpion)== 0 && nproton ==1) {
+	   EnuDL_CCMEC_GENIE->Fill(GetEuB(0, Esum, 2 , nproton), rw);
+	   EnuDL_CCMEC_GENIEnorw->Fill(GetEuB(0, Esum, 2 , nproton));
+	   hprof_EnuDL_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 2 , nproton),rw);
+	   hprof_EnuDL_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 2 , nproton),1);
+	 }
+	 
 	 //// filling resolution histograms in all interaction types
 	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
 	 Resolution_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),rw);
@@ -650,6 +897,36 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
 	 EnuRes_CCRES_GENIE->Fill(GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
 	 TrueEnu_CCRES_GENIEnorw->Fill(EvRF);
 	 TrueEnu_CCRES_GENIE->Fill(EvRF,rw);
+
+	 /// 1muon+ X proton //// Wire Cell signal (any number of protons)
+	 EnuWC_CCRES_GENIE->Fill(GetEuB(Epion, Esum, 3 , nproton), rw);
+	 EnuWC_CCRES_GENIEnorw->Fill(GetEuB(Epion, Esum, 3 , nproton));
+	 hprof_EnuWC_GENIE->Fill(EvRF,EvRF - GetEuB(Epion, Esum, 3 , nproton),rw);
+	 hprof_EnuWC_GENIEnorw->Fill(EvRF,EvRF - GetEuB(Epion, Esum, 3 , nproton),1);
+	 
+	 /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
+	 if ((npospion + nnegpion + nproton) ==0){
+	   EnuPan0_CCRES_GENIE->Fill(GetEuB(0, Esum, 1 , nproton), rw);
+	   EnuPan0_CCRES_GENIEnorw->Fill(GetEuB(0, Esum, 1 , nproton));
+	   hprof_EnuPan0_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),rw);
+	   hprof_EnuPan0_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),1);
+	 }
+	 
+	 /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
+	 if ((npospion + nnegpion)== 0 && nproton > 0) {
+	   EnuPanN_CCRES_GENIE->Fill(GetEuB(0, Esum, 1 , nproton), rw);
+	   EnuPanN_CCRES_GENIEnorw->Fill(GetEuB(0, Esum, 1 , nproton));
+	   hprof_EnuPanN_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),rw);
+	   hprof_EnuPanN_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),1);
+	 }
+	 
+	 //// 1muon+1 proton //// Deep Learning signal
+	 if ((npospion + nnegpion)== 0 && nproton ==1) {
+	   EnuDL_CCRES_GENIE->Fill(GetEuB(0, Esum, 2 , nproton), rw);
+	   EnuDL_CCRES_GENIEnorw->Fill(GetEuB(0, Esum, 2 , nproton));
+	   hprof_EnuDL_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 2 , nproton),rw);
+	   hprof_EnuDL_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 2 , nproton),1);
+	 }
 
 	 //// filling resolution histograms in all interaction types
 	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
@@ -683,6 +960,36 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
 	 TrueEnu_CCDIS_GENIEnorw->Fill(EvRF);
 	 TrueEnu_CCDIS_GENIE->Fill(EvRF,rw);
 
+	 /// 1muon+ X proton //// Wire Cell signal (any number of protons)
+	 EnuWC_CCDIS_GENIE->Fill(GetEuB(Epion, Esum, 3 , nproton), rw);
+	 EnuWC_CCDIS_GENIEnorw->Fill(GetEuB(Epion, Esum, 3 , nproton));
+	 hprof_EnuWC_GENIE->Fill(EvRF,EvRF - GetEuB(Epion, Esum, 3 , nproton),rw);
+	 hprof_EnuWC_GENIEnorw->Fill(EvRF,EvRF - GetEuB(Epion, Esum, 3 , nproton),1);
+	 
+	 /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
+	 if ((npospion + nnegpion + nproton) ==0){
+	   EnuPan0_CCDIS_GENIE->Fill(GetEuB(0, Esum, 1 , nproton), rw);
+	   EnuPan0_CCDIS_GENIEnorw->Fill(GetEuB(0, Esum, 1 , nproton));
+	   hprof_EnuPan0_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),rw);
+	   hprof_EnuPan0_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),1);
+	 }
+	 
+	 /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
+	 if ((npospion + nnegpion)== 0 && nproton > 0) {
+	   EnuPanN_CCDIS_GENIE->Fill(GetEuB(0, Esum, 1 , nproton), rw);
+	   EnuPanN_CCDIS_GENIEnorw->Fill(GetEuB(0, Esum, 1 , nproton));
+	   hprof_EnuPanN_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),rw);
+	   hprof_EnuPanN_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),1);
+	 }
+	 
+	 //// 1muon+1 proton //// Deep Learning signal
+	 if ((npospion + nnegpion)== 0 && nproton ==1) {
+	   EnuDL_CCDIS_GENIE->Fill(GetEuB(0, Esum, 2 , nproton), rw);
+	   EnuDL_CCDIS_GENIEnorw->Fill(GetEuB(0, Esum, 2 , nproton));
+	   hprof_EnuDL_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 2 , nproton),rw);
+	   hprof_EnuDL_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 2 , nproton),1);
+	 }
+
 	////// filling resolution histograms in all interaction types
 	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
 	 Resolution_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),rw);
@@ -714,6 +1021,36 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
 	 EnuRes_CCCOH_GENIE->Fill(GetEnuRes(emu, cosine(pxl, pyl , pzl)),rw);
 	 TrueEnu_CCCOH_GENIEnorw->Fill(EvRF);
 	 TrueEnu_CCCOH_GENIE->Fill(EvRF,rw);
+
+	 /// 1muon+ X proton //// Wire Cell signal (any number of protons)
+	 EnuWC_CCCOH_GENIE->Fill(GetEuB(Epion, Esum, 3 , nproton), rw);
+	 EnuWC_CCCOH_GENIEnorw->Fill(GetEuB(Epion, Esum, 3 , nproton));
+	 hprof_EnuWC_GENIE->Fill(EvRF,EvRF - GetEuB(Epion, Esum, 3 , nproton),rw);
+	 hprof_EnuWC_GENIEnorw->Fill(EvRF,EvRF - GetEuB(Epion, Esum, 3 , nproton),1);
+	 
+	 /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
+	 if ((npospion + nnegpion + nproton) ==0){
+	   EnuPan0_CCCOH_GENIE->Fill(GetEuB(0, Esum, 1 , nproton), rw);
+	   EnuPan0_CCCOH_GENIEnorw->Fill(GetEuB(0, Esum, 1 , nproton));
+	   hprof_EnuPan0_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),rw);
+	   hprof_EnuPan0_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),1);
+	 }
+	 
+	 /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
+	 if ((npospion + nnegpion)== 0 && nproton > 0) {
+	   EnuPanN_CCCOH_GENIE->Fill(GetEuB(0, Esum, 1 , nproton), rw);
+	   EnuPanN_CCCOH_GENIEnorw->Fill(GetEuB(0, Esum, 1 , nproton));
+	   hprof_EnuPanN_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),rw);
+	   hprof_EnuPanN_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),1);
+	 }
+	 
+	 //// 1muon+1 proton //// Deep Learning signal
+	 if ((npospion + nnegpion)== 0 && nproton ==1) {
+	   EnuDL_CCCOH_GENIE->Fill(GetEuB(0, Esum, 2 , nproton), rw);
+	   EnuDL_CCCOH_GENIEnorw->Fill(GetEuB(0, Esum, 2 , nproton));
+	   hprof_EnuDL_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 2 , nproton),rw);
+	   hprof_EnuDL_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 2 , nproton),1);
+	 }
 
 	 //// filling resolution histograms in all interaction types
 	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
@@ -747,6 +1084,36 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
 	 TrueEnu_other_GENIEnorw->Fill(EvRF);
 	 TrueEnu_other_GENIE->Fill(EvRF,rw);
 
+	 /// 1muon+ X proton //// Wire Cell signal (any number of protons)
+	 EnuWC_other_GENIE->Fill(GetEuB(Epion, Esum, 3 , nproton), rw);
+	 EnuWC_other_GENIEnorw->Fill(GetEuB(Epion, Esum, 3 , nproton));
+	 hprof_EnuWC_GENIE->Fill(EvRF,EvRF - GetEuB(Epion, Esum, 3 , nproton),rw);
+	 hprof_EnuWC_GENIEnorw->Fill(EvRF,EvRF - GetEuB(Epion, Esum, 3 , nproton),1);
+	 
+	 /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
+	 if ((npospion + nnegpion + nproton) ==0){
+	   EnuPan0_other_GENIE->Fill(GetEuB(0, Esum, 1 , nproton), rw);
+	   EnuPan0_other_GENIEnorw->Fill(GetEuB(0, Esum, 1 , nproton));
+	   hprof_EnuPan0_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),rw);
+	   hprof_EnuPan0_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),1);
+	 }
+	 
+	 /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
+	 if ((npospion + nnegpion)== 0 && nproton > 0) {
+	   EnuPanN_other_GENIE->Fill(GetEuB(0, Esum, 1 , nproton), rw);
+	   EnuPanN_other_GENIEnorw->Fill(GetEuB(0, Esum, 1 , nproton));
+	   hprof_EnuPanN_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),rw);
+	   hprof_EnuPanN_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 1 , nproton),1);
+	 }
+	 
+	 //// 1muon+1 proton //// Deep Learning signal
+	 if ((npospion + nnegpion)== 0 && nproton ==1) {
+	   EnuDL_other_GENIE->Fill(GetEuB(0, Esum, 2 , nproton), rw);
+	   EnuDL_other_GENIEnorw->Fill(GetEuB(0, Esum, 2 , nproton));
+	   hprof_EnuDL_GENIE->Fill(EvRF,EvRF - GetEuB(0, Esum, 2 , nproton),rw);
+	   hprof_EnuDL_GENIEnorw->Fill(EvRF,EvRF - GetEuB(0, Esum, 2 , nproton),1);
+	 }	 
+	 
 	 /////// filling resolution histograms in all interaction types
 	 Resolution_EnuCCQE_GENIE->Fill(EvRF,EvRF - GetEnuCCQE(emu, cosine(pxl, pyl , pzl), pmu),rw);
 	 Resolution_EnuCalo_GENIE->Fill(EvRF,EvRF - GetEcalomiss(Esum, PTmiss, 0),rw);
@@ -1347,5 +1714,138 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   c17->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIEcomp.eps");
   c17->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIEcomp.png");
   c17->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIEcomp.C");
-   
+
+  ///////////
+  TCanvas *c18 = new TCanvas("c18", "c18", 900, 900);
+  
+  EnuDL_CCQE_GENIE-> SetFillColor(kRed);
+  EnuDL_CCMEC_GENIE-> SetFillColor(kGreen);
+  EnuDL_CCRES_GENIE-> SetFillColor(kYellow);
+  EnuDL_CCDIS_GENIE-> SetFillColor(kBlue);
+  EnuDL_CCCOH_GENIE-> SetFillColor(kMagenta);
+ 
+  THStack *EnuDL_GENIE = new THStack("EnuDL_GENIE","");
+  EnuDL_GENIE-> Add(EnuDL_CCQE_GENIE);
+  EnuDL_GENIE-> Add(EnuDL_CCMEC_GENIE);
+  EnuDL_GENIE-> Add(EnuDL_CCRES_GENIE);
+  EnuDL_GENIE-> Add(EnuDL_CCDIS_GENIE);
+  EnuDL_GENIE-> Add(EnuDL_CCCOH_GENIE); 
+  //truemuon_truemom_GENIE-> SetMaximum(100);  
+  EnuDL_GENIE-> Draw("hist");
+  EnuDL_GENIE->GetXaxis()->SetTitle("reconstructed neutrino energy [GeV/c]");
+  EnuDL_GENIE->GetYaxis()->SetTitle("number of events");
+
+  TLegend *l18 = new TLegend(0.5, 0.7, 0.9, 0.9);
+  l18 -> AddEntry(EnuDL_CCQE_GENIE, "CCQE", "f");
+  l18 -> AddEntry(EnuDL_CCMEC_GENIE, "CCMEC", "f");
+  l18 -> AddEntry(EnuDL_CCRES_GENIE, "CCRES", "f");
+  l18 -> AddEntry(EnuDL_CCCOH_GENIE, "CC-Coh", "f");
+  l18 -> AddEntry(EnuDL_CCDIS_GENIE, "CCDIS", "f");
+  l18 -> Draw();
+
+  c18->Update();
+  c18->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuDL_GENIErw.pdf");
+  c18->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuDL_GENIErw.eps");
+  c18->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuDL_GENIErw.png");
+  c18->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/EnuDL_GENIErw.C");
+
+  ////////////////
+
+  TCanvas *c19 = new TCanvas("c19","",900, 900); 
+
+  c19->SetGrid();
+
+  hprof_EnuDL_GENIE->SetTitle("");
+  hprof_EnuDL_GENIE->GetXaxis()->SetTitle("true neutrino energy [GeV]");
+  hprof_EnuDL_GENIE->GetYaxis()->SetTitle("(true - reconstructed) neutrino energy [GeV]");
+  hprof_EnuDL_GENIE->SetLineColor(kRed);
+  hprof_EnuDL_GENIE->SetLineWidth(2);
+  hprof_EnuDL_GENIE->SetMarkerColor(kRed);
+  hprof_EnuDL_GENIE->SetMarkerStyle(20);
+
+  hprof_EnuDL_GENIE->GetYaxis()->SetLimits(-0.1, 0.5);
+  hprof_EnuDL_GENIE->GetYaxis()->SetRangeUser(-0.1, 0.5);
+  hprof_EnuDL_GENIE->Draw("e1");
+
+  hprof_EnuPanN_GENIE->SetLineColor(kBlack);
+  hprof_EnuPanN_GENIE->SetLineWidth(2);
+  hprof_EnuPanN_GENIE->SetMarkerColor(kBlack);
+  hprof_EnuPanN_GENIE->SetMarkerStyle(20);
+  hprof_EnuPanN_GENIE->Draw("e1same");  
+
+  hprof_EnuPan0_GENIE->SetLineColor(kGreen);
+  hprof_EnuPan0_GENIE->SetLineWidth(2);
+  hprof_EnuPan0_GENIE->SetMarkerColor(kGreen);
+  hprof_EnuPan0_GENIE->SetMarkerStyle(20);
+  hprof_EnuPan0_GENIE->Draw("e1same");  
+
+  hprof_EnuWC_GENIE->SetLineColor(kCyan);
+  hprof_EnuWC_GENIE->SetLineWidth(2);
+  hprof_EnuWC_GENIE->SetMarkerColor(kCyan);
+  hprof_EnuWC_GENIE->SetMarkerStyle(20);
+  hprof_EnuWC_GENIE->Draw("e1same");  
+  
+  TLegend *l19 = new TLegend(0.50, 0.25, 0.9, 0.1);
+  l19 -> AddEntry(hprof_EnuDL_GENIE, "DL approach", "l");
+  l19 -> AddEntry(hprof_EnuPanN_GENIE, "Pandora N proton approach", "l");
+  l19 -> AddEntry(hprof_EnuPan0_GENIE, "Pandora 0 proton approach", "l");
+  l19 -> AddEntry(hprof_EnuWC_GENIE, "Wire Cell approach", "l");
+
+  l19 -> Draw();
+
+  c19->Update();
+  c19->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_EnuuB_GENIEcomp.pdf");
+  c19->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_EnuuB_GENIEcomp.eps");
+  c19->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_EnuuB_GENIEcomp.png");
+  c19->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_EnuuB_GENIEcomp.C");
+
+  TCanvas *c20 = new TCanvas("c20","",900, 900); 
+
+  c20->SetGrid();
+
+  hprof_EnuDL_GENIEnorw->SetTitle("");
+  hprof_EnuDL_GENIEnorw->GetXaxis()->SetTitle("true neutrino energy [GeV]");
+  hprof_EnuDL_GENIEnorw->GetYaxis()->SetTitle("(true - reconstructed) neutrino energy [GeV]");
+  hprof_EnuDL_GENIEnorw->SetLineColor(kRed);
+  hprof_EnuDL_GENIEnorw->SetLineWidth(2);
+  hprof_EnuDL_GENIEnorw->SetMarkerColor(kRed);
+  hprof_EnuDL_GENIEnorw->SetMarkerStyle(20);
+
+  hprof_EnuDL_GENIEnorw->GetYaxis()->SetLimits(-0.1, 0.5);
+  hprof_EnuDL_GENIEnorw->GetYaxis()->SetRangeUser(-0.1, 0.5);
+  hprof_EnuDL_GENIEnorw->Draw("e1");
+
+  hprof_EnuPanN_GENIEnorw->SetLineColor(kBlack);
+  hprof_EnuPanN_GENIEnorw->SetLineWidth(2);
+  hprof_EnuPanN_GENIEnorw->SetMarkerColor(kBlack);
+  hprof_EnuPanN_GENIEnorw->SetMarkerStyle(20);
+  hprof_EnuPanN_GENIEnorw->Draw("e1same");  
+
+  hprof_EnuPan0_GENIEnorw->SetLineColor(kGreen);
+  hprof_EnuPan0_GENIEnorw->SetLineWidth(2);
+  hprof_EnuPan0_GENIEnorw->SetMarkerColor(kGreen);
+  hprof_EnuPan0_GENIEnorw->SetMarkerStyle(20);
+  hprof_EnuPan0_GENIEnorw->Draw("e1same");  
+
+  hprof_EnuWC_GENIEnorw->SetLineColor(kCyan);
+  hprof_EnuWC_GENIEnorw->SetLineWidth(2);
+  hprof_EnuWC_GENIEnorw->SetMarkerColor(kCyan);
+  hprof_EnuWC_GENIEnorw->SetMarkerStyle(20);
+  hprof_EnuWC_GENIEnorw->Draw("e1same");  
+  
+  TLegend *l20 = new TLegend(0.50, 0.25, 0.9, 0.1);
+  l20 -> AddEntry(hprof_EnuDL_GENIEnorw, "DL approach", "l");
+  l20 -> AddEntry(hprof_EnuPanN_GENIEnorw, "Pandora N proton approach", "l");
+  l20 -> AddEntry(hprof_EnuPan0_GENIEnorw, "Pandora 0 proton approach", "l");
+  l20 -> AddEntry(hprof_EnuWC_GENIEnorw, "Wire Cell approach", "l");
+
+  l20 -> Draw();
+
+  c20->Update();
+  c20->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_EnuuB_GENIEcompnorw.pdf");
+  c20->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_EnuuB_GENIEcompnorw.eps");
+  c20->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_EnuuB_GENIEcompnorw.png");
+  c20->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_EnuuB_GENIEcompnorw.C");
+  
+  
 }
