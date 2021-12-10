@@ -386,13 +386,15 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   Long64_t nentries = fChain->GetEntriesFast();
 
    /////////// output files location and histogram definitions /////////////// **** CHANGE TO YOUR OWN PATH   *** //////////////
-  outGENIEuB = new TFile("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning/output/analysis_GENIErw.root","RECREATE");
+
   anaGENIEuB.open("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning/output/info_uBGENIErw.txt");
 
   uBtune = new TFile("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning/merged_rw_weights.root","READ");
 
   TTree *weights = (TTree*)uBtune->Get("weights");
   weights->SetBranchAddress("TunedCentralValue_UBGenie",&TunedCentralValue_UBGenie);
+
+  outGENIEuB = new TFile("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning/output/analysis_GENIErw.root","RECREATE");
   
   //// histograms must include range and number of bins ////
   //// be careful when using TStack you need all histograms with the same range and number of bins
@@ -507,6 +509,7 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
       weights->GetEntry(jentry);
       rw = TunedCentralValue_UBGenie;
       //tune = TunedCentralValue_UBGenie;
+      //rw= 1;
 
       //rw = reweight(tune, Ev);//// this is the tune and flux is also incorporated
 
@@ -774,6 +777,7 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
    anaGENIEuB<<" number of CCother events in CC :  "<<nother<<endl;
 
    anaGENIEuB<< "Output file written" << std::endl;
+   //uBtune->Close();
 
    outGENIEuB->cd();
    outGENIEuB->Write();
@@ -1343,7 +1347,5 @@ void GENIEuBTune::Loop() ///// variables read from GENIE file, are specific to G
   c17->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIEcomp.eps");
   c17->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIEcomp.png");
   c17->Print("/Users/castillofernr/Documents/SBN/GENIE/microboonetunning//output/plots/TProfileResol_Enu_GENIEcomp.C");
-
-
-  
+   
 }
