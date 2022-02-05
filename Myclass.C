@@ -85,16 +85,31 @@ TProfile *hprof_EnuRES_GiBBU = new TProfile("hprof_EnuRES_GiBBU", "",50,0,1.5,-2
 TProfile *hprof_EnuCCQE_GiBBUnorw=new TProfile("hprof_EnuCCQE_GiBBUnorw", "",50,0,1.5,-2.,2.);
 TProfile *hprof_EnuCalo_GiBBUnorw=new TProfile("hprof_EnuCalo_GiBBUnorw", "",50,0,1.5,-2.,2.);
 TProfile *hprof_EnuRes_GiBBUnorw=new TProfile("hprof_EnuRes_GiBBUnorw", "",50,0,1.5,-2.,2.);
+                                        //CCQE//
+TProfile *hprof_EnuDL_GiBBU_CCQE=new TProfile("hprof_EnuDL_GiBBU_CCQE", "",30,0,3.0,-2.,2.);
+TProfile *hprof_EnuPanN_GiBBU_CCQE=new TProfile("hprof_EnuPanN_GiBBU_CCQE", "",30,0,3.0,-2.,2.);
+TProfile *hprof_EnuPan0_GiBBU_CCQE=new TProfile("hprof_EnuPan0_GiBBU_CCQE", "",30,0,3.0,-2.,2.);
+TProfile *hprof_EnuWC_GiBBU_CCQE=new TProfile("hprof_EnuWC_GiBBU_CCQE", "",30,0,3.0,-2.,2.);
 
-TProfile *hprof_EnuDL_GiBBU=new TProfile("hprof_EnuDL_GiBBU", "",50,0,1.5,-2.,2.);
-TProfile *hprof_EnuPanN_GiBBU=new TProfile("hprof_EnuPanN_GiBBU", "",50,0,1.5,-2.,2.);
-TProfile *hprof_EnuPan0_GiBBU=new TProfile("hprof_EnuPan0_GiBBU", "",50,0,1.5,-2.,2.);
-TProfile *hprof_EnuWC_GiBBU=new TProfile("hprof_EnuWC_GiBBU", "",50,0,1.5,-2.,2.);
+                                        //CCMEC//
+TProfile *hprof_EnuDL_GiBBU_CCMEC=new TProfile("hprof_EnuDL_GiBBU_CCMEC", "",30,0,3.0,-2.,2.);
+TProfile *hprof_EnuPanN_GiBBU_CCMEC=new TProfile("hprof_EnuPanN_GiBBU_CCMEC", "",30,0,3.0,-2.,2.);
+TProfile *hprof_EnuPan0_GiBBU_CCMEC=new TProfile("hprof_EnuPan0_GiBBU_CCMEC", "",30,0,3.0,-2.,2.);
+TProfile *hprof_EnuWC_GiBBU_CCMEC=new TProfile("hprof_EnuWC_GiBBU_CCMEC", "",30,0,3.0,-2.,2.);
 
-TProfile *hprof_EnuDL_GiBBUnorw=new TProfile("hprof_EnuDL_GiBBUnorw", "",50,0,1.5,-2.,2.);
-TProfile *hprof_EnuPanN_GiBBUnorw=new TProfile("hprof_EnuPanN_GiBBUnorw", "",50,0,1.5,-2.,2.);
-TProfile *hprof_EnuPan0_GiBBUnorw=new TProfile("hprof_EnuPan0_GiBBUnorw", "",50,0,1.5,-2.,2.);
-TProfile *hprof_EnuWC_GiBBUnorw=new TProfile("hprof_EnuWC_GiBBUnorw", "",50,0,1.5,-2.,2.);
+                                        //CCRES//
+TProfile *hprof_EnuDL_GiBBU_CCRES=new TProfile("hprof_EnuDL_GiBBU_CCRES", "",30,0,3.0,-2.,2.);
+TProfile *hprof_EnuPanN_GiBBU_CCRES=new TProfile("hprof_EnuPanN_GiBBU_CCRES", "",30,0,3.0,-2.,2.);
+TProfile *hprof_EnuPan0_GiBBU_CCRES=new TProfile("hprof_EnuPan0_GiBBU_CCRES", "",30,0,3.0,-2.,2.);
+TProfile *hprof_EnuWC_GiBBU_CCRES=new TProfile("hprof_EnuWC_GiBBU_CCRES", "",30,0,3.0,-2.,2.);
+
+                                        //CCDIS//
+TProfile *hprof_EnuDL_GiBBU_CCDIS=new TProfile("hprof_EnuDL_GiBBU_CCDIS", "",30,0,3.0,-2.,2.);
+TProfile *hprof_EnuPanN_GiBBU_CCDIS=new TProfile("hprof_EnuPanN_GiBBU_CCDIS", "",30,0,3.0,-2.,2.);
+TProfile *hprof_EnuPan0_GiBBU_CCDIS=new TProfile("hprof_EnuPan0_GiBBU_CCDIS", "",30,0,3.0,-2.,2.);
+TProfile *hprof_EnuWC_GiBBU_CCDIS=new TProfile("hprof_EnuWC_GiBBU_CCDIS", "",30,0,3.0,-2.,2.);
+
+
 
 //*******************************************Histogram_for_the_Reconstructed_bins*****************************************************************//
 //************************************************************************************************************************************************//
@@ -161,95 +176,95 @@ TH1D* bin_42= new TH1D("bin_42","bin_42",30,0,30);
 /************************************************************************************************************************************************/
 /********************************************reconstructed neutrino energy in the Deep Learning analysis for 1muon+ 1 proton selection***********/
 
-TH1D *EnuDL_CCQE_GiBBU=new TH1D("EnuDL_CCQE_GiBBU", "EnuDL_CCQE_GiBBU", 60, 0, 3);
-TH1D *EnuDL_CCMEC_GiBBU=new TH1D("EnuDL_CCMEC_GiBBU", "EnuDL_CCMEC_GiBBU", 60, 0, 3);
-TH1D *EnuDL_CCRES_GiBBU=new TH1D("EnuDL_CCRES_GiBBU", "EnuDL_CCRES_GiBBU", 60, 0, 3);
-TH1D *EnuDL_CCDIS_GiBBU=new TH1D("EnuDL_CCDIS_GiBBU", "EnuDL_CCDIS_GiBBU", 60, 0, 3);
-TH1D *EnuDL_CCCOH_GiBBU=new TH1D("EnuDL_CCCOH_GiBBU", "EnuDL_CCCOH_GiBBU", 60, 0, 3);
-TH1D *EnuDL_other_GiBBU=new TH1D("EnuDL_other_GiBBU", "EnuDL_other_GiBBU", 60, 0, 3);
+TH1D *EnuDL_CCQE_GiBBU=new TH1D("EnuDL_CCQE_GiBBU", "EnuDL_CCQE_GiBBU", 30, 0, 3);
+TH1D *EnuDL_CCMEC_GiBBU=new TH1D("EnuDL_CCMEC_GiBBU", "EnuDL_CCMEC_GiBBU", 30, 0, 3);
+TH1D *EnuDL_CCRES_GiBBU=new TH1D("EnuDL_CCRES_GiBBU", "EnuDL_CCRES_GiBBU", 30, 0, 3);
+TH1D *EnuDL_CCDIS_GiBBU=new TH1D("EnuDL_CCDIS_GiBBU", "EnuDL_CCDIS_GiBBU", 30, 0, 3);
+TH1D *EnuDL_CCCOH_GiBBU=new TH1D("EnuDL_CCCOH_GiBBU", "EnuDL_CCCOH_GiBBU", 30, 0, 3);
+TH1D *EnuDL_other_GiBBU=new TH1D("EnuDL_other_GiBBU", "EnuDL_other_GiBBU", 30, 0, 3);
 
-TH1D *EnuDL_CCQE_GiBBU_GENIE_norw=new TH1D("EnuDL_CCQE_GiBBU_GENIE_norw", "EnuDL_CCQE_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuDL_CCMEC_GiBBU_GENIE_norw=new TH1D("EnuDL_CCMEC_GiBBU_GENIE_norw", "EnuDL_CCMEC_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuDL_CCRES_GiBBU_GENIE_norw=new TH1D("EnuDL_CCRES_GiBBU_GENIE_norw", "EnuDL_CCRES_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuDL_CCDIS_GiBBU_GENIE_norw=new TH1D("EnuDL_CCDIS_GiBBU_GENIE_norw", "EnuDL_CCDIS_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuDL_CCCOH_GiBBU_GENIE_norw=new TH1D("EnuDL_CCCOH_GiBBU_GENIE_norw", "EnuDL_CCCOH_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuDL_other_GiBBU_GENIE_norw=new TH1D("EnuDL_other_GiBBU_GENIE_norw", "EnuDL_other_GiBBU_GENIE_norw", 60, 0, 3);
+TH1D *EnuDL_CCQE_GiBBU_GENIE_norw=new TH1D("EnuDL_CCQE_GiBBU_GENIE_norw", "EnuDL_CCQE_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuDL_CCMEC_GiBBU_GENIE_norw=new TH1D("EnuDL_CCMEC_GiBBU_GENIE_norw", "EnuDL_CCMEC_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuDL_CCRES_GiBBU_GENIE_norw=new TH1D("EnuDL_CCRES_GiBBU_GENIE_norw", "EnuDL_CCRES_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuDL_CCDIS_GiBBU_GENIE_norw=new TH1D("EnuDL_CCDIS_GiBBU_GENIE_norw", "EnuDL_CCDIS_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuDL_CCCOH_GiBBU_GENIE_norw=new TH1D("EnuDL_CCCOH_GiBBU_GENIE_norw", "EnuDL_CCCOH_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuDL_other_GiBBU_GENIE_norw=new TH1D("EnuDL_other_GiBBU_GENIE_norw", "EnuDL_other_GiBBU_GENIE_norw", 30, 0, 3);
 
-TH1D *EnuDL_CCQE_GiBBUnorw=new TH1D("EnuDL_CCQE_GiBBUnorw", "EnuDL_CCQE_GiBBUnorw", 60, 0, 3);
-TH1D *EnuDL_CCMEC_GiBBUnorw=new TH1D("EnuDL_CCMEC_GiBBUnorw", "EnuDL_CCMEC_GiBBUnorw", 60, 0, 3);
-TH1D *EnuDL_CCRES_GiBBUnorw=new TH1D("EnuDL_CCRES_GiBBUnorw", "EnuDL_CCRES_GiBBUnorw", 60, 0, 3);
-TH1D *EnuDL_CCDIS_GiBBUnorw=new TH1D("EnuDL_CCDIS_GiBBUnorw", "EnuDL_CCDIS_GiBBUnorw", 60, 0, 3);
-TH1D *EnuDL_CCCOH_GiBBUnorw=new TH1D("EnuDL_CCCOH_GiBBUnorw", "EnuDL_CCCOH_GiBBUnorw", 60, 0, 3);
-TH1D *EnuDL_other_GiBBUnorw=new TH1D("EnuDL_other_GiBBUnorw", "EnuDL_other_GiBBUnorw", 60, 0, 3);
+TH1D *EnuDL_CCQE_GiBBUnorw=new TH1D("EnuDL_CCQE_GiBBUnorw", "EnuDL_CCQE_GiBBUnorw", 30, 0, 3);
+TH1D *EnuDL_CCMEC_GiBBUnorw=new TH1D("EnuDL_CCMEC_GiBBUnorw", "EnuDL_CCMEC_GiBBUnorw", 30, 0, 3);
+TH1D *EnuDL_CCRES_GiBBUnorw=new TH1D("EnuDL_CCRES_GiBBUnorw", "EnuDL_CCRES_GiBBUnorw", 30, 0, 3);
+TH1D *EnuDL_CCDIS_GiBBUnorw=new TH1D("EnuDL_CCDIS_GiBBUnorw", "EnuDL_CCDIS_GiBBUnorw", 30, 0, 3);
+TH1D *EnuDL_CCCOH_GiBBUnorw=new TH1D("EnuDL_CCCOH_GiBBUnorw", "EnuDL_CCCOH_GiBBUnorw", 30, 0, 3);
+TH1D *EnuDL_other_GiBBUnorw=new TH1D("EnuDL_other_GiBBUnorw", "EnuDL_other_GiBBUnorw", 30, 0, 3);
 
 //*****************************reconstructed neutrino energy in the Pandora analysis for 1muon+ N(>0) proton selection***************************// 
 
-TH1D *EnuPanN_CCQE_GiBBU=new TH1D("EnuPanN_CCQE_GiBBU", "EnuPanN_CCQE_GiBBU", 60, 0, 3);
-TH1D *EnuPanN_CCMEC_GiBBU=new TH1D("EnuPanN_CCMEC_GiBBU", "EnuPanN_CCMEC_GiBBU", 60, 0, 3);
-TH1D *EnuPanN_CCRES_GiBBU=new TH1D("EnuPanN_CCRES_GiBBU", "EnuPanN_CCRES_GiBBU", 60, 0, 3);
-TH1D *EnuPanN_CCDIS_GiBBU=new TH1D("EnuPanN_CCDIS_GiBBU", "EnuPanN_CCDIS_GiBBU", 60, 0, 3);
-TH1D *EnuPanN_CCCOH_GiBBU=new TH1D("EnuPanN_CCCOH_GiBBU", "EnuPanN_CCCOH_GiBBU", 60, 0, 3);
-TH1D *EnuPanN_other_GiBBU=new TH1D("EnuPanN_other_GiBBU", "EnuPanN_other_GiBBU", 60, 0, 3);
+TH1D *EnuPanN_CCQE_GiBBU=new TH1D("EnuPanN_CCQE_GiBBU", "EnuPanN_CCQE_GiBBU", 30, 0, 3);
+TH1D *EnuPanN_CCMEC_GiBBU=new TH1D("EnuPanN_CCMEC_GiBBU", "EnuPanN_CCMEC_GiBBU", 30, 0, 3);
+TH1D *EnuPanN_CCRES_GiBBU=new TH1D("EnuPanN_CCRES_GiBBU", "EnuPanN_CCRES_GiBBU", 30, 0, 3);
+TH1D *EnuPanN_CCDIS_GiBBU=new TH1D("EnuPanN_CCDIS_GiBBU", "EnuPanN_CCDIS_GiBBU", 30, 0, 3);
+TH1D *EnuPanN_CCCOH_GiBBU=new TH1D("EnuPanN_CCCOH_GiBBU", "EnuPanN_CCCOH_GiBBU", 30, 0, 3);
+TH1D *EnuPanN_other_GiBBU=new TH1D("EnuPanN_other_GiBBU", "EnuPanN_other_GiBBU", 30, 0, 3);
 
-TH1D *EnuPanN_CCQE_GiBBU_GENIE_norw=new TH1D("EnuPanN_CCQE_GiBBU_GENIE_norw", "EnuPanN_CCQE_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuPanN_CCMEC_GiBBU_GENIE_norw=new TH1D("EnuPanN_CCMEC_GiBBU_GENIE_norw", "EnuPanN_CCMEC_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuPanN_CCRES_GiBBU_GENIE_norw=new TH1D("EnuPanN_CCRES_GiBBU_GENIE_norw", "EnuPanN_CCRES_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuPanN_CCDIS_GiBBU_GENIE_norw=new TH1D("EnuPanN_CCDIS_GiBBU_GENIE_norw", "EnuPanN_CCDIS_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuPanN_CCCOH_GiBBU_GENIE_norw=new TH1D("EnuPanN_CCCOH_GiBBU_GENIE_norw", "EnuPanN_CCCOH_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuPanN_other_GiBBU_GENIE_norw=new TH1D("EnuPanN_other_GiBBU_GENIE_norw", "EnuPanN_other_GiBBU_GENIE_norw", 60, 0, 3);
+TH1D *EnuPanN_CCQE_GiBBU_GENIE_norw=new TH1D("EnuPanN_CCQE_GiBBU_GENIE_norw", "EnuPanN_CCQE_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuPanN_CCMEC_GiBBU_GENIE_norw=new TH1D("EnuPanN_CCMEC_GiBBU_GENIE_norw", "EnuPanN_CCMEC_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuPanN_CCRES_GiBBU_GENIE_norw=new TH1D("EnuPanN_CCRES_GiBBU_GENIE_norw", "EnuPanN_CCRES_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuPanN_CCDIS_GiBBU_GENIE_norw=new TH1D("EnuPanN_CCDIS_GiBBU_GENIE_norw", "EnuPanN_CCDIS_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuPanN_CCCOH_GiBBU_GENIE_norw=new TH1D("EnuPanN_CCCOH_GiBBU_GENIE_norw", "EnuPanN_CCCOH_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuPanN_other_GiBBU_GENIE_norw=new TH1D("EnuPanN_other_GiBBU_GENIE_norw", "EnuPanN_other_GiBBU_GENIE_norw", 30, 0, 3);
 
-TH1D *EnuPanN_CCQE_GiBBUnorw=new TH1D("EnuPanN_CCQE_GiBBUnorw", "EnuPanN_CCQE_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPanN_CCMEC_GiBBUnorw=new TH1D("EnuPanN_CCMEC_GiBBUnorw", "EnuPanN_CCMEC_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPanN_CCRES_GiBBUnorw=new TH1D("EnuPanN_CCRES_GiBBUnorw", "EnuPanN_CCRES_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPanN_CCDIS_GiBBUnorw=new TH1D("EnuPanN_CCDIS_GiBBUnorw", "EnuPanN_CCDIS_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPanN_CCCOH_GiBBUnorw=new TH1D("EnuPanN_CCCOH_GiBBUnorw", "EnuPanN_CCCOH_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPanN_other_GiBBUnorw=new TH1D("EnuPanN_other_GiBBUnorw", "EnuPanN_other_GiBBUnorw", 60, 0, 3);
+TH1D *EnuPanN_CCQE_GiBBUnorw=new TH1D("EnuPanN_CCQE_GiBBUnorw", "EnuPanN_CCQE_GiBBUnorw", 30, 0, 3);
+TH1D *EnuPanN_CCMEC_GiBBUnorw=new TH1D("EnuPanN_CCMEC_GiBBUnorw", "EnuPanN_CCMEC_GiBBUnorw", 30, 0, 3);
+TH1D *EnuPanN_CCRES_GiBBUnorw=new TH1D("EnuPanN_CCRES_GiBBUnorw", "EnuPanN_CCRES_GiBBUnorw", 30, 0, 3);
+TH1D *EnuPanN_CCDIS_GiBBUnorw=new TH1D("EnuPanN_CCDIS_GiBBUnorw", "EnuPanN_CCDIS_GiBBUnorw", 30, 0, 3);
+TH1D *EnuPanN_CCCOH_GiBBUnorw=new TH1D("EnuPanN_CCCOH_GiBBUnorw", "EnuPanN_CCCOH_GiBBUnorw", 30, 0, 3);
+TH1D *EnuPanN_other_GiBBUnorw=new TH1D("EnuPanN_other_GiBBUnorw", "EnuPanN_other_GiBBUnorw", 30, 0, 3);
 
 //******************************reconstructed neutrino energy in the Pandora analysis for 1muon+ 0 proton selection******************************//
 
-TH1D *EnuPan0_CCQE_GiBBU=new TH1D("EnuPan0_CCQE_GiBBU", "EnuPan0_CCQE_GiBBU", 60, 0, 3);
-TH1D *EnuPan0_CCMEC_GiBBU=new TH1D("EnuPan0_CCMEC_GiBBU", "EnuPan0_CCMEC_GiBBU", 60, 0, 3);
-TH1D *EnuPan0_CCRES_GiBBU=new TH1D("EnuPan0_CCRES_GiBBU", "EnuPan0_CCRES_GiBBU", 60, 0, 3);
-TH1D *EnuPan0_CCDIS_GiBBU=new TH1D("EnuPan0_CCDIS_GiBBU", "EnuPan0_CCDIS_GiBBU", 60, 0, 3);
-TH1D *EnuPan0_CCCOH_GiBBU=new TH1D("EnuPan0_CCCOH_GiBBU", "EnuPan0_CCCOH_GiBBU", 60, 0, 3);
-TH1D *EnuPan0_other_GiBBU=new TH1D("EnuPan0_other_GiBBU", "EnuPan0_other_GiBBU", 60, 0, 3);
+TH1D *EnuPan0_CCQE_GiBBU=new TH1D("EnuPan0_CCQE_GiBBU", "EnuPan0_CCQE_GiBBU", 30, 0, 3);
+TH1D *EnuPan0_CCMEC_GiBBU=new TH1D("EnuPan0_CCMEC_GiBBU", "EnuPan0_CCMEC_GiBBU", 30, 0, 3);
+TH1D *EnuPan0_CCRES_GiBBU=new TH1D("EnuPan0_CCRES_GiBBU", "EnuPan0_CCRES_GiBBU", 30, 0, 3);
+TH1D *EnuPan0_CCDIS_GiBBU=new TH1D("EnuPan0_CCDIS_GiBBU", "EnuPan0_CCDIS_GiBBU", 30, 0, 3);
+TH1D *EnuPan0_CCCOH_GiBBU=new TH1D("EnuPan0_CCCOH_GiBBU", "EnuPan0_CCCOH_GiBBU", 30, 0, 3);
+TH1D *EnuPan0_other_GiBBU=new TH1D("EnuPan0_other_GiBBU", "EnuPan0_other_GiBBU", 30, 0, 3);
 
-TH1D *EnuPan0_CCQE_GiBBU_GENIE_norw=new TH1D("EnuPan0_CCQE_GiBBU_GENIE_norw", "EnuPan0_CCQE_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuPan0_CCMEC_GiBBU_GENIE_norw=new TH1D("EnuPan0_CCMEC_GiBBU_GENIE_norw", "EnuPan0_CCMEC_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuPan0_CCRES_GiBBU_GENIE_norw=new TH1D("EnuPan0_CCRES_GiBBU_GENIE_norw", "EnuPan0_CCRES_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuPan0_CCDIS_GiBBU_GENIE_norw=new TH1D("EnuPan0_CCDIS_GiBBU_GENIE_norw", "EnuPan0_CCDIS_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuPan0_CCCOH_GiBBU_GENIE_norw=new TH1D("EnuPan0_CCCOH_GiBBU_GENIE_norw", "EnuPan0_CCCOH_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuPan0_other_GiBBU_GENIE_norw=new TH1D("EnuPan0_other_GiBBU_GENIE_norw", "EnuPan0_other_GiBBU_GENIE_norw", 60, 0, 3);
+TH1D *EnuPan0_CCQE_GiBBU_GENIE_norw=new TH1D("EnuPan0_CCQE_GiBBU_GENIE_norw", "EnuPan0_CCQE_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuPan0_CCMEC_GiBBU_GENIE_norw=new TH1D("EnuPan0_CCMEC_GiBBU_GENIE_norw", "EnuPan0_CCMEC_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuPan0_CCRES_GiBBU_GENIE_norw=new TH1D("EnuPan0_CCRES_GiBBU_GENIE_norw", "EnuPan0_CCRES_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuPan0_CCDIS_GiBBU_GENIE_norw=new TH1D("EnuPan0_CCDIS_GiBBU_GENIE_norw", "EnuPan0_CCDIS_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuPan0_CCCOH_GiBBU_GENIE_norw=new TH1D("EnuPan0_CCCOH_GiBBU_GENIE_norw", "EnuPan0_CCCOH_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuPan0_other_GiBBU_GENIE_norw=new TH1D("EnuPan0_other_GiBBU_GENIE_norw", "EnuPan0_other_GiBBU_GENIE_norw", 30, 0, 3);
 
-TH1D *EnuPan0_CCQE_GiBBUnorw=new TH1D("EnuPan0_CCQE_GiBBUnorw", "EnuPan0_CCQE_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPan0_CCMEC_GiBBUnorw=new TH1D("EnuPan0_CCMEC_GiBBUnorw", "EnuPan0_CCMEC_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPan0_CCRES_GiBBUnorw=new TH1D("EnuPan0_CCRES_GiBBUnorw", "EnuPan0_CCRES_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPan0_CCDIS_GiBBUnorw=new TH1D("EnuPan0_CCDIS_GiBBUnorw", "EnuPan0_CCDIS_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPan0_CCCOH_GiBBUnorw=new TH1D("EnuPan0_CCCOH_GiBBUnorw", "EnuPan0_CCCOH_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPan0_other_GiBBUnorw=new TH1D("EnuPan0_other_GiBBUnorw", "EnuPan0_other_GiBBUnorw", 60, 0, 3);
+TH1D *EnuPan0_CCQE_GiBBUnorw=new TH1D("EnuPan0_CCQE_GiBBUnorw", "EnuPan0_CCQE_GiBBUnorw", 30, 0, 3);
+TH1D *EnuPan0_CCMEC_GiBBUnorw=new TH1D("EnuPan0_CCMEC_GiBBUnorw", "EnuPan0_CCMEC_GiBBUnorw", 30, 0, 3);
+TH1D *EnuPan0_CCRES_GiBBUnorw=new TH1D("EnuPan0_CCRES_GiBBUnorw", "EnuPan0_CCRES_GiBBUnorw", 30, 0, 3);
+TH1D *EnuPan0_CCDIS_GiBBUnorw=new TH1D("EnuPan0_CCDIS_GiBBUnorw", "EnuPan0_CCDIS_GiBBUnorw", 30, 0, 3);
+TH1D *EnuPan0_CCCOH_GiBBUnorw=new TH1D("EnuPan0_CCCOH_GiBBUnorw", "EnuPan0_CCCOH_GiBBUnorw", 30, 0, 3);
+TH1D *EnuPan0_other_GiBBUnorw=new TH1D("EnuPan0_other_GiBBUnorw", "EnuPan0_other_GiBBUnorw", 30, 0, 3);
 
 //****************reconstructed neutrino energy in the Wire Cell analysis for 1muon+ X (any) proton selection  (numu CC inclusive)***************//
 
-TH1D *EnuWC_CCQE_GiBBU=new TH1D("EnuWC_CCQE_GiBBU", "EnuWC_CCQE_GiBBU", 60, 0, 3);
-TH1D *EnuWC_CCMEC_GiBBU=new TH1D("EnuWC_CCMEC_GiBBU", "EnuWC_CCMEC_GiBBU", 60, 0, 3);
-TH1D *EnuWC_CCRES_GiBBU=new TH1D("EnuWC_CCRES_GiBBU", "EnuWC_CCRES_GiBBU", 60, 0, 3);
-TH1D *EnuWC_CCDIS_GiBBU=new TH1D("EnuWC_CCDIS_GiBBU", "EnuWC_CCDIS_GiBBU", 60, 0, 3);
-TH1D *EnuWC_CCCOH_GiBBU=new TH1D("EnuWC_CCCOH_GiBBU", "EnuWC_CCCOH_GiBBU", 60, 0, 3);
-TH1D *EnuWC_other_GiBBU=new TH1D("EnuWC_other_GiBBU", "EnuWC_other_GiBBU", 60, 0, 3);
+TH1D *EnuWC_CCQE_GiBBU=new TH1D("EnuWC_CCQE_GiBBU", "EnuWC_CCQE_GiBBU", 30, 0, 3);
+TH1D *EnuWC_CCMEC_GiBBU=new TH1D("EnuWC_CCMEC_GiBBU", "EnuWC_CCMEC_GiBBU", 30, 0, 3);
+TH1D *EnuWC_CCRES_GiBBU=new TH1D("EnuWC_CCRES_GiBBU", "EnuWC_CCRES_GiBBU", 30, 0, 3);
+TH1D *EnuWC_CCDIS_GiBBU=new TH1D("EnuWC_CCDIS_GiBBU", "EnuWC_CCDIS_GiBBU", 30, 0, 3);
+TH1D *EnuWC_CCCOH_GiBBU=new TH1D("EnuWC_CCCOH_GiBBU", "EnuWC_CCCOH_GiBBU", 30, 0, 3);
+TH1D *EnuWC_other_GiBBU=new TH1D("EnuWC_other_GiBBU", "EnuWC_other_GiBBU", 30, 0, 3);
 
-TH1D *EnuWC_CCQE_GiBBU_GENIE_norw=new TH1D("EnuWC_CCQE_GiBBU_GENIE_norw", "EnuWC_CCQE_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuWC_CCMEC_GiBBU_GENIE_norw=new TH1D("EnuWC_CCMEC_GiBBU_GENIE_norw", "EnuWC_CCMEC_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuWC_CCRES_GiBBU_GENIE_norw=new TH1D("EnuWC_CCRES_GiBBU_GENIE_norw", "EnuWC_CCRES_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuWC_CCDIS_GiBBU_GENIE_norw=new TH1D("EnuWC_CCDIS_GiBBU_GENIE_norw", "EnuWC_CCDIS_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuWC_CCCOH_GiBBU_GENIE_norw=new TH1D("EnuWC_CCCOH_GiBBU_GENIE_norw", "EnuWC_CCCOH_GiBBU_GENIE_norw", 60, 0, 3);
-TH1D *EnuWC_other_GiBBU_GENIE_norw=new TH1D("EnuWC_other_GiBBU_GENIE_norw", "EnuWC_other_GiBBU_GENIE_norw", 60, 0, 3);
+TH1D *EnuWC_CCQE_GiBBU_GENIE_norw=new TH1D("EnuWC_CCQE_GiBBU_GENIE_norw", "EnuWC_CCQE_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuWC_CCMEC_GiBBU_GENIE_norw=new TH1D("EnuWC_CCMEC_GiBBU_GENIE_norw", "EnuWC_CCMEC_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuWC_CCRES_GiBBU_GENIE_norw=new TH1D("EnuWC_CCRES_GiBBU_GENIE_norw", "EnuWC_CCRES_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuWC_CCDIS_GiBBU_GENIE_norw=new TH1D("EnuWC_CCDIS_GiBBU_GENIE_norw", "EnuWC_CCDIS_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuWC_CCCOH_GiBBU_GENIE_norw=new TH1D("EnuWC_CCCOH_GiBBU_GENIE_norw", "EnuWC_CCCOH_GiBBU_GENIE_norw", 30, 0, 3);
+TH1D *EnuWC_other_GiBBU_GENIE_norw=new TH1D("EnuWC_other_GiBBU_GENIE_norw", "EnuWC_other_GiBBU_GENIE_norw", 30, 0, 3);
 
-TH1D *EnuWC_CCQE_GiBBUnorw=new TH1D("EnuWC_CCQE_GiBBUnorw", "EnuWC_CCQE_GiBBUnorw", 60, 0, 3);
-TH1D *EnuWC_CCMEC_GiBBUnorw=new TH1D("EnuWC_CCMEC_GiBBUnorw", "EnuWC_CCMEC_GiBBUnorw", 60, 0, 3);
-TH1D *EnuWC_CCRES_GiBBUnorw=new TH1D("EnuWC_CCRES_GiBBUnorw", "EnuWC_CCRES_GiBBUnorw", 60, 0, 3);
-TH1D *EnuWC_CCDIS_GiBBUnorw=new TH1D("EnuWC_CCDIS_GiBBUnorw", "EnuWC_CCDIS_GiBBUnorw", 60, 0, 3);
-TH1D *EnuWC_CCCOH_GiBBUnorw=new TH1D("EnuWC_CCCOH_GiBBUnorw", "EnuWC_CCCOH_GiBBUnorw", 60, 0, 3);
-TH1D *EnuWC_other_GiBBUnorw=new TH1D("EnuWC_other_GiBBUnorw", "EnuWC_other_GiBBUnorw", 60, 0, 3);
+TH1D *EnuWC_CCQE_GiBBUnorw=new TH1D("EnuWC_CCQE_GiBBUnorw", "EnuWC_CCQE_GiBBUnorw", 30, 0, 3);
+TH1D *EnuWC_CCMEC_GiBBUnorw=new TH1D("EnuWC_CCMEC_GiBBUnorw", "EnuWC_CCMEC_GiBBUnorw", 30, 0, 3);
+TH1D *EnuWC_CCRES_GiBBUnorw=new TH1D("EnuWC_CCRES_GiBBUnorw", "EnuWC_CCRES_GiBBUnorw", 30, 0, 3);
+TH1D *EnuWC_CCDIS_GiBBUnorw=new TH1D("EnuWC_CCDIS_GiBBUnorw", "EnuWC_CCDIS_GiBBUnorw", 30, 0, 3);
+TH1D *EnuWC_CCCOH_GiBBUnorw=new TH1D("EnuWC_CCCOH_GiBBUnorw", "EnuWC_CCCOH_GiBBUnorw", 30, 0, 3);
+TH1D *EnuWC_other_GiBBUnorw=new TH1D("EnuWC_other_GiBBUnorw", "EnuWC_other_GiBBUnorw", 30, 0, 3);
 
 
 
@@ -273,74 +288,17 @@ std::vector<double> Mean_True(14);
 std::vector<double> weight_summatory(14);
 std::vector<double> reweight_summatory(14);
 
-double Mean_EnuWC_diff[14];
-double Mean_EnuPanN_diff[14];
-double Mean_EnuPan0_diff[14];
-double Mean_EnuDL_diff[14];
+double Mean_EnuWC_diff[13];
+double Mean_EnuPanN_diff[13];
+double Mean_EnuPan0_diff[13];
+double Mean_EnuDL_diff[13];
 
-double Mean_EnuWC_norw_diff[14];
-double Mean_EnuPanN_norw_diff[14];
-double Mean_EnuPan0_norw_diff[14];
-double Mean_EnuDL_norw_diff[14];
+double Mean_EnuWC_norw_diff[13];
+double Mean_EnuPanN_norw_diff[13];
+double Mean_EnuPan0_norw_diff[13];
+double Mean_EnuDL_norw_diff[13];
 
-double Mean_True_a[14];
-
-std::vector<TH1D*> vlist_EnuWC;
-std::vector<TH1D*> vlist_EnuPanN;
-std::vector<TH1D*> vlist_EnuPan0;
-std::vector<TH1D*> vlist_EnuDL;
-
-std::vector<TH1D*> vlist_EnuWC_norw;
-std::vector<TH1D*> vlist_EnuPanN_norw;
-std::vector<TH1D*> vlist_EnuPan0_norw;
-std::vector<TH1D*> vlist_EnuDL_norw;
-
-std::vector<TH1D*> vlist_True;
-                                                            //CCQE//
-std::vector<TH1D*> vlist_EnuWC_CCQE;
-std::vector<TH1D*> vlist_EnuPanN_CCQE;
-std::vector<TH1D*> vlist_EnuPan0_CCQE;
-std::vector<TH1D*> vlist_EnuDL_CCQE;
-
-std::vector<TH1D*> vlist_EnuWC_norw_CCQE;
-std::vector<TH1D*> vlist_EnuPanN_norw_CCQE;
-std::vector<TH1D*> vlist_EnuPan0_norw_CCQE;
-std::vector<TH1D*> vlist_EnuDL_norw_CCQE;
-                                                            //CCRES//
-std::vector<TH1D*> vlist_EnuWC_CCRES;
-std::vector<TH1D*> vlist_EnuPanN_CCRES;
-std::vector<TH1D*> vlist_EnuPan0_CCRES;
-std::vector<TH1D*> vlist_EnuDL_CCRES;
-
-std::vector<TH1D*> vlist_EnuWC_norw_CCRES;
-std::vector<TH1D*> vlist_EnuPanN_norw_CCRES;
-std::vector<TH1D*> vlist_EnuPan0_norw_CCRES;
-std::vector<TH1D*> vlist_EnuDL_norw_CCRES;
-
-                                                            //CCMEC//
-std::vector<TH1D*> vlist_EnuWC_CCMEC;
-std::vector<TH1D*> vlist_EnuPanN_CCMEC;
-std::vector<TH1D*> vlist_EnuPan0_CCMEC;
-std::vector<TH1D*> vlist_EnuDL_CCMEC;
-
-std::vector<TH1D*> vlist_EnuWC_norw_CCMEC;
-std::vector<TH1D*> vlist_EnuPanN_norw_CCMEC;
-std::vector<TH1D*> vlist_EnuPan0_norw_CCMEC;
-std::vector<TH1D*> vlist_EnuDL_norw_CCMEC;
-                                                            //CCDIS//
-std::vector<TH1D*> vlist_EnuWC_CCDIS;
-std::vector<TH1D*> vlist_EnuPanN_CCDIS;
-std::vector<TH1D*> vlist_EnuPan0_CCDIS;
-std::vector<TH1D*> vlist_EnuDL_CCDIS;
-
-std::vector<TH1D*> vlist_EnuWC_norw_CCDIS;
-std::vector<TH1D*> vlist_EnuPanN_norw_CCDIS;
-std::vector<TH1D*> vlist_EnuPan0_norw_CCDIS;
-std::vector<TH1D*> vlist_EnuDL_norw_CCDIS;
-
-
-
-
+double Mean_True_a[13];
 
 
 int count_1=0;
@@ -352,15 +310,15 @@ int count_4=0;
 
 //***************************************************************GENIE_REWEIGHTED****************************************************************//
 std::vector<double> Boogey;
-TArrayD Reweighting_Vector(300);
-double Reweighting_Gibbu[60][5];
-TMatrixD *k=new TMatrixD(60,5);
+TArrayD Reweighting_Vector(120);
+double Reweighting_Gibbu[30][4];
+TMatrixD *k=new TMatrixD(30,4);
 
 //*********************************************************GENIE_NOT_REWEIGHTED*******************************************************************//
 std::vector<double> Boogey_GENIE_norw;
-TArrayD Reweighting_Vector_GENIE_norw(300);
-double Reweighting_Gibbu_Genie_norw[60][5];
-TMatrixD *k_GENIE_norw=new TMatrixD(60,5);
+TArrayD Reweighting_Vector_GENIE_norw(120);
+double Reweighting_Gibbu_Genie_norw[30][4];
+TMatrixD *k_GENIE_norw=new TMatrixD(30,4);
 
 
 
@@ -564,396 +522,6 @@ Type find_elements(double E_pion,double E_sum,int nplus_pion,int nneg_pion, int 
     return var;
 }
 
-void calculate_histograms(std::vector<TH1D*> WC_CCQE,std::vector<TH1D*> PanN_CCQE,std::vector<TH1D*> Pan0_CCQE,std::vector<TH1D*> DL_CCQE,std::vector<TH1D*> WC_CCRES,std::vector<TH1D*> PanN_CCRES,std::vector<TH1D*> Pan0_CCRES,std::vector<TH1D*> DL_CCRES,std::vector<TH1D*> WC_CCMEC,std::vector<TH1D*> PanN_CCMEC, std::vector<TH1D*> Pan0_CCMEC,std::vector<TH1D*> DL_CCMEC,std::vector<TH1D*> WC_CCDIS,std::vector<TH1D*> PanN_CCDIS, std::vector<TH1D*> Pan0_CCDIS,std::vector<TH1D*> DL_CCDIS, std::vector<TH1D*> WC_CCQE_norw,std::vector<TH1D*> PanN_CCQE_norw,std::vector<TH1D*> Pan0_CCQE_norw,std::vector<TH1D*> DL_CCQE_norw,std::vector<TH1D*> WC_CCRES_norw,std::vector<TH1D*> PanN_CCRES_norw,std::vector<TH1D*> Pan0_CCRES_norw,std::vector<TH1D*> DL_CCRES_norw,std::vector<TH1D*> WC_CCMEC_norw,std::vector<TH1D*> PanN_CCMEC_norw, std::vector<TH1D*> Pan0_CCMEC_norw,std::vector<TH1D*> DL_CCMEC_norw,std::vector<TH1D*> WC_CCDIS_norw,std::vector<TH1D*> PanN_CCDIS_norw, std::vector<TH1D*> Pan0_CCDIS_norw,std::vector<TH1D*> DL_CCDIS_norw, int bool_CCQE, int bool_CCRES, int bool_CCMEC, int bool_CCDIS, std::vector<TH1D*> vech_True,double Energy_Ve, int bool_EnuPanN, int bool_EnuPan0, int bool_EnuDL,double E_EnuWC,double E_EnuPanN,double E_EnuPan0,double E_EnuDL,double w_i,double rw_i)
-{
-//*****************************A_substitute_approach_for_the_Tprofile_plots***********************************************************//
-   if ((Energy_Ve>=0.1)&&(Energy_Ve<0.2))
-   {
-                                                                //WC//
-    if (bool_CCQE==1) WC_CCQE.at(0)->Fill(E_EnuWC,w_i);
-    if (bool_CCRES==1) WC_CCRES.at(0)->Fill(E_EnuWC, w_i);
-    if (bool_CCMEC==1) WC_CCMEC.at(0)->Fill(E_EnuWC,w_i);
-    if (bool_CCDIS==1) WC_CCDIS.at(0)->Fill(E_EnuWC,w_i);
-                                                                //PanN//
-    if ((bool_CCQE==1)&&(bool_EnuPanN==1)) PanN_CCQE.at(0)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPanN==1)) PanN_CCRES.at(0)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPanN==1)) PanN_CCMEC.at(0)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPanN==1)) PanN_CCDIS.at(0)->Fill(E_EnuPanN,w_i);
-                                                                //Pan0//
-    if ((bool_CCQE==1)&&(bool_EnuPan0==1)) Pan0_CCQE.at(0)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPan0==1)) Pan0_CCRES.at(0)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPan0==1)) Pan0_CCMEC.at(0)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPan0==1)) Pan0_CCDIS.at(0)->Fill(E_EnuPan0,w_i);
-                                                                //DL//
-    if ((bool_CCQE==1)&&(bool_EnuDL==1)) DL_CCQE.at(0)->Fill(E_EnuDL,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuDL==1)) DL_CCRES.at(0)->Fill(E_EnuDL,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuDL==1)) DL_CCMEC.at(0)->Fill(E_EnuDL,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuDL==1)) DL_CCDIS.at(0)->Fill(E_EnuDL,w_i);
-    vech_True.at(0)->Fill(Energy_Ve,w_i);
-
-       //WC_norw//
-       if (bool_CCQE==1) WC_CCQE_norw.at(0)->Fill(E_EnuWC);
-       if (bool_CCRES==1) WC_CCRES_norw.at(0)->Fill(E_EnuWC);
-       if (bool_CCMEC==1) WC_CCMEC_norw.at(0)->Fill(E_EnuWC);
-       if (bool_CCDIS==1) WC_CCDIS_norw.at(0)->Fill(E_EnuWC);
-       //PanN_norw//
-       if ((bool_CCQE==1)&&(bool_EnuPanN==1)) PanN_CCQE_norw.at(0)->Fill(E_EnuPanN,w_i);
-       if ((bool_CCRES==1)&&(bool_EnuPanN==1)) PanN_CCRES_norw.at(0)->Fill(E_EnuPanN,w_i);
-       if ((bool_CCMEC==1)&&(bool_EnuPanN==1)) PanN_CCMEC_norw.at(0)->Fill(E_EnuPanN,w_i);
-       if ((bool_CCDIS==1)&&(bool_EnuPanN==1)) PanN_CCDIS_norw.at(0)->Fill(E_EnuPanN,w_i);
-       //Pan0_norw//
-       if ((bool_CCQE==1)&&(bool_EnuPan0==1)) Pan0_CCQE_norw.at(0)->Fill(E_EnuPan0,w_i);
-       if ((bool_CCRES==1)&&(bool_EnuPan0==1)) Pan0_CCRES_norw.at(0)->Fill(E_EnuPan0,w_i);
-       if ((bool_CCMEC==1)&&(bool_EnuPan0==1)) Pan0_CCMEC_norw.at(0)->Fill(E_EnuPan0,w_i);
-       if ((bool_CCDIS==1)&&(bool_EnuPan0==1)) Pan0_CCDIS_norw.at(0)->Fill(E_EnuPan0,w_i);
-       //DL_norw//
-       if ((bool_CCQE==1)&&(bool_EnuDL==1)) DL_CCQE_norw.at(0)->Fill(E_EnuDL,w_i);
-       if ((bool_CCRES==1)&&(bool_EnuDL==1)) DL_CCRES_norw.at(0)->Fill(E_EnuDL,w_i);
-       if ((bool_CCMEC==1)&&(bool_EnuDL==1)) DL_CCMEC_norw.at(0)->Fill(E_EnuDL,w_i);
-       if ((bool_CCDIS==1)&&(bool_EnuDL==1)) DL_CCDIS_norw.at(0)->Fill(E_EnuDL,w_i);
-
-
-   }
-   if ((Energy_Ve>=0.2)&&(Energy_Ve<0.3))
-
-   {
-//WC//
-    if (bool_CCQE==1) WC_CCQE.at(1)->Fill(E_EnuWC,w_i);
-    if (bool_CCRES==1) WC_CCRES.at(1)->Fill(E_EnuWC, w_i);
-    if (bool_CCMEC==1) WC_CCMEC.at(1)->Fill(E_EnuWC,w_i);
-    if (bool_CCDIS==1) WC_CCDIS.at(1)->Fill(E_EnuWC,w_i);
-//PanN//
-    if ((bool_CCQE==1)&&(bool_EnuPanN==1)) PanN_CCQE.at(1)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPanN==1)) PanN_CCRES.at(1)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPanN==1)) PanN_CCMEC.at(1)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPanN==1)) PanN_CCDIS.at(1)->Fill(E_EnuPanN,w_i);
-//Pan0//
-    if ((bool_CCQE==1)&&(bool_EnuPan0==1)) Pan0_CCQE.at(1)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPan0==1)) Pan0_CCRES.at(1)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPan0==1)) Pan0_CCMEC.at(1)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPan0==1)) Pan0_CCDIS.at(1)->Fill(E_EnuPan0,w_i);
-//DL//
-   if ((bool_CCQE==1)&&(bool_EnuDL==1)) DL_CCQE.at(1)->Fill(E_EnuDL,w_i);
-   if ((bool_CCRES==1)&&(bool_EnuDL==1)) DL_CCRES.at(1)->Fill(E_EnuDL,w_i);
-   if ((bool_CCMEC==1)&&(bool_EnuDL==1)) DL_CCMEC.at(1)->Fill(E_EnuDL,w_i);
-   if ((bool_CCDIS==1)&&(bool_EnuDL==1)) DL_CCDIS.at(1)->Fill(E_EnuDL,w_i);
-   vech_True.at(1)->Fill(Energy_Ve,w_i);
-
-       //WC_norw//
-       if (bool_CCQE==1) WC_CCQE_norw.at(0)->Fill(E_EnuWC,w_i);
-       if (bool_CCRES==1) WC_CCRES_norw.at(0)->Fill(E_EnuWC, w_i);
-       if (bool_CCMEC==1) WC_CCMEC_norw.at(0)->Fill(E_EnuWC,w_i);
-       if (bool_CCDIS==1) WC_CCDIS_norw.at(0)->Fill(E_EnuWC,w_i);
-       //PanN_norw//
-       if ((bool_CCQE==1)&&(bool_EnuPanN==1)) PanN_CCQE_norw.at(0)->Fill(E_EnuPanN,w_i);
-       if ((bool_CCRES==1)&&(bool_EnuPanN==1)) PanN_CCRES_norw.at(0)->Fill(E_EnuPanN,w_i);
-       if ((bool_CCMEC==1)&&(bool_EnuPanN==1)) PanN_CCMEC_norw.at(0)->Fill(E_EnuPanN,w_i);
-       if ((bool_CCDIS==1)&&(bool_EnuPanN==1)) PanN_CCDIS_norw.at(0)->Fill(E_EnuPanN,w_i);
-       //Pan0_norw//
-       if ((bool_CCQE==1)&&(bool_EnuPan0==1)) Pan0_CCQE_norw.at(0)->Fill(E_EnuPan0,w_i);
-       if ((bool_CCRES==1)&&(bool_EnuPan0==1)) Pan0_CCRES_norw.at(0)->Fill(E_EnuPan0,w_i);
-       if ((bool_CCMEC==1)&&(bool_EnuPan0==1)) Pan0_CCMEC_norw.at(0)->Fill(E_EnuPan0,w_i);
-       if ((bool_CCDIS==1)&&(bool_EnuPan0==1)) Pan0_CCDIS_norw.at(0)->Fill(E_EnuPan0,w_i);
-       //DL_norw//
-       if ((bool_CCQE==1)&&(bool_EnuDL==1)) DL_CCQE_norw.at(0)->Fill(E_EnuDL,w_i);
-       if ((bool_CCRES==1)&&(bool_EnuDL==1)) DL_CCRES_norw.at(0)->Fill(E_EnuDL,w_i);
-       if ((bool_CCMEC==1)&&(bool_EnuDL==1)) DL_CCMEC_norw.at(0)->Fill(E_EnuDL,w_i);
-       if ((bool_CCDIS==1)&&(bool_EnuDL==1)) DL_CCDIS_norw.at(0)->Fill(E_EnuDL,w_i);
-
-   }
-   if ((Energy_Ve>=0.3)&&(Energy_Ve<0.4))
-   {
-//WC//
-    if (bool_CCQE==1) WC_CCQE.at(2)->Fill(E_EnuWC,w_i);
-    if (bool_CCRES==1) WC_CCRES.at(2)->Fill(E_EnuWC, w_i);
-    if (bool_CCMEC==1) WC_CCMEC.at(2)->Fill(E_EnuWC,w_i);
-    if (bool_CCDIS==1) WC_CCDIS.at(2)->Fill(E_EnuWC,w_i);
-//PanN//
-    if ((bool_CCQE==1)&&(bool_EnuPanN==1)) PanN_CCQE.at(2)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPanN==1)) PanN_CCRES.at(2)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPanN==1)) PanN_CCMEC.at(2)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPanN==1)) PanN_CCDIS.at(2)->Fill(E_EnuPanN,w_i);
-//Pan0//
-    if ((bool_CCQE==1)&&(bool_EnuPan0==1)) Pan0_CCQE.at(2)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPan0==1)) Pan0_CCRES.at(2)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPan0==1)) Pan0_CCMEC.at(2)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPan0==1)) Pan0_CCDIS.at(2)->Fill(E_EnuPan0,w_i);
-//DL//
-    if ((bool_CCQE==1)&&(bool_EnuDL==1)) DL_CCQE.at(2)->Fill(E_EnuDL,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuDL==1)) DL_CCRES.at(2)->Fill(E_EnuDL,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuDL==1)) DL_CCMEC.at(2)->Fill(E_EnuDL,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuDL==1)) DL_CCDIS.at(2)->Fill(E_EnuDL,w_i);
-    vech_True.at(2)->Fill(Energy_Ve,w_i);
-
-}
-   if ((Energy_Ve>=0.4)&&(Energy_Ve<0.5))
-   {
-//WC//
-    if (bool_CCQE==1) WC_CCQE.at(3)->Fill(E_EnuWC,w_i);
-    if (bool_CCRES==1) WC_CCRES.at(3)->Fill(E_EnuWC, w_i);
-    if (bool_CCMEC==1) WC_CCMEC.at(3)->Fill(E_EnuWC,w_i);
-    if (bool_CCDIS==1) WC_CCDIS.at(3)->Fill(E_EnuWC,w_i);
-//PanN//
-    if ((bool_CCQE==1)&&(bool_EnuPanN==1)) PanN_CCQE.at(3)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPanN==1)) PanN_CCRES.at(3)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPanN==1)) PanN_CCMEC.at(3)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPanN==1)) PanN_CCDIS.at(3)->Fill(E_EnuPanN,w_i);
-//Pan0//
-    if ((bool_CCQE==1)&&(bool_EnuPan0==1)) Pan0_CCQE.at(3)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPan0==1)) Pan0_CCRES.at(3)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPan0==1)) Pan0_CCMEC.at(3)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPan0==1)) Pan0_CCDIS.at(3)->Fill(E_EnuPan0,w_i);
-//DL//
-    if ((bool_CCQE==1)&&(bool_EnuDL==1)) DL_CCQE.at(3)->Fill(E_EnuDL,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuDL==1)) DL_CCRES.at(3)->Fill(E_EnuDL,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuDL==1)) DL_CCMEC.at(3)->Fill(E_EnuDL,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuDL==1)) DL_CCDIS.at(3)->Fill(E_EnuDL,w_i);
-    vech_True.at(3)->Fill(Energy_Ve,w_i);
-
-//if (bool_EnuDL==1) std::cout<<" Energy is "<<E_EnuDL<<" Energy_neu is "<<Energy_Ve<<" reweight is "<<rw_i<<std::endl;
-   }
-   if ((Energy_Ve>=0.5)&&(Energy_Ve<0.6))
-   {
-//WC//
-    if (bool_CCQE==1) WC_CCQE.at(4)->Fill(E_EnuWC,w_i);
-    if (bool_CCRES==1) WC_CCRES.at(4)->Fill(E_EnuWC, w_i);
-    if (bool_CCMEC==1) WC_CCMEC.at(4)->Fill(E_EnuWC,w_i);
-    if (bool_CCDIS==1) WC_CCDIS.at(4)->Fill(E_EnuWC,w_i);
-//PanN//
-    if ((bool_CCQE==1)&&(bool_EnuPanN==1)) PanN_CCQE.at(4)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPanN==1)) PanN_CCRES.at(4)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPanN==1)) PanN_CCMEC.at(4)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPanN==1)) PanN_CCDIS.at(4)->Fill(E_EnuPanN,w_i);
-//Pan0//
-    if ((bool_CCQE==1)&&(bool_EnuPan0==1)) Pan0_CCQE.at(4)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPan0==1)) Pan0_CCRES.at(4)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPan0==1)) Pan0_CCMEC.at(4)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPan0==1)) Pan0_CCDIS.at(4)->Fill(E_EnuPan0,w_i);
-//DL//
-    if ((bool_CCQE==1)&&(bool_EnuDL==1)) DL_CCQE.at(4)->Fill(E_EnuDL,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuDL==1)) DL_CCRES.at(4)->Fill(E_EnuDL,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuDL==1)) DL_CCMEC.at(4)->Fill(E_EnuDL,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuDL==1)) DL_CCDIS.at(4)->Fill(E_EnuDL,w_i);
-    vech_True.at(4)->Fill(Energy_Ve,w_i);
-
-}
-   if ((Energy_Ve>=0.6)&&(Energy_Ve<0.7))
-   {
-//WC//
-    if (bool_CCQE==1) WC_CCQE.at(5)->Fill(E_EnuWC,w_i);
-    if (bool_CCRES==1) WC_CCRES.at(5)->Fill(E_EnuWC, w_i);
-    if (bool_CCMEC==1) WC_CCMEC.at(5)->Fill(E_EnuWC,w_i);
-    if (bool_CCDIS==1) WC_CCDIS.at(5)->Fill(E_EnuWC,w_i);
-//PanN//
-    if ((bool_CCQE==1)&&(bool_EnuPanN==1)) PanN_CCQE.at(5)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPanN==1)) PanN_CCRES.at(5)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPanN==1)) PanN_CCMEC.at(5)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPanN==1)) PanN_CCDIS.at(5)->Fill(E_EnuPanN,w_i);
-//Pan0//
-    if ((bool_CCQE==1)&&(bool_EnuPan0==1)) Pan0_CCQE.at(5)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPan0==1)) Pan0_CCRES.at(5)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPan0==1)) Pan0_CCMEC.at(5)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPan0==1)) Pan0_CCDIS.at(5)->Fill(E_EnuPan0,w_i);
-//DL//
-    if ((bool_CCQE==1)&&(bool_EnuDL==1)) DL_CCQE.at(5)->Fill(E_EnuDL,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuDL==1)) DL_CCRES.at(5)->Fill(E_EnuDL,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuDL==1)) DL_CCMEC.at(5)->Fill(E_EnuDL,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuDL==1)) DL_CCDIS.at(5)->Fill(E_EnuDL,w_i);
-    vech_True.at(5)->Fill(Energy_Ve,w_i);
-
-}
-   if ((Energy_Ve>=0.7)&&(Energy_Ve<0.8))
-   {
-//WC//
-    if (bool_CCQE==1) WC_CCQE.at(6)->Fill(E_EnuWC,w_i);
-    if (bool_CCRES==1) WC_CCRES.at(6)->Fill(E_EnuWC, w_i);
-    if (bool_CCMEC==1) WC_CCMEC.at(6)->Fill(E_EnuWC,w_i);
-    if (bool_CCDIS==1) WC_CCDIS.at(6)->Fill(E_EnuWC,w_i);
-//PanN//
-    if ((bool_CCQE==1)&&(bool_EnuPanN==1)) PanN_CCQE.at(6)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPanN==1)) PanN_CCRES.at(6)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPanN==1)) PanN_CCMEC.at(6)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPanN==1)) PanN_CCDIS.at(6)->Fill(E_EnuPanN,w_i);
-//Pan0//
-    if ((bool_CCQE==1)&&(bool_EnuPan0==1)) Pan0_CCQE.at(6)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPan0==1)) Pan0_CCRES.at(6)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPan0==1)) Pan0_CCMEC.at(6)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPan0==1)) Pan0_CCDIS.at(6)->Fill(E_EnuPan0,w_i);
-//DL//
-    if ((bool_CCQE==1)&&(bool_EnuDL==1)) DL_CCQE.at(6)->Fill(E_EnuDL,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuDL==1)) DL_CCRES.at(6)->Fill(E_EnuDL,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuDL==1)) DL_CCMEC.at(6)->Fill(E_EnuDL,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuDL==1)) DL_CCDIS.at(6)->Fill(E_EnuDL,w_i);
-    vech_True.at(6)->Fill(Energy_Ve,w_i);
-
-}
-   if ((Energy_Ve>=0.8)&&(Energy_Ve<0.9))
-   {
-//WC//
-    if (bool_CCQE==1) WC_CCQE.at(7)->Fill(E_EnuWC,w_i);
-    if (bool_CCRES==1) WC_CCRES.at(7)->Fill(E_EnuWC, w_i);
-    if (bool_CCMEC==1) WC_CCMEC.at(7)->Fill(E_EnuWC,w_i);
-    if (bool_CCDIS==1) WC_CCDIS.at(7)->Fill(E_EnuWC,w_i);
-//PanN//
-    if ((bool_CCQE==1)&&(bool_EnuPanN==1)) PanN_CCQE.at(7)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPanN==1)) PanN_CCRES.at(7)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPanN==1)) PanN_CCMEC.at(7)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPanN==1)) PanN_CCDIS.at(7)->Fill(E_EnuPanN,w_i);
-//Pan0//
-    if ((bool_CCQE==1)&&(bool_EnuPan0==1)) Pan0_CCQE.at(7)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPan0==1)) Pan0_CCRES.at(7)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPan0==1)) Pan0_CCMEC.at(7)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPan0==1)) Pan0_CCDIS.at(7)->Fill(E_EnuPan0,w_i);
-//DL//
-    if ((bool_CCQE==1)&&(bool_EnuDL==1)) DL_CCQE.at(7)->Fill(E_EnuDL,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuDL==1)) DL_CCRES.at(7)->Fill(E_EnuDL,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuDL==1)) DL_CCMEC.at(7)->Fill(E_EnuDL,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuDL==1)) DL_CCDIS.at(7)->Fill(E_EnuDL,w_i);
-    vech_True.at(7)->Fill(Energy_Ve,w_i);
-
-
-}
-   if ((Energy_Ve>=0.9)&&(Energy_Ve<1.0))
-   {
-//WC//
-    if (bool_CCQE==1) WC_CCQE.at(8)->Fill(E_EnuWC,w_i);
-    if (bool_CCRES==1) WC_CCRES.at(8)->Fill(E_EnuWC, w_i);
-    if (bool_CCMEC==1) WC_CCMEC.at(8)->Fill(E_EnuWC,w_i);
-    if (bool_CCDIS==1) WC_CCDIS.at(8)->Fill(E_EnuWC,w_i);
-//PanN//
-    if ((bool_CCQE==1)&&(bool_EnuPanN==1)) PanN_CCQE.at(8)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPanN==1)) PanN_CCRES.at(8)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPanN==1)) PanN_CCMEC.at(8)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPanN==1)) PanN_CCDIS.at(8)->Fill(E_EnuPanN,w_i);
-//Pan0//
-    if ((bool_CCQE==1)&&(bool_EnuPan0==1)) Pan0_CCQE.at(8)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPan0==1)) Pan0_CCRES.at(8)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPan0==1)) Pan0_CCMEC.at(8)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPan0==1)) Pan0_CCDIS.at(8)->Fill(E_EnuPan0,w_i);
-//DL//
-    if ((bool_CCQE==1)&&(bool_EnuDL==1)) DL_CCQE.at(8)->Fill(E_EnuDL,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuDL==1)) DL_CCRES.at(8)->Fill(E_EnuDL,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuDL==1)) DL_CCMEC.at(8)->Fill(E_EnuDL,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuDL==1)) DL_CCDIS.at(8)->Fill(E_EnuDL,w_i);
-    vech_True.at(8)->Fill(Energy_Ve,w_i);
-
-}
-   if ((Energy_Ve>=1.0)&&(Energy_Ve<1.1))
-   {
-//WC//
-    if (bool_CCQE==1) WC_CCQE.at(9)->Fill(E_EnuWC,w_i);
-    if (bool_CCRES==1) WC_CCRES.at(9)->Fill(E_EnuWC, w_i);
-    if (bool_CCMEC==1) WC_CCMEC.at(9)->Fill(E_EnuWC,w_i);
-    if (bool_CCDIS==1) WC_CCDIS.at(9)->Fill(E_EnuWC,w_i);
-//PanN//
-    if ((bool_CCQE==1)&&(bool_EnuPanN==1)) PanN_CCQE.at(9)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPanN==1)) PanN_CCRES.at(9)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPanN==1)) PanN_CCMEC.at(9)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPanN==1)) PanN_CCDIS.at(9)->Fill(E_EnuPanN,w_i);
-//Pan0//
-    if ((bool_CCQE==1)&&(bool_EnuPan0==1)) Pan0_CCQE.at(9)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPan0==1)) Pan0_CCRES.at(9)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPan0==1)) Pan0_CCMEC.at(9)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPan0==1)) Pan0_CCDIS.at(9)->Fill(E_EnuPan0,w_i);
-//DL//
-    if ((bool_CCQE==1)&&(bool_EnuDL==1)) DL_CCQE.at(9)->Fill(E_EnuDL,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuDL==1)) DL_CCRES.at(9)->Fill(E_EnuDL,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuDL==1)) DL_CCMEC.at(9)->Fill(E_EnuDL,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuDL==1)) DL_CCDIS.at(9)->Fill(E_EnuDL,w_i);
-    vech_True.at(9)->Fill(Energy_Ve,w_i);
-
-}
-   if ((Energy_Ve>=1.1)&&(Energy_Ve<1.2))
-   {
-//WC//
-    if (bool_CCQE==1) WC_CCQE.at(10)->Fill(E_EnuWC,w_i);
-    if (bool_CCRES==1) WC_CCRES.at(10)->Fill(E_EnuWC, w_i);
-    if (bool_CCMEC==1) WC_CCMEC.at(10)->Fill(E_EnuWC,w_i);
-    if (bool_CCDIS==1) WC_CCDIS.at(10)->Fill(E_EnuWC,w_i);
-//PanN//
-    if ((bool_CCQE==1)&&(bool_EnuPanN==1)) PanN_CCQE.at(10)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPanN==1)) PanN_CCRES.at(10)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPanN==1)) PanN_CCMEC.at(10)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPanN==1)) PanN_CCDIS.at(10)->Fill(E_EnuPanN,w_i);
-//Pan0//
-    if ((bool_CCQE==1)&&(bool_EnuPan0==1)) Pan0_CCQE.at(10)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPan0==1)) Pan0_CCRES.at(10)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPan0==1)) Pan0_CCMEC.at(10)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPan0==1)) Pan0_CCDIS.at(10)->Fill(E_EnuPan0,w_i);
-//DL//
-    if ((bool_CCQE==1)&&(bool_EnuDL==1)) DL_CCQE.at(10)->Fill(E_EnuDL,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuDL==1)) DL_CCRES.at(10)->Fill(E_EnuDL,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuDL==1)) DL_CCMEC.at(10)->Fill(E_EnuDL,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuDL==1)) DL_CCDIS.at(10)->Fill(E_EnuDL,w_i);
-    vech_True.at(10)->Fill(Energy_Ve,w_i);
-
-}
-   if ((Energy_Ve>=1.2)&&(Energy_Ve<1.3))
-   {
-//WC//
-    if (bool_CCQE==1) WC_CCQE.at(11)->Fill(E_EnuWC,w_i);
-    if (bool_CCRES==1) WC_CCRES.at(11)->Fill(E_EnuWC, w_i);
-    if (bool_CCMEC==1) WC_CCMEC.at(11)->Fill(E_EnuWC,w_i);
-    if (bool_CCDIS==1) WC_CCDIS.at(11)->Fill(E_EnuWC,w_i);
-//PanN//
-    if ((bool_CCQE==1)&&(bool_EnuPanN==1)) PanN_CCQE.at(11)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPanN==1)) PanN_CCRES.at(11)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPanN==1)) PanN_CCMEC.at(11)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPanN==1)) PanN_CCDIS.at(11)->Fill(E_EnuPanN,w_i);
-//Pan0//
-    if ((bool_CCQE==1)&&(bool_EnuPan0==1)) Pan0_CCQE.at(11)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPan0==1)) Pan0_CCRES.at(11)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPan0==1)) Pan0_CCMEC.at(11)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPan0==1)) Pan0_CCDIS.at(11)->Fill(E_EnuPan0,w_i);
-//DL//
-    if ((bool_CCQE==1)&&(bool_EnuDL==1)) DL_CCQE.at(11)->Fill(E_EnuDL,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuDL==1)) DL_CCRES.at(11)->Fill(E_EnuDL,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuDL==1)) DL_CCMEC.at(11)->Fill(E_EnuDL,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuDL==1)) DL_CCDIS.at(11)->Fill(E_EnuDL,w_i);
-    vech_True.at(11)->Fill(Energy_Ve,w_i);
-
-}
-   if ((Energy_Ve>=1.3)&&(Energy_Ve<1.4))
-   {
-//WC//
-    if (bool_CCQE==1) WC_CCQE.at(12)->Fill(E_EnuWC,w_i);
-    if (bool_CCRES==1) WC_CCRES.at(12)->Fill(E_EnuWC, w_i);
-    if (bool_CCMEC==1) WC_CCMEC.at(12)->Fill(E_EnuWC,w_i);
-    if (bool_CCDIS==1) WC_CCDIS.at(12)->Fill(E_EnuWC,w_i);
-//PanN//
-    if ((bool_CCQE==1)&&(bool_EnuPanN==1)) PanN_CCQE.at(12)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPanN==1)) PanN_CCRES.at(12)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPanN==1)) PanN_CCMEC.at(12)->Fill(E_EnuPanN,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPanN==1)) PanN_CCDIS.at(12)->Fill(E_EnuPanN,w_i);
-//Pan0//
-    if ((bool_CCQE==1)&&(bool_EnuPan0==1)) Pan0_CCQE.at(12)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuPan0==1)) Pan0_CCRES.at(12)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuPan0==1)) Pan0_CCMEC.at(12)->Fill(E_EnuPan0,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuPan0==1)) Pan0_CCDIS.at(12)->Fill(E_EnuPan0,w_i);
-//DL//
-    if ((bool_CCQE==1)&&(bool_EnuDL==1)) DL_CCQE.at(12)->Fill(E_EnuDL,w_i);
-    if ((bool_CCRES==1)&&(bool_EnuDL==1)) DL_CCRES.at(12)->Fill(E_EnuDL,w_i);
-    if ((bool_CCMEC==1)&&(bool_EnuDL==1)) DL_CCMEC.at(12)->Fill(E_EnuDL,w_i);
-    if ((bool_CCDIS==1)&&(bool_EnuDL==1)) DL_CCDIS.at(12)->Fill(E_EnuDL,w_i);
-    vech_True.at(12)->Fill(Energy_Ve,w_i);
-
-}
-   /*if ((Energy_Ve>=1.4)&&(Energy_Ve<1.5))
-   {
-    Mean_EnuWC_14->Fill(E_EnuWC,w_i*rw_i);
-    if (bool_EnuPanN==1) Mean_EnuPanN_14->Fill(E_EnuPanN,w_i*rw_i);
-    if (bool_EnuPan0==1) Mean_EnuPan0_14->Fill(E_EnuPan0,w_i*rw_i);
-    if (bool_EnuDL==1) Mean_EnuDL_14->Fill(E_EnuDL,w_i*rw_i);
-    
-    Mean_EnuWC_norw_14->Fill(E_EnuWC,w_i);
-    if (bool_EnuPanN==1) Mean_EnuPanN_norw_14->Fill(E_EnuPanN,w_i);
-    if (bool_EnuPan0==1) Mean_EnuPan0_norw_14->Fill(E_EnuPan0,w_i);
-    if (bool_EnuDL==1) Mean_EnuDL_norw_14->Fill(E_EnuDL,w_i);
-    Mean_True_14->Fill(Energy_Ve,w_i);
-   }*/
- 
-}
-std::vector<TH1D*> h1;
 void Myclass::Loop()
 {	
 //   In a ROOT session, you can do:
@@ -1013,7 +581,7 @@ void Myclass::Loop()
 //***********************************************************************************************************************************************//
 //********************************************************GENIE_REWEIGHTED***********************************************************************//
 //**********************************************************************************************************************************************//  
- TFile* file_G = TFile::Open("a__whole_less.root"); 
+ TFile* file_G = TFile::Open("bins_and_histogram.root");
  
  TMatrixD *m=(TMatrixD*)file_G->Get("TMatrixT<double>");
  TH1D *TrueEnu_CCQE_GiBBU_extracted = (TH1D*)file_G->Get("TrueEnu_CCQE_GiBBU");
@@ -1036,15 +604,13 @@ double ntotal=0;
     double nCCDIS_rw=0;
     double ntotal_rw=0;
 
- /*TrueEnu_CCQE_GiBBU_extracted->GetXaxis();
  std::cout<<" output "<<TrueEnu_CCQE_GiBBU_extracted->GetXaxis()->FindBin(2.97)<<std::endl;
- 
- TMatrixDRow((*k),1)(1)=5;
-std::cout<<" output "<<TMatrixDRow(*m,59)[0]<<std::endl;
-for (int i=0;i<60;i++)
+
+std::cout<<" output "<<TMatrixDRow(*m,29)[0]<<std::endl;
+for (int i=0;i<30;i++)
 {
-std::cout<<" CCQE: "<<TMatrixDRow(*m,i)[0]<<" CCMEC: "<<TMatrixDRow(*m,i)[1]<<" CCRES: "<<TMatrixDRow(*m,i)[2]<<" CCDIS: "<<TMatrixDRow(*m,i)[3]<<" CCCOH: "<<TMatrixDRow(*m,i)[4]<<" i "<<i<<std::endl;
-}*/
+std::cout<<" CCQE: "<<TMatrixDRow(*m,i)[0]<<" CCMEC: "<<TMatrixDRow(*m,i)[1]<<" CCRES: "<<TMatrixDRow(*m,i)[2]<<" CCDIS: "<<TMatrixDRow(*m,i)[3]<<" i "<<i<<std::endl;
+}
 
 //***********************************************************************************************************************************************//
 //********************************************************GENIE_NOT_REWEIGHTED*******************************************************************//
@@ -1059,66 +625,6 @@ std::cout<<" CCQE: "<<TMatrixDRow(*m_GENIE_norw,i)[0]<<" CCMEC: "<<TMatrixDRow(*
 double total_weight=0;
 double reweight_15=0;
 int count_anamoly=0;
-//**********************************************************************************************************************************************//
-//**********************************************************Some_vectors_that_make_life_easy****************************************************//
-//**********************************************************************************************************************************************//
-for (int i=0;i<13;i++)
-  { 
-    TH1D *h_EnuWC = new TH1D(Form("h_EnuWC%d",i),"test",60,0,3);
-    TH1D *h_EnuPanN = new TH1D(Form("h_EnuPanN%d",i),"test",60,0,3);
-    TH1D *h_EnuPan0 = new TH1D(Form("h_EnuPan0%d",i),"test",60,0,3);
-    TH1D *h_EnuDL = new TH1D(Form("h_EnuDL%d",i),"test",60,0,3);
-    
-    TH1D *h_EnuWC_norw = new TH1D(Form("h_EnuWC_norw%d",i),"test",60,0,3);
-    TH1D *h_EnuPanN_norw = new TH1D(Form("h_EnuPanN_norw%d",i),"test",60,0,3);
-    TH1D *h_EnuPan0_norw = new TH1D(Form("h_EnuPan0_norw%d",i),"test",60,0,3);
-    TH1D *h_EnuDL_norw = new TH1D(Form("h_EnuDL_norw%d",i),"test",60,0,3);
-    
-    TH1D *h_True = new TH1D(Form("h_True%d",i),"test",60,0,3);
-                                                        //CCQE//
-    vlist_EnuWC_CCQE.push_back(h_EnuWC);
-    vlist_EnuPanN_CCQE.push_back(h_EnuPanN);
-    vlist_EnuPan0_CCQE.push_back(h_EnuPan0);
-    vlist_EnuDL_CCQE.push_back(h_EnuDL);
-
-    /*vlist_EnuWC_norw_CCQE.push_back(h_EnuWC_norw);
-    vlist_EnuPanN_norw_CCQE.push_back(h_EnuPanN_norw);
-    vlist_EnuPan0_norw_CCQE.push_back(h_EnuPan0_norw);
-    vlist_EnuDL_norw_CCQE.push_back(h_EnuDL_norw);*/
-                                                            //CCRES//
-    vlist_EnuWC_CCRES.push_back(h_EnuWC);
-    vlist_EnuPanN_CCRES.push_back(h_EnuPanN);
-    vlist_EnuPan0_CCRES.push_back(h_EnuPan0);
-    vlist_EnuDL_CCRES.push_back(h_EnuDL);
-
-    /*vlist_EnuWC_norw_CCRES.push_back(h_EnuWC_norw);
-    vlist_EnuPanN_norw_CCRES.push_back(h_EnuPanN_norw);
-    vlist_EnuPan0_norw_CCRES.push_back(h_EnuPan0_norw);
-    vlist_EnuDL_norw_CCRES.push_back(h_EnuDL_norw);*/
-                                                        //CCMEC//
-    vlist_EnuWC_CCMEC.push_back(h_EnuWC);
-    vlist_EnuPanN_CCMEC.push_back(h_EnuPanN);
-    vlist_EnuPan0_CCMEC.push_back(h_EnuPan0);
-    vlist_EnuDL_CCMEC.push_back(h_EnuDL);
-
-    /*vlist_EnuWC_norw_CCMEC.push_back(h_EnuWC_norw);
-    vlist_EnuPanN_norw_CCMEC.push_back(h_EnuPanN_norw);
-    vlist_EnuPan0_norw_CCMEC.push_back(h_EnuPan0_norw);
-    vlist_EnuDL_norw_CCMEC.push_back(h_EnuDL_norw);*/
-                                                        //CCDIS//
-    vlist_EnuWC_CCDIS.push_back(h_EnuWC);
-    vlist_EnuPanN_CCDIS.push_back(h_EnuPanN);
-    vlist_EnuPan0_CCDIS.push_back(h_EnuPan0);
-    vlist_EnuDL_CCDIS.push_back(h_EnuDL);
-
-    /*vlist_EnuWC_norw_CCDIS.push_back(h_EnuWC_norw);
-    vlist_EnuPanN_norw_CCDIS.push_back(h_EnuPanN_norw);
-    vlist_EnuPan0_norw_CCDIS.push_back(h_EnuPan0_norw);
-    vlist_EnuDL_norw_CCDIS.push_back(h_EnuDL_norw);*/
-
-      vlist_True.push_back(h_True);
-  }
-  
 
 //********************************************Start_of_the_loop_for_events*********************************************************************//   
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -1275,7 +781,7 @@ int CCCOH_bin=0;
       Type test;
       test=find_elements(Epion, Esum,npospion,nnegpion, nnpion, nproton);
       //std::cout<<" EnuPanN is "<<test.Is_EnuPanN<<" Value is "<<test.Reco_EnuPanN<<std::endl;
-      
+
       if (evType==1)
       {
 //*******************************************************finding_bin_for_CCQE******************************************************************//
@@ -1283,48 +789,43 @@ int CCCOH_bin=0;
       
       TrueEnu_CCQE_GiBBU->Fill(lepIn_E,weight);
       nCCQE=nCCQE+TMatrixDRow(*m,CCQE_bin-1)[0];
-      is_CCQE=1;
       
       TrueEnu_CCQE_GiBBU_Reweighted->Fill(lepIn_E,weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
-      //TrueEnu_CCQE_GiBBU_Reweighted->Fill(lepIn_E,TMatrixDRow(*m,CCQE_bin-1)[0]);
-      nCCQE_rw=nCCQE_rw+weight*TMatrixDRow(*m,CCQE_bin-1)[0]; 
+
+      nCCQE_rw=nCCQE_rw+weight*TMatrixDRow(*m,CCQE_bin-1)[0];
+
  //***********************************************************************************************************************************************//
 //*****************************Filling_the_vectors_by_calling_the_function********************************************************************//
-//*****************************************************************************************************************************************//     
-calculate_histograms(vlist_EnuWC_CCQE,vlist_EnuPanN_CCQE, vlist_EnuPan0_CCQE,vlist_EnuDL_CCQE,vlist_EnuWC_CCRES,vlist_EnuPanN_CCRES, vlist_EnuPan0_CCRES,vlist_EnuDL_CCRES, vlist_EnuWC_CCMEC,vlist_EnuPanN_CCMEC, vlist_EnuPan0_CCMEC,vlist_EnuDL_CCMEC,vlist_EnuWC_CCDIS,vlist_EnuPanN_CCDIS, vlist_EnuPan0_CCDIS,vlist_EnuDL_CCDIS,is_CCQE,is_CCRES,is_CCMEC,is_CCDIS,vlist_True,lepIn_E, test.Is_EnuPanN, test.Is_EnuPan0, test.Is_EnuDL,test.Reco_EnuWC,test.Reco_EnuPanN,test.Reco_EnuPan0,test.Reco_EnuDL,weight,TMatrixDRow(*m,CCQE_bin-1)[0]);
-      
+//*****************************************************************************************************************************************//
          /// 1muon+ X proton //// Wire Cell signal (any number of protons)
-	 EnuWC_CCQE_GiBBU->Fill(GetEuB(Epion, Esum, 3 , nproton),weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
+	 EnuWC_CCQE_GiBBU->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
 	 //EnuWC_CCQE_GiBBU_GENIE_norw->Fill(GetEuB(Epion, Esum, 3 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCQE_bin-1)[0]);
-	 EnuWC_CCQE_GiBBUnorw->Fill(GetEuB(Epion, Esum, 3 , nproton),weight);
-	 hprof_EnuWC_GiBBU->Fill(lepIn_E,lepIn_E - GetEuB(Epion, Esum, 3 , nproton),weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
-	 hprof_EnuWC_GiBBUnorw->Fill(lepIn_E,lepIn_E - GetEuB(Epion, Esum, 3 , nproton),weight);
+	 EnuWC_CCQE_GiBBUnorw->Fill(test.Reco_EnuWC,weight);
+	 hprof_EnuWC_GiBBU_CCQE->Fill(lepIn_E,lepIn_E - test.Reco_EnuWC,weight);
 	 
 	 /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
-	 if ((npospion + nnegpion + nnpion + nproton) ==0){
-	   EnuPan0_CCQE_GiBBU->Fill(GetEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
+	 if (test.Is_EnuPan0 ==1){
+	   EnuPan0_CCQE_GiBBU->Fill(test.Reco_EnuPan0,weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
 	   //EnuPan0_CCQE_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCQE_bin-1)[0]);
-	   EnuPan0_CCQE_GiBBUnorw->Fill(GetEuB(0, Esum, 1 , nproton),weight);
-	   hprof_EnuPan0_GiBBU->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
-	   hprof_EnuPan0_GiBBUnorw->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 1 , nproton),weight);
+	   EnuPan0_CCQE_GiBBUnorw->Fill(test.Reco_EnuPan0,weight);
+	   hprof_EnuPan0_GiBBU_CCQE->Fill(lepIn_E,lepIn_E - test.Reco_EnuPan0,weight);
 	 }
 	 
 	 /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
-	 if (((npospion + nnegpion + nnpion) ==0) && (nproton > 0)) {
-	   EnuPanN_CCQE_GiBBU->Fill(GetEuB(0, Esum, 1 , nproton), weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
+	 if (test.Is_EnuPanN==1) {
+	   EnuPanN_CCQE_GiBBU->Fill(test.Reco_EnuPanN, weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
 	   //EnuPanN_CCQE_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 1 , nproton), weight*TMatrixDRow(*m_GENIE_norw,CCQE_bin-1)[0]);
-	   EnuPanN_CCQE_GiBBUnorw->Fill(GetEuB(0, Esum, 1 , nproton),weight);
-	   hprof_EnuPanN_GiBBU->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
-	   hprof_EnuPanN_GiBBUnorw->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 1 , nproton),weight);
+	   EnuPanN_CCQE_GiBBUnorw->Fill(test.Reco_EnuPanN,weight);
+	   hprof_EnuPanN_GiBBU_CCQE->Fill(lepIn_E,lepIn_E - test.Reco_EnuPanN,weight);
 	 }
 	 
 	 //// 1muon+1 proton //// Deep Learning signal
-	 if (((npospion + nnegpion + nnpion) ==0) && (nproton ==1)) {
-	   EnuDL_CCQE_GiBBU->Fill(GetEuB(0, Esum, 2 , nproton), weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
+	 if (test.Is_EnuDL==1) {
+	   EnuDL_CCQE_GiBBU->Fill(test.Reco_EnuDL, weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
 	   //EnuDL_CCQE_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 2 , nproton), weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
-	   EnuDL_CCQE_GiBBUnorw->Fill(GetEuB(0, Esum, 2 , nproton),weight);
-	   hprof_EnuDL_GiBBU->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 2 , nproton),weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
-	   hprof_EnuDL_GiBBUnorw->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 2 , nproton),weight);
+	   EnuDL_CCQE_GiBBUnorw->Fill(test.Reco_EnuDL,weight);
+	   hprof_EnuDL_GiBBU_CCQE->Fill(lepIn_E,lepIn_E - test.Reco_EnuDL,weight);
+
 	 }
 	 
       }
@@ -1342,40 +843,38 @@ calculate_histograms(vlist_EnuWC_CCQE,vlist_EnuPanN_CCQE, vlist_EnuPan0_CCQE,vli
       
  //***************************************************************************************************************************************//
 //*****************************Filling_the_vectors_by_calling_the_function********************************************************************//
-//*****************************************************************************************************************************************//     
-          calculate_histograms(vlist_EnuWC_CCQE,vlist_EnuPanN_CCQE, vlist_EnuPan0_CCQE,vlist_EnuDL_CCQE,vlist_EnuWC_CCRES,vlist_EnuPanN_CCRES, vlist_EnuPan0_CCRES,vlist_EnuDL_CCRES, vlist_EnuWC_CCMEC,vlist_EnuPanN_CCMEC, vlist_EnuPan0_CCMEC,vlist_EnuDL_CCMEC,vlist_EnuWC_CCDIS,vlist_EnuPanN_CCDIS, vlist_EnuPan0_CCDIS,vlist_EnuDL_CCDIS,is_CCQE,is_CCRES,is_CCMEC,is_CCDIS,vlist_True,lepIn_E, test.Is_EnuPanN, test.Is_EnuPan0, test.Is_EnuDL,test.Reco_EnuWC,test.Reco_EnuPanN,test.Reco_EnuPan0,test.Reco_EnuDL,weight,TMatrixDRow(*m,CCRES_bin-1)[0]);
- 
-        /// 1muon+ X proton //// Wire Cell signal (any number of protons)
-	 EnuWC_CCRES_GiBBU->Fill(GetEuB(Epion, Esum, 3 , nproton),weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
-	 //EnuWC_CCRES_GiBBU_GENIE_norw->Fill(GetEuB(Epion, Esum, 3 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCRES_bin-1)[2]);
-	 EnuWC_CCRES_GiBBUnorw->Fill(GetEuB(Epion, Esum, 3 , nproton),weight);
-	 hprof_EnuWC_GiBBU->Fill(lepIn_E,lepIn_E - GetEuB(Epion, Esum, 3 , nproton),weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
-	 hprof_EnuWC_GiBBUnorw->Fill(lepIn_E,lepIn_E - GetEuB(Epion, Esum, 3 , nproton),weight);
-	 
-	 /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
-	 if ((npospion + nnegpion + nnpion + nproton) ==0){
-	   EnuPan0_CCRES_GiBBU->Fill(GetEuB(0, Esum, 1 , nproton), weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
-	   //EnuPan0_CCRES_GiBBU_GENIE_norw->Fill(GetEuB(Epion, Esum, 3 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCRES_bin-1)[2]);
-	   EnuPan0_CCRES_GiBBUnorw->Fill(GetEuB(0, Esum, 1 , nproton),weight);
-	   hprof_EnuPan0_GiBBU->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
-	   hprof_EnuPan0_GiBBUnorw->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 1 , nproton),weight);
-	 }
-	 
-	 /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
-	 if (((npospion + nnegpion + nnpion) ==0) && nproton > 0) {
-	   EnuPanN_CCRES_GiBBU->Fill(GetEuB(0, Esum, 1 , nproton), weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
-	   EnuPanN_CCRES_GiBBUnorw->Fill(GetEuB(0, Esum, 1 , nproton),weight);
-	   hprof_EnuPanN_GiBBU->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
-	   hprof_EnuPanN_GiBBUnorw->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 1 , nproton),weight);
-	 }
-	 
-	 //// 1muon+1 proton //// Deep Learning signal
-	 if (((npospion + nnegpion + nnpion) ==0) && nproton ==1) {
-	   EnuDL_CCRES_GiBBU->Fill(GetEuB(0, Esum, 2 , nproton), weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
-	   EnuDL_CCRES_GiBBUnorw->Fill(GetEuB(0, Esum, 2 , nproton),weight);
-	   hprof_EnuDL_GiBBU->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 2 , nproton),weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
-	   hprof_EnuDL_GiBBUnorw->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 2 , nproton),weight);
-	 }
+//*****************************************************************************************************************************************//
+
+          /// 1muon+ X proton //// Wire Cell signal (any number of protons)
+          EnuWC_CCRES_GiBBU->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCRES_bin-1)[0]);
+          //EnuWC_CCRES_GiBBU_GENIE_norw->Fill(GetEuB(Epion, Esum, 3 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCRES_bin-1)[0]);
+          EnuWC_CCRES_GiBBUnorw->Fill(test.Reco_EnuWC,weight);
+          hprof_EnuWC_GiBBU_CCRES->Fill(lepIn_E,lepIn_E - test.Reco_EnuWC,weight);
+
+          /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
+          if (test.Is_EnuPan0 ==1){
+              EnuPan0_CCRES_GiBBU->Fill(test.Reco_EnuPan0,weight*TMatrixDRow(*m,CCRES_bin-1)[0]);
+              //EnuPan0_CCRES_GiBBU_GENIE_norw->Fill(Gestd::cout<<" WC is "<<Mean_EnuWC_diff[i]<<" WC_norw is "<<Mean_EnuWC_norw_diff[i]<<" pan0 is "<<Mean_EnuPan0_diff[i]<<" pan0_norw is "<<Mean_EnuWC_norw_diff[i]<<" PanN is "<<Mean_EnuPanN_diff[i]<<" PanN_norw is "<<Mean_EnutEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCRES_bin-1)[0]);
+              EnuPan0_CCRES_GiBBUnorw->Fill(test.Reco_EnuPan0,weight);
+              hprof_EnuPan0_GiBBU_CCRES->Fill(lepIn_E,lepIn_E - test.Reco_EnuPan0,weight);
+          }
+
+          /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
+          if (test.Is_EnuPanN==1) {
+              EnuPanN_CCRES_GiBBU->Fill(test.Reco_EnuPanN, weight*TMatrixDRow(*m,CCRES_bin-1)[0]);
+              //EnuPanN_CCRES_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 1 , nproton), weight*TMatrixDRow(*m_GENIE_norw,CCRES_bin-1)[0]);
+              EnuPanN_CCRES_GiBBUnorw->Fill(test.Reco_EnuPanN,weight);
+              hprof_EnuPanN_GiBBU_CCRES->Fill(lepIn_E,lepIn_E - test.Reco_EnuPanN,weight);
+          }
+
+          //// 1muon+1 proton //// Deep Learning signal
+          if (test.Is_EnuDL==1) {
+              EnuDL_CCRES_GiBBU->Fill(test.Reco_EnuDL, weight*TMatrixDRow(*m,CCRES_bin-1)[0]);
+              //EnuDL_CCRES_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 2 , nproton), weight*TMatrixDRow(*m,CCRES_bin-1)[0]);
+              EnuDL_CCRES_GiBBUnorw->Fill(test.Reco_EnuDL,weight);
+              hprof_EnuDL_GiBBU_CCRES->Fill(lepIn_E,lepIn_E - test.Reco_EnuDL,weight);
+
+          }
 
       }
       //if (evType==32){std::cout<<" I got em "<<std::endl;}
@@ -1394,39 +893,40 @@ calculate_histograms(vlist_EnuWC_CCQE,vlist_EnuPanN_CCQE, vlist_EnuPan0_CCQE,vli
       
 //*****************************************************************************************************************************************//
 //*****************************Filling_the_vectors_by_calling_the_function********************************************************************//
-//*****************************************************************************************************************************************//     
-          calculate_histograms(vlist_EnuWC_CCQE,vlist_EnuPanN_CCQE, vlist_EnuPan0_CCQE,vlist_EnuDL_CCQE,vlist_EnuWC_CCRES,vlist_EnuPanN_CCRES, vlist_EnuPan0_CCRES,vlist_EnuDL_CCRES, vlist_EnuWC_CCMEC,vlist_EnuPanN_CCMEC, vlist_EnuPan0_CCMEC,vlist_EnuDL_CCMEC,vlist_EnuWC_CCDIS,vlist_EnuPanN_CCDIS, vlist_EnuPan0_CCDIS,vlist_EnuDL_CCDIS,is_CCQE,is_CCRES,is_CCMEC,is_CCDIS,vlist_True,lepIn_E, test.Is_EnuPanN, test.Is_EnuPan0, test.Is_EnuDL,test.Reco_EnuWC,test.Reco_EnuPanN,test.Reco_EnuPan0,test.Reco_EnuDL,weight,TMatrixDRow(*m,CCDIS_bin-1)[0]);
-      
-      
+//*****************************************************************************************************************************************//
           /// 1muon+ X proton //// Wire Cell signal (any number of protons)
-	 EnuWC_CCDIS_GiBBU->Fill(GetEuB(Epion, Esum, 3 , nproton), weight*TMatrixDRow(*m,CCDIS_bin-1)[3]);
-	 EnuWC_CCDIS_GiBBUnorw->Fill(GetEuB(Epion, Esum, 3 , nproton),weight);
-	 hprof_EnuWC_GiBBU->Fill(lepIn_E,lepIn_E - GetEuB(Epion, Esum, 3 , nproton),weight*TMatrixDRow(*m,CCDIS_bin-1)[3]);
-	 hprof_EnuWC_GiBBUnorw->Fill(lepIn_E,lepIn_E - GetEuB(Epion, Esum, 3 , nproton),weight);
-	 
-	 /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
-	 if ((npospion + nnegpion + nnpion + nproton) ==0){
-	   EnuPan0_CCDIS_GiBBU->Fill(GetEuB(0, Esum, 1 , nproton), weight*TMatrixDRow(*m,CCDIS_bin-1)[3]);
-	   EnuPan0_CCDIS_GiBBUnorw->Fill(GetEuB(0, Esum, 1 , nproton),weight);
-	   hprof_EnuPan0_GiBBU->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m,CCDIS_bin-1)[3]);
-	   hprof_EnuPan0_GiBBUnorw->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 1 , nproton),weight);
-	 }
-	 
-	 /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
-	 if (((npospion + nnegpion + nnpion) ==0) && nproton > 0) {
-	   EnuPanN_CCDIS_GiBBU->Fill(GetEuB(0, Esum, 1 , nproton), weight*TMatrixDRow(*m,CCDIS_bin-1)[3]);
-	   EnuPanN_CCDIS_GiBBUnorw->Fill(GetEuB(0, Esum, 1 , nproton),weight);
-	   hprof_EnuPanN_GiBBU->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m,CCDIS_bin-1)[3]);
-	   hprof_EnuPanN_GiBBUnorw->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 1 , nproton),weight);
-	 }
-	 
-	 //// 1muon+1 proton //// Deep Learning signal
-	 if (((npospion + nnegpion + nnpion) ==0) && nproton ==1) {
-	   EnuDL_CCDIS_GiBBU->Fill(GetEuB(0, Esum, 2 , nproton), weight*TMatrixDRow(*m,CCDIS_bin-1)[3]);
-	   EnuDL_CCDIS_GiBBUnorw->Fill(GetEuB(0, Esum, 2 , nproton),weight);
-	   hprof_EnuDL_GiBBU->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 2, nproton),weight*TMatrixDRow(*m,CCDIS_bin-1)[3]);
-	   hprof_EnuDL_GiBBUnorw->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 2 , nproton),weight);
-	 } 
+          EnuWC_CCDIS_GiBBU->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCDIS_bin-1)[0]);
+          //EnuWC_CCDIS_GiBBU_GENIE_norw->Fill(GetEuB(Epion, Esum, 3 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCDIS_bin-1)[0]);
+          EnuWC_CCDIS_GiBBUnorw->Fill(test.Reco_EnuWC,weight);
+          hprof_EnuWC_GiBBU_CCDIS->Fill(lepIn_E,lepIn_E - test.Reco_EnuWC,weight);
+
+          /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
+          if (test.Is_EnuPan0 ==1){
+              EnuPan0_CCDIS_GiBBU->Fill(test.Reco_EnuPan0,weight*TMatrixDRow(*m,CCDIS_bin-1)[0]);
+              //EnuPan0_CCDIS_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCDIS_bin-1)[0]);
+              EnuPan0_CCDIS_GiBBUnorw->Fill(test.Reco_EnuPan0,weight);
+              hprof_EnuPan0_GiBBU_CCDIS->Fill(lepIn_E,lepIn_E - test.Reco_EnuPan0,weight);
+          }
+
+          /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
+          if (test.Is_EnuPanN==1) {
+              EnuPanN_CCDIS_GiBBU->Fill(test.Reco_EnuPanN, weight*TMatrixDRow(*m,CCDIS_bin-1)[0]);
+              //EnuPanN_CCDIS_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 1 , nproton), weight*TMatrixDRow(*m_GENIE_norw,CCDIS_bin-1)[0]);
+              EnuPanN_CCDIS_GiBBUnorw->Fill(test.Reco_EnuPanN,weight);
+              hprof_EnuPanN_GiBBU_CCDIS->Fill(lepIn_E,lepIn_E - test.Reco_EnuPanN,weight);
+          }
+
+          //// 1muon+1 proton //// Deep Learning signal
+          if (test.Is_EnuDL==1) {
+              EnuDL_CCDIS_GiBBU->Fill(test.Reco_EnuDL, weight*TMatrixDRow(*m,CCDIS_bin-1)[0]);
+              //EnuDL_CCDIS_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 2 , nproton), weight*TMatrixDRow(*m,CCDIS_bin-1)[0]);
+              EnuDL_CCDIS_GiBBUnorw->Fill(test.Reco_EnuDL,weight);
+              hprof_EnuDL_GiBBU_CCDIS->Fill(lepIn_E,lepIn_E - test.Reco_EnuDL,weight);
+
+          }
+
+
+
       }
       /*else if (evType==33)
       {
@@ -1454,40 +954,39 @@ calculate_histograms(vlist_EnuWC_CCQE,vlist_EnuPanN_CCQE, vlist_EnuPan0_CCQE,vli
       
 //********************************************************************************************************************************************//
 //*****************************Filling_the_vectors_by_calling_the_function********************************************************************//
-//*****************************************************************************************************************************************//     
-          calculate_histograms(vlist_EnuWC_CCQE,vlist_EnuPanN_CCQE, vlist_EnuPan0_CCQE,vlist_EnuDL_CCQE,vlist_EnuWC_CCRES,vlist_EnuPanN_CCRES, vlist_EnuPan0_CCRES,vlist_EnuDL_CCRES, vlist_EnuWC_CCMEC,vlist_EnuPanN_CCMEC, vlist_EnuPan0_CCMEC,vlist_EnuDL_CCMEC,vlist_EnuWC_CCDIS,vlist_EnuPanN_CCDIS, vlist_EnuPan0_CCDIS,vlist_EnuDL_CCDIS,is_CCQE,is_CCRES,is_CCMEC,is_CCDIS,vlist_True,lepIn_E, test.Is_EnuPanN, test.Is_EnuPan0, test.Is_EnuDL,test.Reco_EnuWC,test.Reco_EnuPanN,test.Reco_EnuPan0,test.Reco_EnuDL,weight,TMatrixDRow(*m,CCMEC_bin-1)[0]);
+//*****************************************************************************************************************************************//
 
           /// 1muon+ X proton //// Wire Cell signal (any number of protons)
-	 EnuWC_CCMEC_GiBBU->Fill(GetEuB(Epion, Esum, 3 , nproton), weight*TMatrixDRow(*m,CCMEC_bin-1)[1]);
-	 EnuWC_CCMEC_GiBBUnorw->Fill(GetEuB(Epion, Esum, 3 , nproton),weight);
-	 hprof_EnuWC_GiBBU->Fill(lepIn_E,lepIn_E - GetEuB(Epion, Esum, 3 , nproton),weight*TMatrixDRow(*m,CCMEC_bin-1)[1]);
-	 hprof_EnuWC_GiBBUnorw->Fill(lepIn_E,lepIn_E - GetEuB(Epion, Esum, 3 , nproton),weight);
-	 
-	 /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
-	 if ((npospion + nnegpion + nnpion + nproton) ==0){
-	   EnuPan0_CCMEC_GiBBU->Fill(GetEuB(0, Esum, 1 , nproton), weight*TMatrixDRow(*m,CCMEC_bin-1)[1]);
-	   EnuPan0_CCMEC_GiBBUnorw->Fill(GetEuB(0, Esum, 1 , nproton),weight);
-	   hprof_EnuPan0_GiBBU->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m,CCMEC_bin-1)[1]);
-	   hprof_EnuPan0_GiBBUnorw->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 1 , nproton),weight);
-	 }
-	 
-	 /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
-	 if (((npospion + nnegpion + nnpion) ==0) && nproton > 0) {
-	 //std::cout<<" Is there any PanN data "<<std::endl;
-	   EnuPanN_CCMEC_GiBBU->Fill(GetEuB(0, Esum, 1 , nproton), weight*TMatrixDRow(*m,CCMEC_bin-1)[1]);
-	   EnuPanN_CCMEC_GiBBUnorw->Fill(GetEuB(0, Esum, 1 , nproton),weight);
-	   hprof_EnuPanN_GiBBU->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m,CCMEC_bin-1)[1]);
-	   hprof_EnuPanN_GiBBUnorw->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 1 , nproton),weight);
-	 }
-	 
-	 //// 1muon+1 proton //// Deep Learning signal
-	 if (((npospion + nnegpion + nnpion) ==0) && nproton ==1) {
-	 //std::cout<<" Is there any EnuDL data "<<std::endl;
-	   EnuDL_CCMEC_GiBBU->Fill(GetEuB(0, Esum, 2 , nproton), weight*TMatrixDRow(*m,CCMEC_bin-1)[1]);
-	   EnuDL_CCMEC_GiBBUnorw->Fill(GetEuB(0, Esum, 2 , nproton),weight);
-	   hprof_EnuDL_GiBBU->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 2 , nproton),weight*TMatrixDRow(*m,CCMEC_bin-1)[1]);
-	   hprof_EnuDL_GiBBUnorw->Fill(lepIn_E,lepIn_E - GetEuB(0, Esum, 2 , nproton),weight);
-	 }
+          EnuWC_CCMEC_GiBBU->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCMEC_bin-1)[0]);
+          //EnuWC_CCMEC_GiBBU_GENIE_norw->Fill(GetEuB(Epion, Esum, 3 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCMEC_bin-1)[0]);
+          EnuWC_CCMEC_GiBBUnorw->Fill(test.Reco_EnuWC,weight);
+          hprof_EnuWC_GiBBU_CCMEC->Fill(lepIn_E,lepIn_E - test.Reco_EnuWC,weight);
+
+          /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
+          if (test.Is_EnuPan0 ==1){
+              EnuPan0_CCMEC_GiBBU->Fill(test.Reco_EnuPan0,weight*TMatrixDRow(*m,CCMEC_bin-1)[0]);
+              //EnuPan0_CCMEC_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCMEC_bin-1)[0]);
+              EnuPan0_CCMEC_GiBBUnorw->Fill(test.Reco_EnuPan0,weight);
+              hprof_EnuPan0_GiBBU_CCMEC->Fill(lepIn_E,lepIn_E - test.Reco_EnuPan0,weight);
+          }
+
+          /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
+          if (test.Is_EnuPanN==1) {
+              EnuPanN_CCMEC_GiBBU->Fill(test.Reco_EnuPanN, weight*TMatrixDRow(*m,CCMEC_bin-1)[0]);
+              //EnuPanN_CCMEC_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 1 , nproton), weight*TMatrixDRow(*m_GENIE_norw,CCMEC_bin-1)[0]);
+              EnuPanN_CCMEC_GiBBUnorw->Fill(test.Reco_EnuPanN,weight);
+              hprof_EnuPanN_GiBBU_CCMEC->Fill(lepIn_E,lepIn_E - test.Reco_EnuPanN,weight);
+          }
+
+          //// 1muon+1 proton //// Deep Learning signal
+          if (test.Is_EnuDL==1) {
+              EnuDL_CCMEC_GiBBU->Fill(test.Reco_EnuDL, weight*TMatrixDRow(*m,CCMEC_bin-1)[0]);
+              //EnuDL_CCMEC_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 2 , nproton), weight*TMatrixDRow(*m,CCMEC_bin-1)[0]);
+              EnuDL_CCMEC_GiBBUnorw->Fill(test.Reco_EnuDL,weight);
+              hprof_EnuDL_GiBBU_CCMEC->Fill(lepIn_E,lepIn_E - test.Reco_EnuDL,weight);
+
+          }
+
       }
       /*else if (evType==36)
       {
@@ -1684,22 +1183,42 @@ calculate_histograms(vlist_EnuWC_CCQE,vlist_EnuPanN_CCQE, vlist_EnuPan0_CCQE,vli
    }
    
 //std::cout<<" count_1 is  "<<count_1<<" count_2 "<<count_2<<" count_3 "<<count_3<<" count_4 "<<count_4<<std::endl;
+double WC=0;
+double PanN=0;
+double Pan0=0;
+double DL=0;
+
+double WC_norw=0;
+double PanN_norw=0;
+double Pan0_norw=0;
+double DL_norw=0;
 
 for (int i=0;i<13;i++)
 {
- Mean_EnuWC_diff[i]=(vlist_True.at(i)->GetMean())-((0.613186*vlist_EnuWC_CCQE.at(i)->GetMean())+(0.201709*vlist_EnuWC_CCMEC.at(i)->GetMean())+(0.169656*vlist_EnuWC_CCRES.at(i)->GetMean())+(0.0154491*vlist_EnuWC_CCDIS.at(i)->GetMean()));
- Mean_EnuPanN_diff[i]=(vlist_True.at(i)->GetMean())-((0.613186*vlist_EnuPanN_CCQE.at(i)->GetMean())+(0.201709*vlist_EnuPanN_CCMEC.at(i)->GetMean())+(0.169656*vlist_EnuPanN_CCRES.at(i)->GetMean())+(0.0154491*vlist_EnuPanN_CCDIS.at(i)->GetMean()));
- Mean_EnuPan0_diff[i]=(vlist_True.at(i)->GetMean())-((0.613186*vlist_EnuPan0_CCQE.at(i)->GetMean())+(0.201709*vlist_EnuPan0_CCMEC.at(i)->GetMean())+(0.169656*vlist_EnuPan0_CCRES.at(i)->GetMean())+(0.0154491*vlist_EnuPan0_CCDIS.at(i)->GetMean()));
- Mean_EnuDL_diff[i]=(vlist_True.at(i)->GetMean())-((0.613186*vlist_EnuDL_CCQE.at(i)->GetMean())+(0.201709*vlist_EnuDL_CCMEC.at(i)->GetMean())+(0.169656*vlist_EnuDL_CCRES.at(i)->GetMean())+(0.0154491*vlist_EnuDL_CCDIS.at(i)->GetMean()));
+    WC_norw=((0.490203*hprof_EnuWC_GiBBU_CCQE->GetBinContent(i+1))+(0.245281*hprof_EnuWC_GiBBU_CCRES->GetBinContent(i+1))+(0.187423*hprof_EnuWC_GiBBU_CCMEC->GetBinContent(i+1))+(0.0770936*hprof_EnuWC_GiBBU_CCDIS->GetBinContent(i+1)));
+    PanN_norw=((0.490203*hprof_EnuPanN_GiBBU_CCQE->GetBinContent(i+1))+(0.245281*hprof_EnuPanN_GiBBU_CCRES->GetBinContent(i+1))+(0.187423*hprof_EnuPanN_GiBBU_CCMEC->GetBinContent(i+1))+(0.0770936*hprof_EnuPanN_GiBBU_CCDIS->GetBinContent(i+1)));
+    Pan0_norw=((0.490203*hprof_EnuPan0_GiBBU_CCQE->GetBinContent(i+1))+(0.245281*hprof_EnuPan0_GiBBU_CCRES->GetBinContent(i+1))+(0.187423*hprof_EnuPan0_GiBBU_CCMEC->GetBinContent(i+1))+(0.0770936*hprof_EnuPan0_GiBBU_CCDIS->GetBinContent(i+1)));
+    DL_norw=((0.490203*hprof_EnuDL_GiBBU_CCQE->GetBinContent(i+1))+(0.245281*hprof_EnuDL_GiBBU_CCRES->GetBinContent(i+1))+(0.187423*hprof_EnuDL_GiBBU_CCMEC->GetBinContent(i+1))+(0.0770936*hprof_EnuDL_GiBBU_CCDIS->GetBinContent(i+1)));
+
+    WC=((0.490203*hprof_EnuWC_GiBBU_CCQE->GetBinContent(i+1)*TMatrixDRow(*m,i)[0])+(0.245281*hprof_EnuWC_GiBBU_CCRES->GetBinContent(i+1)*TMatrixDRow(*m,i)[2])+(0.187423*hprof_EnuWC_GiBBU_CCMEC->GetBinContent(i+1)*TMatrixDRow(*m,i)[1])+(0.0770936*hprof_EnuWC_GiBBU_CCDIS->GetBinContent(i+1)*TMatrixDRow(*m,i)[3]));
+    PanN=((0.490203*hprof_EnuPanN_GiBBU_CCQE->GetBinContent(i+1)*TMatrixDRow(*m,i)[0])+(0.245281*hprof_EnuPanN_GiBBU_CCRES->GetBinContent(i+1)*TMatrixDRow(*m,i)[2])+(0.187423*hprof_EnuPanN_GiBBU_CCMEC->GetBinContent(i+1)*TMatrixDRow(*m,i)[1])+(0.0770936*hprof_EnuPanN_GiBBU_CCDIS->GetBinContent(i+1)*TMatrixDRow(*m,i)[3]));
+    Pan0=((0.490203*hprof_EnuPan0_GiBBU_CCQE->GetBinContent(i+1)*TMatrixDRow(*m,i)[0])+(0.245281*hprof_EnuPan0_GiBBU_CCRES->GetBinContent(i+1)*TMatrixDRow(*m,i)[2])+(0.187423*hprof_EnuPan0_GiBBU_CCMEC->GetBinContent(i+1)*TMatrixDRow(*m,i)[1])+(0.0770936*hprof_EnuPan0_GiBBU_CCDIS->GetBinContent(i+1)*TMatrixDRow(*m,i)[3]));
+    DL=((0.490203*hprof_EnuDL_GiBBU_CCQE->GetBinContent(i+1)*TMatrixDRow(*m,i)[0])+(0.245281*hprof_EnuDL_GiBBU_CCRES->GetBinContent(i+1)*TMatrixDRow(*m,i)[2])+(0.187423*hprof_EnuDL_GiBBU_CCMEC->GetBinContent(i+1)*TMatrixDRow(*m,i)[1])+(0.0770936*hprof_EnuDL_GiBBU_CCDIS->GetBinContent(i+1)*TMatrixDRow(*m,i)[3]));
+
+
+    Mean_EnuWC_diff[i]=WC;
+    Mean_EnuPanN_diff[i]=PanN;
+    Mean_EnuPan0_diff[i]=Pan0;
+    Mean_EnuDL_diff[i]=DL;
  
- Mean_EnuWC_norw_diff[i]=(vlist_True.at(i)->GetMean())-((vlist_EnuWC_CCQE.at(i)->GetMean())+(vlist_EnuWC_CCMEC.at(i)->GetMean())+(vlist_EnuWC_CCRES.at(i)->GetMean())+(vlist_EnuWC_CCDIS.at(i)->GetMean()));
- Mean_EnuPanN_norw_diff[i]=(vlist_True.at(i)->GetMean())-((vlist_EnuPanN_CCQE.at(i)->GetMean())+(vlist_EnuPanN_CCMEC.at(i)->GetMean())+(vlist_EnuPanN_CCRES.at(i)->GetMean())+(vlist_EnuPanN_CCDIS.at(i)->GetMean()));
- Mean_EnuPan0_norw_diff[i]=(vlist_True.at(i)->GetMean())-((vlist_EnuPan0_CCQE.at(i)->GetMean())+(vlist_EnuPan0_CCMEC.at(i)->GetMean())+(vlist_EnuPan0_CCRES.at(i)->GetMean())+(vlist_EnuPan0_CCDIS.at(i)->GetMean()));
- Mean_EnuDL_norw_diff[i]=(vlist_True.at(i)->GetMean())-((vlist_EnuDL_CCQE.at(i)->GetMean())+(vlist_EnuDL_CCMEC.at(i)->GetMean())+(vlist_EnuDL_CCRES.at(i)->GetMean())+(vlist_EnuDL_CCDIS.at(i)->GetMean()));
+    Mean_EnuWC_norw_diff[i]=WC_norw;
+    Mean_EnuPanN_norw_diff[i]=PanN_norw;
+    Mean_EnuPan0_norw_diff[i]=Pan0_norw;
+    Mean_EnuDL_norw_diff[i]=DL_norw;
  
- Mean_True_a[i]=vlist_True.at(i)->GetMean();
- std::cout<<" WC is "<<Mean_EnuWC_diff[i]<<" WC_norw is "<<Mean_EnuWC_norw_diff[i]<<" pan0 is "<<Mean_EnuPan0_diff[i]<<" pan0_norw is "<<Mean_EnuWC_norw_diff[i]<<" PanN is "<<Mean_EnuPanN_diff[i]<<" PanN_norw is "<<Mean_EnuPanN_norw_diff[i]<<" DL is "<<Mean_EnuDL_diff[i]<<" DL_norw is "<<Mean_EnuDL_norw_diff[i]<<" True energy is "<<vlist_True.at(i)->GetMean()<<std::endl;
- 
+ Mean_True_a[i]=hprof_EnuDL_GiBBU_CCQE->GetXaxis()->GetBinCenter(i+1);
+ std::cout<<" WC is "<<Mean_EnuWC_diff[i]<<" WC_norw is "<<WC_norw<<" pan0 is "<<Mean_EnuPan0_diff[i]<<" pan0_norw is "<<Pan0_norw<<" PanN is "<<Mean_EnuPanN_diff[i]<<" PanN_norw is "<<PanN_norw<<" DL is "<<Mean_EnuDL_diff[i]<<" DL_norw is "<<DL_norw<<" True energy is "<<Mean_True_a[i]<<std::endl;
+ //std::cout<<" CCQE: "<<TMatrixDRow(*m,i)[0]<<" CCMEC: "<<TMatrixDRow(*m,i)[1]<<" CCRES: "<<TMatrixDRow(*m,i)[2]<<" CCDIS: "<<TMatrixDRow(*m,i)[3]<<std::endl;
 }
 
 
@@ -1725,6 +1244,32 @@ while (getline (MyReadFile,myText))
 data.clear();
 myText.clear();
 MyReadFile.close();
+
+//**************************************************************************************************************************************************************//
+//*************************************************Rebinning_the_histograms_in_to_30_bins***********************************************************************//
+//**************************************************************************************************************************************************************//
+TrueEnu_CCQE_GiBBU->Rebin();
+TrueEnu_CCRES_GiBBU->Rebin();
+TrueEnu_CCMEC_GiBBU->Rebin();
+TrueEnu_CCDIS_GiBBU->Rebin();
+
+TrueEnu_CCQE_GENIE->Rebin();
+TrueEnu_CCRES_GENIE->Rebin();
+TrueEnu_CCMEC_GENIE->Rebin();
+TrueEnu_CCDIS_GENIE->Rebin();
+TrueEnu_CCCOH_GENIE->Rebin();
+
+TrueEnu_CCQE_GENIEnorw->Rebin();
+TrueEnu_CCRES_GENIEnorw->Rebin();
+TrueEnu_CCMEC_GENIEnorw->Rebin();
+TrueEnu_CCDIS_GENIEnorw->Rebin();
+
+TrueEnu_CCQE_GiBBU_Reweighted->Rebin();
+TrueEnu_CCMEC_GiBBU_Reweighted->Rebin();
+TrueEnu_CCDIS_GiBBU_Reweighted->Rebin();
+TrueEnu_CCRES_GiBBU_Reweighted->Rebin();
+
+
 
 
 //***********************************************************************************************************************************************//
@@ -1818,6 +1363,7 @@ std::cout<<" Entries_CCDIS_GiBBU is "<<TrueEnu_CCDIS_GiBBU->Integral()<<std::end
 
 
 ninth->Scale(1/norm_GiBBU);
+std::cout<<" Integral is "<<ninth->Integral()<<std::endl;
 std::cout<<" *GiBBU_Reweighted                        *GiBBU_Reweighted                                  *GiBBU_Reweighted"<<std::endl;
 std::cout<<" *GiBBU_Reweighted                        *GiBBU_Reweighted                                  *GiBBU_Reweighted"<<std::endl;
 std::cout<<" *GiBBU_Reweighted                        *GiBBU_Reweighted                                  *GiBBU_Reweighted"<<std::endl;
@@ -1843,7 +1389,7 @@ std::cout<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<"
 std::cout<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<std::endl;
 std::cout<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<std::endl;
 
-for (int i=0;i<60;i++)
+for (int i=0;i<30;i++)
 {
 //std::cout<<" GiBBU "<<TrueEnu_CCQE_GiBBU->GetBinContent(i+1)<<" genie "<<TrueEnu_CCQE_GENIE->GetBinContent(i+1)<<std::endl;
 
@@ -1883,18 +1429,8 @@ for (int i=0;i<60;i++)
 		{
 	 	 Reweighting_Gibbu[i][3]=TrueEnu_CCDIS_GENIE->GetBinContent(i+1)/TrueEnu_CCDIS_GiBBU->GetBinContent(i+1);
 		}
-//******************************************************************CCCOH***********************************************************************//
-	if (TrueEnu_CCCOH_GiBBU->GetBinContent(i+1)==0)
-	{
-	 Reweighting_Gibbu[i][4]=TrueEnu_CCCOH_GENIE->GetBinContent(i+1);
-	}
-		else
-		{
-	 	 Reweighting_Gibbu[i][4]=TrueEnu_CCCOH_GENIE->GetBinContent(i+1)/TrueEnu_CCCOH_GiBBU->GetBinContent(i+1);
-		}	
 
-
-//std::cout<<" CCQE: "<<Reweighting_Gibbu[i][0]<<" CCMEC: "<<Reweighting_Gibbu[i][1]<<" CCRES: "<<Reweighting_Gibbu[i][2]<<" CCDIS: "<<Reweighting_Gibbu[i][3]<<" CCCOH: "<<Reweighting_Gibbu[i][4]<<std::endl;
+std::cout<<" CCQE: "<<Reweighting_Gibbu[i][0]<<" CCMEC: "<<Reweighting_Gibbu[i][1]<<" CCRES: "<<Reweighting_Gibbu[i][2]<<" CCDIS: "<<Reweighting_Gibbu[i][3]<<std::endl;
 }
 
 //***********************************************************************************************************************************************//
@@ -1904,7 +1440,7 @@ std::cout<<" ******GENIE NOT REWEIGHTED****** "<<" ******GENIE NOT REWEIGHTED***
 std::cout<<" ******GENIE NOT REWEIGHTED****** "<<" ******GENIE NOT REWEIGHTED****** "<<" ******GENIE NOT REWEIGHTED****** "<<" ******GENIE NOT REWEIGHTED****** "<<" ******GENIE NOT REWEIGHTED****** "<<std::endl;
 std::cout<<" ******GENIE NOT REWEIGHTED****** "<<" ******GENIE NOT REWEIGHTED****** "<<" ******GENIE NOT REWEIGHTED****** "<<" ******GENIE NOT REWEIGHTED****** "<<" ******GENIE NOT REWEIGHTED****** "<<std::endl;
 
-for (int i=0;i<60;i++)
+for (int i=0;i<30;i++)
 {
 //std::cout<<" GiBBU "<<TrueEnu_CCQE_GiBBU->GetBinContent(i)<<" genie "<<TrueEnu_CCQE_GENIEnorw->GetBinContent(i)<<std::endl;
 //******************************************************************CCQE***********************************************************************//
@@ -1934,7 +1470,7 @@ for (int i=0;i<60;i++)
 		{
 	 	 Reweighting_Gibbu_Genie_norw[i][2]=TrueEnu_CCRES_GENIEnorw->GetBinContent(i+1)/TrueEnu_CCRES_GiBBU->GetBinContent(i+1);
 		}
-//********************************************************CCQE***********************************************************************//		
+//********************************************************CCDIS***********************************************************************//
 	if (TrueEnu_CCDIS_GiBBU->GetBinContent(i+1)==0)
 	{
 	 Reweighting_Gibbu_Genie_norw[i][3]=TrueEnu_CCDIS_GENIEnorw->GetBinContent(i);
@@ -1943,15 +1479,6 @@ for (int i=0;i<60;i++)
 		{
 	 	 Reweighting_Gibbu_Genie_norw[i][3]=TrueEnu_CCDIS_GENIEnorw->GetBinContent(i+1)/TrueEnu_CCDIS_GiBBU->GetBinContent(i+1);
 		}
-//********************************************************CCQE***********************************************************************//		
-	if (TrueEnu_CCCOH_GiBBU->GetBinContent(i+1)==0)
-	{
-	 Reweighting_Gibbu_Genie_norw[i][4]=TrueEnu_CCCOH_GENIEnorw->GetBinContent(i+1);
-	}
-		else
-		{
-	 	 Reweighting_Gibbu_Genie_norw[i][4]=TrueEnu_CCCOH_GENIEnorw->GetBinContent(i+1)/TrueEnu_CCCOH_GiBBU->GetBinContent(i+1);
-		}	
 /*std::cout<<" CCQE: "<<Reweighting_Gibbu_Genie_norw[i][0]<<" CCMEC: "<<Reweighting_Gibbu_Genie_norw[i][1]<<" CCRES: "<<Reweighting_Gibbu_Genie_norw[i][2]<<" CCDIS: "<<Reweighting_Gibbu_Genie_norw[i][3]<<" CCCOH: "<<Reweighting_Gibbu_Genie_norw[i][4]<<std::endl;*/
 
 }
@@ -1959,54 +1486,40 @@ for (int i=0;i<60;i++)
 //***********************************************************************************************************************************************//
 //******************************************Filling_the_TMatrix(To_be_saved_in_the_file)*********************************************************//
 //***********************************************************************************************************************************************//
-   for (int i=0;i<60;i++)
+   for (int i=0;i<30;i++)
      {
-
 	Boogey.push_back(Reweighting_Gibbu[i][0]);
 	Boogey.push_back(Reweighting_Gibbu[i][1]);
 	Boogey.push_back(Reweighting_Gibbu[i][2]);
 	Boogey.push_back(Reweighting_Gibbu[i][3]);
-	Boogey.push_back(Reweighting_Gibbu[i][4]);
-
      }
-   for (int i=0;i<300;i++)
+   for (int i=0;i<120;i++)
      {
   	   Reweighting_Vector[i]=Boogey[i];
      }
 (*k).SetMatrixArray(Reweighting_Vector.GetArray());
-/*for (int i=0;i<60;i++)
+/*for (int i=0;i<30;i++)
 {
-std::cout<<" CCQE: "<<TMatrixDRow(*k,i)[0]<<" CCMEC: "<<TMatrixDRow(*k,i)[1]<<" CCRES: "<<TMatrixDRow(*k,i)[2]<<" CCDIS: "<<TMatrixDRow(*k,i)[3]<<" CCCOH: "<<TMatrixDRow(*k,i)[4]<<" i "<<i<<std::endl;
+std::cout<<" CCQE: "<<TMatrixDRow(*k,i)[0]<<" CCMEC: "<<TMatrixDRow(*k,i)[1]<<" CCRES: "<<TMatrixDRow(*k,i)[2]<<" CCDIS: "<<TMatrixDRow(*k,i)[3]<<" CCCOH: "<<" i "<<i<<std::endl;
 }*/
 
 //***********************************************************************************************************************************************//
 //******************************************Filling_the_TMatrix(To_be_saved_in_the_file)_GENIE_NORW*******************************************//
 //***********************************************************************************************************************************************//
-   for (int i=0;i<60;i++)
+   for (int i=0;i<30;i++)
      {
 
 	Boogey_GENIE_norw.push_back(Reweighting_Gibbu_Genie_norw[i][0]);
 	Boogey_GENIE_norw.push_back(Reweighting_Gibbu_Genie_norw[i][1]);
 	Boogey_GENIE_norw.push_back(Reweighting_Gibbu_Genie_norw[i][2]);
 	Boogey_GENIE_norw.push_back(Reweighting_Gibbu_Genie_norw[i][3]);
-	Boogey_GENIE_norw.push_back(Reweighting_Gibbu_Genie_norw[i][4]);
 
      }
-   for (int i=0;i<300;i++)
+   for (int i=0;i<120;i++)
      {
   	   Reweighting_Vector_GENIE_norw[i]=Boogey_GENIE_norw[i];
      }
 (*k_GENIE_norw).SetMatrixArray(Reweighting_Vector_GENIE_norw.GetArray());
-
-
-//***********************************************************************************************************************************************//
-//**************************************************Reweighting_True_Energy**********************************************************************//
-//***********************************************************************************************************************************************//
-/*for (int l=0;l<60;l++)
-	{
-					
-	}*/
-
 
 
 //***********************************************************************************************************************************************//
@@ -2119,15 +1632,13 @@ c5->Update();
   EnuDL_CCMEC_GiBBUnorw-> SetFillColor(kGreen);
   EnuDL_CCRES_GiBBUnorw-> SetFillColor(kYellow);
   EnuDL_CCDIS_GiBBUnorw-> SetFillColor(kBlue);
-  //EnuDL_CCCOH_GiBBUnorw-> SetFillColor(kMagenta);
  
   THStack *EnuDL_GiBBUnorw = new THStack("EnuDL_GiBBUnorw","");
   EnuDL_GiBBUnorw-> Add(EnuDL_CCQE_GiBBUnorw);
   EnuDL_GiBBUnorw-> Add(EnuDL_CCMEC_GiBBUnorw);
   EnuDL_GiBBUnorw-> Add(EnuDL_CCRES_GiBBUnorw);
   EnuDL_GiBBUnorw-> Add(EnuDL_CCDIS_GiBBUnorw);
-  //EnuDL_GiBBU-> Add(EnuDL_CCCOH_GiBBUnorw); 
-  //truemuon_truemom_GiBBU-> SetMaximum(100);  
+
   EnuDL_GiBBUnorw-> Draw("hist");
   EnuDL_GiBBUnorw->GetXaxis()->SetTitle("EnuDL_reconstructed neutrino energy [GeV/c]");
   EnuDL_GiBBUnorw->GetYaxis()->SetTitle("number of events");
@@ -2136,7 +1647,6 @@ c5->Update();
   l6 -> AddEntry(EnuDL_CCQE_GiBBUnorw, "CCQE", "f");
   l6 -> AddEntry(EnuDL_CCMEC_GiBBUnorw, "CCMEC", "f");
   l6 -> AddEntry(EnuDL_CCRES_GiBBUnorw, "CCRES", "f");
-  //l6 -> AddEntry(EnuDL_CCCOH_GiBBUnorw, "CC-Coh", "f");
   l6 -> AddEntry(EnuDL_CCDIS_GiBBUnorw, "CCDIS", "f");
   l6 -> Draw();
 
@@ -2149,15 +1659,13 @@ c5->Update();
   EnuPanN_CCMEC_GiBBUnorw-> SetFillColor(kGreen);
   EnuPanN_CCRES_GiBBUnorw-> SetFillColor(kYellow);
   EnuPanN_CCDIS_GiBBUnorw-> SetFillColor(kBlue);
-  //EnuPanN_CCCOH_GiBBUnorw-> SetFillColor(kMagenta);
  
   THStack *EnuPanN_GiBBUnorw = new THStack("EnuPanN_GiBBUnorw","");
   EnuPanN_GiBBUnorw-> Add(EnuPanN_CCQE_GiBBUnorw);
   EnuPanN_GiBBUnorw-> Add(EnuPanN_CCMEC_GiBBUnorw);
   EnuPanN_GiBBUnorw-> Add(EnuPanN_CCRES_GiBBUnorw);
   EnuPanN_GiBBUnorw-> Add(EnuPanN_CCDIS_GiBBUnorw);
-  //EnuPanN_GiBBU-> Add(EnuPanN_CCCOH_GiBBUnorw); 
-  //truemuon_truemom_GiBBU-> SetMaximum(100);  
+
   EnuPanN_GiBBUnorw-> Draw("hist");
   EnuPanN_GiBBUnorw->GetXaxis()->SetTitle("EnuPanN_reconstructed neutrino energy [GeV/c]");
   EnuPanN_GiBBUnorw->GetYaxis()->SetTitle("number of events");
@@ -2166,7 +1674,6 @@ c5->Update();
   l7 -> AddEntry(EnuPanN_CCQE_GiBBUnorw, "CCQE", "f");
   l7 -> AddEntry(EnuPanN_CCMEC_GiBBUnorw, "CCMEC", "f");
   l7 -> AddEntry(EnuPanN_CCRES_GiBBUnorw, "CCRES", "f");
-  //l7 -> AddEntry(EnuPanN_CCCOH_GiBBUnorw, "CC-Coh", "f");
   l7 -> AddEntry(EnuPanN_CCDIS_GiBBUnorw, "CCDIS", "f");
   l7 -> Draw();
 
@@ -2180,15 +1687,13 @@ c5->Update();
   EnuPan0_CCMEC_GiBBUnorw-> SetFillColor(kGreen);
   EnuPan0_CCRES_GiBBUnorw-> SetFillColor(kYellow);
   EnuPan0_CCDIS_GiBBUnorw-> SetFillColor(kBlue);
-  //EnuPan0_CCCOH_GiBBUnorw-> SetFillColor(kMagenta);
  
   THStack *EnuPan0_GiBBUnorw = new THStack("EnuPan0_GiBBUnorw","");
   EnuPan0_GiBBUnorw-> Add(EnuPan0_CCQE_GiBBUnorw);
   EnuPan0_GiBBUnorw-> Add(EnuPan0_CCMEC_GiBBUnorw);
   EnuPan0_GiBBUnorw-> Add(EnuPan0_CCRES_GiBBUnorw);
   EnuPan0_GiBBUnorw-> Add(EnuPan0_CCDIS_GiBBUnorw);
-  //EnuPan0_GiBBU-> Add(EnuPan0_CCCOH_GiBBUnorw); 
-  //truemuon_truemom_GiBBU-> SetMaximum(100);  
+
   EnuPan0_GiBBUnorw-> Draw("hist");
   EnuPan0_GiBBUnorw->GetXaxis()->SetTitle("EnuPan0_reconstructed neutrino energy [GeV/c]");
   EnuPan0_GiBBUnorw->GetYaxis()->SetTitle("number of events");
@@ -2197,7 +1702,6 @@ c5->Update();
   l8 -> AddEntry(EnuPan0_CCQE_GiBBUnorw, "CCQE", "f");
   l8 -> AddEntry(EnuPan0_CCMEC_GiBBUnorw, "CCMEC", "f");
   l8 -> AddEntry(EnuPan0_CCRES_GiBBUnorw, "CCRES", "f");
-  //l8 -> AddEntry(EnuPan0_CCCOH_GiBBUnorw, "CC-Coh", "f");
   l8 -> AddEntry(EnuPan0_CCDIS_GiBBUnorw, "CCDIS", "f");
   l8 -> Draw();
 
@@ -2218,8 +1722,7 @@ c5->Update();
   EnuWC_GiBBUnorw-> Add(EnuWC_CCMEC_GiBBUnorw);
   EnuWC_GiBBUnorw-> Add(EnuWC_CCRES_GiBBUnorw);
   EnuWC_GiBBUnorw-> Add(EnuWC_CCDIS_GiBBUnorw);
-  //EnuWC_GiBBU-> Add(EnuWC_CCCOH_GiBBUnorw); 
-  //truemuon_truemom_GiBBU-> SetMaximum(100);  
+
   EnuWC_GiBBUnorw-> Draw("hist");
   EnuWC_GiBBUnorw->GetXaxis()->SetTitle("EnuWC_reconstructed neutrino energy [GeV/c]");
   EnuWC_GiBBUnorw->GetYaxis()->SetTitle("number of events");
@@ -2228,13 +1731,12 @@ c5->Update();
   l9 -> AddEntry(EnuWC_CCQE_GiBBUnorw, "CCQE", "f");
   l9 -> AddEntry(EnuWC_CCMEC_GiBBUnorw, "CCMEC", "f");
   l9 -> AddEntry(EnuWC_CCRES_GiBBUnorw, "CCRES", "f");
-  //l9 -> AddEntry(EnuWC_CCCOH_GiBBUnorw, "CC-Coh", "f");
   l9 -> AddEntry(EnuWC_CCDIS_GiBBUnorw, "CCDIS", "f");
   l9 -> Draw();
 
   c9->Update();
   
-  /////////
+  /*/////////
   TCanvas *c10 = new TCanvas("c10","",900, 900); 
 
   c10->SetGrid();
@@ -2276,7 +1778,7 @@ c5->Update();
   l10 -> AddEntry(hprof_EnuWC_GiBBUnorw, "Wire Cell approach", "l");
 
   l10 -> Draw();
-  c10->Update();
+  c10->Update();*/
   
   /////
   TCanvas *c11 = new TCanvas("c11","",900, 900);
@@ -2285,8 +1787,6 @@ c5->Update();
   TrueEnu_CCRES_GiBBU->SetFillColor(kYellow);
   TrueEnu_CCMEC_GiBBU->SetFillColor(kGreen);
   TrueEnu_CCDIS_GiBBU->SetFillColor(kBlue);
-  TrueEnu_CCCOH_GiBBU->SetFillColor(kOrange);
-  ninth->SetFillColor(kCyan);
   //Delta_two_p_two_h->SetFillColor(kBlue);
   //two_pion_bkg->SetFillColor(kViolet);
   
@@ -2295,9 +1795,7 @@ c5->Update();
   Stack_em->Add(TrueEnu_CCRES_GiBBU);
   Stack_em->Add(TrueEnu_CCMEC_GiBBU);
   Stack_em->Add(TrueEnu_CCDIS_GiBBU);
-  Stack_em->Add(TrueEnu_CCCOH_GiBBU);
-  Stack_em->Add(ninth);
-  
+
   Stack_em-> Draw("hist");
   Stack_em->GetXaxis()->SetTitle("True_energy_before_reweighting [GeV/c]");
   Stack_em->GetYaxis()->SetTitle("number of events");
@@ -2308,9 +1806,7 @@ c5->Update();
   l11->AddEntry(TrueEnu_CCRES_GiBBU,"","f");
   l11->AddEntry(TrueEnu_CCMEC_GiBBU,"","f");
   l11->AddEntry(TrueEnu_CCDIS_GiBBU,"","f");
-  l11->AddEntry(TrueEnu_CCCOH_GiBBU,"","f");
-  l11->AddEntry(ninth,"","f");
-  
+
   l11->Draw();
   c11->Update();
   
@@ -2328,8 +1824,7 @@ c5->Update();
   EnuDL_GiBBU-> Add(EnuDL_CCMEC_GiBBU);
   EnuDL_GiBBU-> Add(EnuDL_CCRES_GiBBU);
   EnuDL_GiBBU-> Add(EnuDL_CCDIS_GiBBU);
-  //EnuDL_GiBBU-> Add(EnuDL_CCCOH_GiBBU); 
-  //truemuon_truemom_GiBBU-> SetMaximum(100);  
+
   EnuDL_GiBBU-> Draw("hist");
   EnuDL_GiBBU->GetXaxis()->SetTitle("EnuDL_reweighted_GiBBU_reconstructed neutrino energy [GeV/c]");
   EnuDL_GiBBU->GetYaxis()->SetTitle("number of events");
@@ -2338,7 +1833,6 @@ c5->Update();
   l12 -> AddEntry(EnuDL_CCQE_GiBBU, "CCQE", "f");
   l12 -> AddEntry(EnuDL_CCMEC_GiBBU, "CCMEC", "f");
   l12 -> AddEntry(EnuDL_CCRES_GiBBU, "CCRES", "f");
-  //l12 -> AddEntry(EnuDL_CCCOH_GiBBU, "CC-Coh", "f");
   l12 -> AddEntry(EnuDL_CCDIS_GiBBU, "CCDIS", "f");
   l12 -> Draw();
 
@@ -2351,15 +1845,13 @@ c5->Update();
   EnuWC_CCMEC_GiBBU-> SetFillColor(kGreen);
   EnuWC_CCRES_GiBBU-> SetFillColor(kYellow);
   EnuWC_CCDIS_GiBBU-> SetFillColor(kBlue);
-  //EnuDL_CCCOH_GiBBU-> SetFillColor(kMagenta);
  
   THStack *EnuWC_GiBBU = new THStack("EnuWC_GiBBU","");
   EnuWC_GiBBU-> Add(EnuWC_CCQE_GiBBU);
   EnuWC_GiBBU-> Add(EnuWC_CCMEC_GiBBU);
   EnuWC_GiBBU-> Add(EnuWC_CCRES_GiBBU);
   EnuWC_GiBBU-> Add(EnuWC_CCDIS_GiBBU);
-  //EnuWC_GiBBU-> Add(EnuWC_CCCOH_GiBBU); 
-  //truemuon_truemom_GiBBU-> SetMaximum(100);  
+
   EnuWC_GiBBU-> Draw("hist");
   EnuWC_GiBBU->GetXaxis()->SetTitle("EnuWC_reweighted_GiBBU_reconstructed neutrino energy [GeV/c]");
   EnuWC_GiBBU->GetYaxis()->SetTitle("number of events");
@@ -2368,7 +1860,6 @@ c5->Update();
   l13 -> AddEntry(EnuWC_CCQE_GiBBU, "CCQE", "f");
   l13 -> AddEntry(EnuWC_CCMEC_GiBBU, "CCMEC", "f");
   l13 -> AddEntry(EnuWC_CCRES_GiBBU, "CCRES", "f");
-  //l13 -> AddEntry(EnuWC_CCCOH_GiBBU, "CC-Coh", "f");
   l13 -> AddEntry(EnuWC_CCDIS_GiBBU, "CCDIS", "f");
   l13 -> Draw();
 
@@ -2388,8 +1879,7 @@ c5->Update();
   EnuPan0_GiBBU-> Add(EnuPan0_CCMEC_GiBBU);
   EnuPan0_GiBBU-> Add(EnuPan0_CCRES_GiBBU);
   EnuPan0_GiBBU-> Add(EnuPan0_CCDIS_GiBBU);
-  //EnuPan0_GiBBU-> Add(EnuPan0_CCCOH_GiBBU); 
-  //truemuon_truemom_GiBBU-> SetMaximum(100);  
+
   EnuPan0_GiBBU-> Draw("hist");
   EnuPan0_GiBBU->GetXaxis()->SetTitle("EnuPan0_reweighted_GiBBU_reconstructed neutrino energy [GeV/c]");
   EnuPan0_GiBBU->GetYaxis()->SetTitle("number of events");
@@ -2398,7 +1888,6 @@ c5->Update();
   l14 -> AddEntry(EnuPan0_CCQE_GiBBU, "CCQE", "f");
   l14 -> AddEntry(EnuPan0_CCMEC_GiBBU, "CCMEC", "f");
   l14 -> AddEntry(EnuPan0_CCRES_GiBBU, "CCRES", "f");
-  //l14 -> AddEntry(EnuPan0_CCCOH_GiBBU, "CC-Coh", "f");
   l14 -> AddEntry(EnuPan0_CCDIS_GiBBU, "CCDIS", "f");
   l14 -> Draw();
 
@@ -2418,8 +1907,7 @@ c5->Update();
   EnuPanN_GiBBU-> Add(EnuPanN_CCMEC_GiBBU);
   EnuPanN_GiBBU-> Add(EnuPanN_CCRES_GiBBU);
   EnuPanN_GiBBU-> Add(EnuPanN_CCDIS_GiBBU);
-  //EnuPanN_GiBBU-> Add(EnuPanN_CCCOH_GiBBU); 
-  //truemuon_truemom_GiBBU-> SetMaximum(100);  
+
   EnuPanN_GiBBU-> Draw("hist");
   EnuPanN_GiBBU->GetXaxis()->SetTitle("EnuPanN_reweighted_GiBBU_reconstructed neutrino energy [GeV/c]");
   EnuPanN_GiBBU->GetYaxis()->SetTitle("number of events");
@@ -2434,7 +1922,7 @@ c5->Update();
 
   c15->Update();
   
-  /////////
+ /* /////////
   TCanvas *c16 = new TCanvas("c16","",900, 900); 
 
   c16->SetGrid();
@@ -2476,7 +1964,7 @@ c5->Update();
   l16 -> AddEntry(hprof_EnuWC_GiBBU, "Wire Cell approach", "l");
 
   l16 -> Draw();
-  c16->Update();
+  c16->Update();*/
   ///////////
   /*TCanvas *c17 = new TCanvas("c17", "c17", 900, 900);
   
@@ -2604,8 +2092,6 @@ c5->Update();
   TrueEnu_CCRES_GiBBU_Reweighted->SetFillColor(kYellow);
   TrueEnu_CCMEC_GiBBU_Reweighted->SetFillColor(kGreen);
   TrueEnu_CCDIS_GiBBU_Reweighted->SetFillColor(kBlue);
-  TrueEnu_CCCOH_GiBBU_Reweighted->SetFillColor(kOrange);
-  ninth->SetFillColor(kCyan);
   //Delta_two_p_two_h->SetFillColor(kBlue);
   //two_pion_bkg->SetFillColor(kViolet);
   
@@ -2614,9 +2100,7 @@ c5->Update();
   Stack_em_Reweighted->Add(TrueEnu_CCRES_GiBBU_Reweighted);
   Stack_em_Reweighted->Add(TrueEnu_CCMEC_GiBBU_Reweighted);
   Stack_em_Reweighted->Add(TrueEnu_CCDIS_GiBBU_Reweighted);
-  Stack_em_Reweighted->Add(TrueEnu_CCCOH_GiBBU_Reweighted);
-  Stack_em_Reweighted->Add(ninth);
-  
+
   Stack_em_Reweighted-> Draw("hist");
   Stack_em_Reweighted->GetXaxis()->SetTitle("True_energy_after_reweighting [GeV/c]");
   Stack_em_Reweighted->GetYaxis()->SetTitle("number of events");
@@ -2627,9 +2111,6 @@ c5->Update();
   l21->AddEntry(TrueEnu_CCRES_GiBBU_Reweighted,"","f");
   l21->AddEntry(TrueEnu_CCMEC_GiBBU_Reweighted,"","f");
   l21->AddEntry(TrueEnu_CCDIS_GiBBU_Reweighted,"","f");
-  l21->AddEntry(TrueEnu_CCCOH_GiBBU_Reweighted,"","f");
-  l21->AddEntry(ninth,"","f");
-  
   l21->Draw();
   c21->Update();
   
@@ -2907,7 +2388,7 @@ if ((i>=37)&&(i<=41))bins_38_42->SetBinContent((i+6)%6,Reconstructed_bins[i]);
 //.............................................................Writing_in_a_file..............................................................//
 //............................................................................................................................................//
 //............................................................................................................................................//
-TFile Rite("bins_and_histogram.root", "RECREATE");
+TFile Rite("reweighting_mess.root", "RECREATE");
 bins_1_5->Write();
 bins_6_10->Write();
 bins_11_15->Write();
