@@ -313,13 +313,7 @@ std::vector<double> Boogey;
 TArrayD Reweighting_Vector(120);
 double Reweighting_Gibbu[30][4];
 TMatrixD *k=new TMatrixD(30,4);
-
-//*********************************************************GENIE_NOT_REWEIGHTED*******************************************************************//
-std::vector<double> Boogey_GENIE_norw;
-TArrayD Reweighting_Vector_GENIE_norw(120);
-double Reweighting_Gibbu_Genie_norw[30][4];
-TMatrixD *k_GENIE_norw=new TMatrixD(30,4);
-
+std::cout<<"any changes"<<std::endl;
 
 
 
