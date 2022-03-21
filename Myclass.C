@@ -269,44 +269,6 @@ TH1D *EnuWC_other_GiBBUnorw=new TH1D("EnuWC_other_GiBBUnorw", "EnuWC_other_GiBBU
 
 
 
-//************************************************Some_vectors_and_matrices_needed_for_analysis**************************************************//
-std::vector<double> smearing_matrix;
-std::vector<double> Truth_bins;
-std::vector<double> Reconstructed_bins;
-
-std::vector<double> Mean_EnuWC(14);
-std::vector<double> Mean_EnuPanN(14);
-std::vector<double> Mean_EnuPan0(14);
-std::vector<double> Mean_EnuDL(14);
-
-std::vector<double> Mean_EnuWC_norw(14);
-std::vector<double> Mean_EnuPanN_norw(14);
-std::vector<double> Mean_EnuPan0_norw(14);
-std::vector<double> Mean_EnuDL_norw(14);
-
-std::vector<double> Mean_True(14);
-std::vector<double> weight_summatory(14);
-std::vector<double> reweight_summatory(14);
-
-double Mean_EnuWC_diff[13];
-double Mean_EnuPanN_diff[13];
-double Mean_EnuPan0_diff[13];
-double Mean_EnuDL_diff[13];
-
-double Mean_EnuWC_norw_diff[13];
-double Mean_EnuPanN_norw_diff[13];
-double Mean_EnuPan0_norw_diff[13];
-double Mean_EnuDL_norw_diff[13];
-
-double Mean_True_a[13];
-
-
-int count_1=0;
-int count_2=0;
-int count_3=0;
-int count_4=0;
-
-
 
 //***************************************************************GENIE_REWEIGHTED****************************************************************//
 std::vector<double> Boogey;
@@ -1176,44 +1138,6 @@ int CCCOH_bin=0;
       }
    }
    
-//std::cout<<" count_1 is  "<<count_1<<" count_2 "<<count_2<<" count_3 "<<count_3<<" count_4 "<<count_4<<std::endl;
-double WC=0;
-double PanN=0;
-double Pan0=0;
-double DL=0;
-
-double WC_norw=0;
-double PanN_norw=0;
-double Pan0_norw=0;
-double DL_norw=0;
-
-for (int i=0;i<13;i++)
-{
-    WC_norw=((0.490203*hprof_EnuWC_GiBBU_CCQE->GetBinContent(i+1))+(0.245281*hprof_EnuWC_GiBBU_CCRES->GetBinContent(i+1))+(0.187423*hprof_EnuWC_GiBBU_CCMEC->GetBinContent(i+1))+(0.0770936*hprof_EnuWC_GiBBU_CCDIS->GetBinContent(i+1)));
-    PanN_norw=((0.490203*hprof_EnuPanN_GiBBU_CCQE->GetBinContent(i+1))+(0.245281*hprof_EnuPanN_GiBBU_CCRES->GetBinContent(i+1))+(0.187423*hprof_EnuPanN_GiBBU_CCMEC->GetBinContent(i+1))+(0.0770936*hprof_EnuPanN_GiBBU_CCDIS->GetBinContent(i+1)));
-    Pan0_norw=((0.490203*hprof_EnuPan0_GiBBU_CCQE->GetBinContent(i+1))+(0.245281*hprof_EnuPan0_GiBBU_CCRES->GetBinContent(i+1))+(0.187423*hprof_EnuPan0_GiBBU_CCMEC->GetBinContent(i+1))+(0.0770936*hprof_EnuPan0_GiBBU_CCDIS->GetBinContent(i+1)));
-    DL_norw=((0.490203*hprof_EnuDL_GiBBU_CCQE->GetBinContent(i+1))+(0.245281*hprof_EnuDL_GiBBU_CCRES->GetBinContent(i+1))+(0.187423*hprof_EnuDL_GiBBU_CCMEC->GetBinContent(i+1))+(0.0770936*hprof_EnuDL_GiBBU_CCDIS->GetBinContent(i+1)));
-
-    WC=((0.490203*hprof_EnuWC_GiBBU_CCQE->GetBinContent(i+1)*TMatrixDRow(*m,i)[0])+(0.245281*hprof_EnuWC_GiBBU_CCRES->GetBinContent(i+1)*TMatrixDRow(*m,i)[2])+(0.187423*hprof_EnuWC_GiBBU_CCMEC->GetBinContent(i+1)*TMatrixDRow(*m,i)[1])+(0.0770936*hprof_EnuWC_GiBBU_CCDIS->GetBinContent(i+1)*TMatrixDRow(*m,i)[3]));
-    PanN=((0.490203*hprof_EnuPanN_GiBBU_CCQE->GetBinContent(i+1)*TMatrixDRow(*m,i)[0])+(0.245281*hprof_EnuPanN_GiBBU_CCRES->GetBinContent(i+1)*TMatrixDRow(*m,i)[2])+(0.187423*hprof_EnuPanN_GiBBU_CCMEC->GetBinContent(i+1)*TMatrixDRow(*m,i)[1])+(0.0770936*hprof_EnuPanN_GiBBU_CCDIS->GetBinContent(i+1)*TMatrixDRow(*m,i)[3]));
-    Pan0=((0.490203*hprof_EnuPan0_GiBBU_CCQE->GetBinContent(i+1)*TMatrixDRow(*m,i)[0])+(0.245281*hprof_EnuPan0_GiBBU_CCRES->GetBinContent(i+1)*TMatrixDRow(*m,i)[2])+(0.187423*hprof_EnuPan0_GiBBU_CCMEC->GetBinContent(i+1)*TMatrixDRow(*m,i)[1])+(0.0770936*hprof_EnuPan0_GiBBU_CCDIS->GetBinContent(i+1)*TMatrixDRow(*m,i)[3]));
-    DL=((0.490203*hprof_EnuDL_GiBBU_CCQE->GetBinContent(i+1)*TMatrixDRow(*m,i)[0])+(0.245281*hprof_EnuDL_GiBBU_CCRES->GetBinContent(i+1)*TMatrixDRow(*m,i)[2])+(0.187423*hprof_EnuDL_GiBBU_CCMEC->GetBinContent(i+1)*TMatrixDRow(*m,i)[1])+(0.0770936*hprof_EnuDL_GiBBU_CCDIS->GetBinContent(i+1)*TMatrixDRow(*m,i)[3]));
-
-
-    Mean_EnuWC_diff[i]=WC;
-    Mean_EnuPanN_diff[i]=PanN;
-    Mean_EnuPan0_diff[i]=Pan0;
-    Mean_EnuDL_diff[i]=DL;
- 
-    Mean_EnuWC_norw_diff[i]=WC_norw;
-    Mean_EnuPanN_norw_diff[i]=PanN_norw;
-    Mean_EnuPan0_norw_diff[i]=Pan0_norw;
-    Mean_EnuDL_norw_diff[i]=DL_norw;
- 
- Mean_True_a[i]=hprof_EnuDL_GiBBU_CCQE->GetXaxis()->GetBinCenter(i+1);
- std::cout<<" WC is "<<Mean_EnuWC_diff[i]<<" WC_norw is "<<WC_norw<<" pan0 is "<<Mean_EnuPan0_diff[i]<<" pan0_norw is "<<Pan0_norw<<" PanN is "<<Mean_EnuPanN_diff[i]<<" PanN_norw is "<<PanN_norw<<" DL is "<<Mean_EnuDL_diff[i]<<" DL_norw is "<<DL_norw<<" True energy is "<<Mean_True_a[i]<<std::endl;
- //std::cout<<" CCQE: "<<TMatrixDRow(*m,i)[0]<<" CCMEC: "<<TMatrixDRow(*m,i)[1]<<" CCRES: "<<TMatrixDRow(*m,i)[2]<<" CCDIS: "<<TMatrixDRow(*m,i)[3]<<std::endl;
-}
 
 
 //***********************************************************************************************************************************************//
@@ -1917,7 +1841,7 @@ c5->Update();
   c15->Update();
   
  /* /////////
-  TCanvas *c16 = new TCanvas("c16","",900, 900); 
+  TCanvas *c16 = new TCanvas("c16","",900, 900);
 
   c16->SetGrid();
 
@@ -1937,20 +1861,20 @@ c5->Update();
   hprof_EnuPanN_GiBBU->SetLineWidth(2);
   hprof_EnuPanN_GiBBU->SetMarkerColor(kBlack);
   hprof_EnuPanN_GiBBU->SetMarkerStyle(20);
-  hprof_EnuPanN_GiBBU->Draw("e1same");  
+  hprof_EnuPanN_GiBBU->Draw("e1same");
 
   hprof_EnuPan0_GiBBU->SetLineColor(kGreen);
   hprof_EnuPan0_GiBBU->SetLineWidth(2);
   hprof_EnuPan0_GiBBU->SetMarkerColor(kGreen);
   hprof_EnuPan0_GiBBU->SetMarkerStyle(20);
-  hprof_EnuPan0_GiBBU->Draw("e1same");  
+  hprof_EnuPan0_GiBBU->Draw("e1same");
 
   hprof_EnuWC_GiBBU->SetLineColor(kCyan);
   hprof_EnuWC_GiBBU->SetLineWidth(2);
   hprof_EnuWC_GiBBU->SetMarkerColor(kCyan);
   hprof_EnuWC_GiBBU->SetMarkerStyle(20);
-  hprof_EnuWC_GiBBU->Draw("e1same");  
-  
+  hprof_EnuWC_GiBBU->Draw("e1same");
+
   TLegend *l16 = new TLegend(0.50, 0.25, 0.9, 0.1);
   l16 -> AddEntry(hprof_EnuDL_GiBBU, "DL approach", "l");
   l16 -> AddEntry(hprof_EnuPanN_GiBBU, "Pandora N proton approach", "l");
@@ -1959,126 +1883,7 @@ c5->Update();
 
   l16 -> Draw();
   c16->Update();*/
-  ///////////
-  /*TCanvas *c17 = new TCanvas("c17", "c17", 900, 900);
-  
-  EnuDL_CCQE_GiBBU_GENIE_norw-> SetFillColor(kRed);
-  EnuDL_CCMEC_GiBBU_GENIE_norw-> SetFillColor(kGreen);
-  EnuDL_CCRES_GiBBU_GENIE_norw-> SetFillColor(kYellow);
-  EnuDL_CCDIS_GiBBU_GENIE_norw-> SetFillColor(kBlue);
-  //EnuDL_CCCOH_GiBBU_GENIE_norw-> SetFillColor(kMagenta);
- 
-  THStack *EnuDL_GiBBU_GENIE_norw = new THStack("EnuDL_GiBBU_GENIE_norw","");
-  EnuDL_GiBBU_GENIE_norw-> Add(EnuDL_CCQE_GiBBU_GENIE_norw);
-  EnuDL_GiBBU_GENIE_norw-> Add(EnuDL_CCMEC_GiBBU_GENIE_norw);
-  EnuDL_GiBBU_GENIE_norw-> Add(EnuDL_CCRES_GiBBU_GENIE_norw);
-  EnuDL_GiBBU_GENIE_norw-> Add(EnuDL_CCDIS_GiBBU_GENIE_norw);
-  //EnuDL_GiBBU_GENIE_norw-> Add(EnuDL_CCCOH_GiBBU_GENIE_norw); 
-  //truemuon_truemom_GiBBU_GENIE_norw-> SetMaximum(100);  
-  EnuDL_GiBBU_GENIE_norw-> Draw("hist");
-  EnuDL_GiBBU_GENIE_norw->GetXaxis()->SetTitle("EnuDL_reweighted_GiBBU_GENIE_norw_reconstructed neutrino energy [GeV/c]");
-  EnuDL_GiBBU_GENIE_norw->GetYaxis()->SetTitle("number of events");
 
-  TLegend *l17 = new TLegend(0.5, 0.7, 0.9, 0.9);
-  l17 -> AddEntry(EnuDL_CCQE_GiBBU_GENIE_norw, "CCQE", "f");
-  l17 -> AddEntry(EnuDL_CCMEC_GiBBU_GENIE_norw, "CCMEC", "f");
-  l17 -> AddEntry(EnuDL_CCRES_GiBBU_GENIE_norw, "CCRES", "f");
-  //l12 -> AddEntry(EnuDL_CCCOH_GiBBU_GENIE_norw, "CC-Coh", "f");
-  l17 -> AddEntry(EnuDL_CCDIS_GiBBU_GENIE_norw, "CCDIS", "f");
-  l17 -> Draw();
-
-  c17->Update();
-  
-  //////////
-  TCanvas *c18 = new TCanvas("c18", "c18", 900, 900);
-  
-  EnuWC_CCQE_GiBBU_GENIE_norw-> SetFillColor(kRed);
-  EnuWC_CCMEC_GiBBU_GENIE_norw-> SetFillColor(kGreen);
-  EnuWC_CCRES_GiBBU_GENIE_norw-> SetFillColor(kYellow);
-  EnuWC_CCDIS_GiBBU_GENIE_norw-> SetFillColor(kBlue);
-  //EnuDL_CCCOH_GiBBU_GENIE_norw-> SetFillColor(kMagenta);
- 
-  THStack *EnuWC_GiBBU_GENIE_norw = new THStack("EnuWC_GiBBU_GENIE_norw","");
-  EnuWC_GiBBU_GENIE_norw-> Add(EnuWC_CCQE_GiBBU_GENIE_norw);
-  EnuWC_GiBBU_GENIE_norw-> Add(EnuWC_CCMEC_GiBBU_GENIE_norw);
-  EnuWC_GiBBU_GENIE_norw-> Add(EnuWC_CCRES_GiBBU_GENIE_norw);
-  EnuWC_GiBBU_GENIE_norw-> Add(EnuWC_CCDIS_GiBBU_GENIE_norw);
-  //EnuWC_GiBBU_GENIE_norw-> Add(EnuWC_CCCOH_GiBBU_GENIE_norw); 
-  //truemuon_truemom_GiBBU_GENIE_norw-> SetMaximum(100);  
-  EnuWC_GiBBU_GENIE_norw-> Draw("hist");
-  EnuWC_GiBBU_GENIE_norw->GetXaxis()->SetTitle("EnuWC_reweighted_GiBBU_GENIE_norw_reconstructed neutrino energy [GeV/c]");
-  EnuWC_GiBBU_GENIE_norw->GetYaxis()->SetTitle("number of events");
-
-  TLegend *l18 = new TLegend(0.5, 0.7, 0.9, 0.9);
-  l18 -> AddEntry(EnuWC_CCQE_GiBBU_GENIE_norw, "CCQE", "f");
-  l18 -> AddEntry(EnuWC_CCMEC_GiBBU_GENIE_norw, "CCMEC", "f");
-  l18 -> AddEntry(EnuWC_CCRES_GiBBU_GENIE_norw, "CCRES", "f");
-  //l13 -> AddEntry(EnuWC_CCCOH_GiBBU_GENIE_norw, "CC-Coh", "f");
-  l18 -> AddEntry(EnuWC_CCDIS_GiBBU_GENIE_norw, "CCDIS", "f");
-  l18 -> Draw();
-
-  c18->Update();
-
-//////////
-  TCanvas *c19 = new TCanvas("c19", "c19", 900, 900);
-  
-  EnuPan0_CCQE_GiBBU_GENIE_norw-> SetFillColor(kRed);
-  EnuPan0_CCMEC_GiBBU_GENIE_norw-> SetFillColor(kGreen);
-  EnuPan0_CCRES_GiBBU_GENIE_norw-> SetFillColor(kYellow);
-  EnuPan0_CCDIS_GiBBU_GENIE_norw-> SetFillColor(kBlue);
-  //EnuDL_CCCOH_GiBBU_GENIE_norw-> SetFillColor(kMagenta);
- 
-  THStack *EnuPan0_GiBBU_GENIE_norw = new THStack("EnuPan0_GiBBU_GENIE_norw","");
-  EnuPan0_GiBBU_GENIE_norw-> Add(EnuPan0_CCQE_GiBBU_GENIE_norw);
-  EnuPan0_GiBBU_GENIE_norw-> Add(EnuPan0_CCMEC_GiBBU_GENIE_norw);
-  EnuPan0_GiBBU_GENIE_norw-> Add(EnuPan0_CCRES_GiBBU_GENIE_norw);
-  EnuPan0_GiBBU_GENIE_norw-> Add(EnuPan0_CCDIS_GiBBU_GENIE_norw);
-  //EnuPan0_GiBBU_GENIE_norw-> Add(EnuPan0_CCCOH_GiBBU_GENIE_norw); 
-  //truemuon_truemom_GiBBU_GENIE_norw-> SetMaximum(100);  
-  EnuPan0_GiBBU_GENIE_norw-> Draw("hist");
-  EnuPan0_GiBBU_GENIE_norw->GetXaxis()->SetTitle("EnuPan0_reweighted_GiBBU_GENIE_norw_reconstructed neutrino energy [GeV/c]");
-  EnuPan0_GiBBU_GENIE_norw->GetYaxis()->SetTitle("number of events");
-
-  TLegend *l19 = new TLegend(0.5, 0.7, 0.9, 0.9);
-  l19 -> AddEntry(EnuPan0_CCQE_GiBBU_GENIE_norw, "CCQE", "f");
-  l19 -> AddEntry(EnuPan0_CCMEC_GiBBU_GENIE_norw, "CCMEC", "f");
-  l19 -> AddEntry(EnuPan0_CCRES_GiBBU_GENIE_norw, "CCRES", "f");
-  //l14 -> AddEntry(EnuPan0_CCCOH_GiBBU_GENIE_norw, "CC-Coh", "f");
-  l19 -> AddEntry(EnuPan0_CCDIS_GiBBU_GENIE_norw, "CCDIS", "f");
-  l19 -> Draw();
-
-  c19->Update();
-  
-  /////////
-  TCanvas *c20 = new TCanvas("c20", "c20", 900, 900);
-  
-  EnuPanN_CCQE_GiBBU_GENIE_norw-> SetFillColor(kRed);
-  EnuPanN_CCMEC_GiBBU_GENIE_norw-> SetFillColor(kGreen);
-  EnuPanN_CCRES_GiBBU_GENIE_norw-> SetFillColor(kYellow);
-  EnuPanN_CCDIS_GiBBU_GENIE_norw-> SetFillColor(kBlue);
-  //EnuDL_CCCOH_GiBBU_GENIE_norw-> SetFillColor(kMagenta);
- 
-  THStack *EnuPanN_GiBBU_GENIE_norw = new THStack("EnuPanN_GiBBU_GENIE_norw","");
-  EnuPanN_GiBBU_GENIE_norw-> Add(EnuPanN_CCQE_GiBBU_GENIE_norw);
-  EnuPanN_GiBBU_GENIE_norw-> Add(EnuPanN_CCMEC_GiBBU_GENIE_norw);
-  EnuPanN_GiBBU_GENIE_norw-> Add(EnuPanN_CCRES_GiBBU_GENIE_norw);
-  EnuPanN_GiBBU_GENIE_norw-> Add(EnuPanN_CCDIS_GiBBU_GENIE_norw);
-  //EnuPanN_GiBBU_GENIE_norw-> Add(EnuPanN_CCCOH_GiBBU_GENIE_norw); 
-  //truemuon_truemom_GiBBU_GENIE_norw-> SetMaximum(100);  
-  EnuPanN_GiBBU_GENIE_norw-> Draw("hist");
-  EnuPanN_GiBBU_GENIE_norw->GetXaxis()->SetTitle("EnuPanN_reweighted_GiBBU_GENIE_norw_reconstructed neutrino energy [GeV/c]");
-  EnuPanN_GiBBU_GENIE_norw->GetYaxis()->SetTitle("number of events");
-
-  TLegend *l20 = new TLegend(0.5, 0.7, 0.9, 0.9);
-  l20 -> AddEntry(EnuPanN_CCQE_GiBBU_GENIE_norw, "CCQE", "f");
-  l20 -> AddEntry(EnuPanN_CCMEC_GiBBU_GENIE_norw, "CCMEC", "f");
-  l20 -> AddEntry(EnuPanN_CCRES_GiBBU_GENIE_norw, "CCRES", "f");
-  //l15 -> AddEntry(EnuPanN_CCCOH_GiBBU_GENIE_norw, "CC-Coh", "f");
-  l20 -> AddEntry(EnuPanN_CCDIS_GiBBU_GENIE_norw, "CCDIS", "f");
-  l20 -> Draw();
-
-  c20->Update();*/
-  
   /////
   TCanvas *c21 = new TCanvas("c21","",900, 900);
   
@@ -2111,7 +1916,7 @@ c5->Update();
 //***************************************************TGraph_for_the_profile_plots****************************************************************//
 //***********************************************************************************************************************************************//
 //***********************************************************************************************************************************************//
-TGraph *Resolution_EnuWC=new TGraph(13,Mean_True_a,Mean_EnuWC_diff);
+/*TGraph *Resolution_EnuWC=new TGraph(13,Mean_True_a,Mean_EnuWC_diff);
 TGraph *Resolution_EnuPanN=new TGraph(13,Mean_True_a,Mean_EnuPanN_diff);
 TGraph *Resolution_EnuPan0=new TGraph(13,Mean_True_a,Mean_EnuPan0_diff);
 TGraph *Resolution_EnuDL=new TGraph(13,Mean_True_a,Mean_EnuDL_diff);
@@ -2199,7 +2004,7 @@ l22->AddEntry(Resolution_EnuDL,"Resolution_EnuDL","P");
 
   
 l22->Draw();
-c22->Update();
+c22->Update();*/
 
 ///
 TCanvas *c23=new TCanvas("c23","",900, 900);
