@@ -26,7 +26,7 @@
 //************************************************************************************************************************************************//
 
 #define PI 3.14159265
-#define mumass 0.1056583755 // GeV/c2
+#define emass 0.00051099895000 // GeV/c2
 #define protonmass 0.93827208816 //GeV/c2
 #define pionmass 0.1349768  //GeV/c2
 
@@ -44,10 +44,10 @@ TH1D* Delta_two_p_two_h = new TH1D("Delta_two_p_two_h","Delta_two_p_two_h",30,0,
 TH1D* two_pion_bkg = new TH1D("two_pion_bkg","two_pion_bkg",30,0,30);
 TH1D* ninth= new TH1D("ninth","ninth",60,0,3);
 
-//*********************************************Histogram_for_angle_of_muon************************************************************************//
+//*********************************************Histogram_for_angle_of_electron************************************************************************//
 //************************************************************************************************************************************************//
 //************************************************************************************************************************************************//
-TH1D* cosine_muon = new TH1D("cosine_muon","cosine_muon",10,-1,1);
+TH1D* cosine_electron = new TH1D("cosine_electron","cosine_electron",10,-1,1);
 
 //**************************************************Resolution_Histograms*************************************************************************//
 //************************************************************************************************************************************************//
@@ -174,7 +174,7 @@ TH1D* bin_42= new TH1D("bin_42","bin_42",30,0,30);
 
 /******************************************** reconstructed neutrino energy in uB ***************************************************************/
 /************************************************************************************************************************************************/
-/********************************************reconstructed neutrino energy in the Deep Learning analysis for 1muon+ 1 proton selection***********/
+/********************************************reconstructed neutrino energy in the Deep Learning analysis for 1electron+ 1 proton selection***********/
 
 TH1D *EnuDL_CCQE_GiBBU=new TH1D("EnuDL_CCQE_GiBBU", "EnuDL_CCQE_GiBBU", 30, 0, 3);
 TH1D *EnuDL_CCMEC_GiBBU=new TH1D("EnuDL_CCMEC_GiBBU", "EnuDL_CCMEC_GiBBU", 30, 0, 3);
@@ -197,7 +197,7 @@ TH1D *EnuDL_CCDIS_GiBBUnorw=new TH1D("EnuDL_CCDIS_GiBBUnorw", "EnuDL_CCDIS_GiBBU
 TH1D *EnuDL_CCCOH_GiBBUnorw=new TH1D("EnuDL_CCCOH_GiBBUnorw", "EnuDL_CCCOH_GiBBUnorw", 30, 0, 3);
 TH1D *EnuDL_other_GiBBUnorw=new TH1D("EnuDL_other_GiBBUnorw", "EnuDL_other_GiBBUnorw", 30, 0, 3);
 
-//*****************************reconstructed neutrino energy in the Pandora analysis for 1muon+ N(>0) proton selection***************************// 
+//*****************************reconstructed neutrino energy in the Pandora analysis for 1electron+ N(>0) proton selection***************************//
 
 TH1D *EnuPanN_CCQE_GiBBU=new TH1D("EnuPanN_CCQE_GiBBU", "EnuPanN_CCQE_GiBBU", 30, 0, 3);
 TH1D *EnuPanN_CCMEC_GiBBU=new TH1D("EnuPanN_CCMEC_GiBBU", "EnuPanN_CCMEC_GiBBU", 30, 0, 3);
@@ -220,7 +220,7 @@ TH1D *EnuPanN_CCDIS_GiBBUnorw=new TH1D("EnuPanN_CCDIS_GiBBUnorw", "EnuPanN_CCDIS
 TH1D *EnuPanN_CCCOH_GiBBUnorw=new TH1D("EnuPanN_CCCOH_GiBBUnorw", "EnuPanN_CCCOH_GiBBUnorw", 30, 0, 3);
 TH1D *EnuPanN_other_GiBBUnorw=new TH1D("EnuPanN_other_GiBBUnorw", "EnuPanN_other_GiBBUnorw", 30, 0, 3);
 
-//******************************reconstructed neutrino energy in the Pandora analysis for 1muon+ 0 proton selection******************************//
+//******************************reconstructed neutrino energy in the Pandora analysis for 1electron+ 0 proton selection******************************//
 
 TH1D *EnuPan0_CCQE_GiBBU=new TH1D("EnuPan0_CCQE_GiBBU", "EnuPan0_CCQE_GiBBU", 30, 0, 3);
 TH1D *EnuPan0_CCMEC_GiBBU=new TH1D("EnuPan0_CCMEC_GiBBU", "EnuPan0_CCMEC_GiBBU", 30, 0, 3);
@@ -243,7 +243,7 @@ TH1D *EnuPan0_CCDIS_GiBBUnorw=new TH1D("EnuPan0_CCDIS_GiBBUnorw", "EnuPan0_CCDIS
 TH1D *EnuPan0_CCCOH_GiBBUnorw=new TH1D("EnuPan0_CCCOH_GiBBUnorw", "EnuPan0_CCCOH_GiBBUnorw", 30, 0, 3);
 TH1D *EnuPan0_other_GiBBUnorw=new TH1D("EnuPan0_other_GiBBUnorw", "EnuPan0_other_GiBBUnorw", 30, 0, 3);
 
-//****************reconstructed neutrino energy in the Wire Cell analysis for 1muon+ X (any) proton selection  (numu CC inclusive)***************//
+//****************reconstructed neutrino energy in the Wire Cell analysis for 1electron+ X (any) proton selection  (nue CC inclusive)***************//
 
 TH1D *EnuWC_CCQE_GiBBU=new TH1D("EnuWC_CCQE_GiBBU", "EnuWC_CCQE_GiBBU", 30, 0, 3);
 TH1D *EnuWC_CCMEC_GiBBU=new TH1D("EnuWC_CCMEC_GiBBU", "EnuWC_CCMEC_GiBBU", 30, 0, 3);
@@ -268,18 +268,11 @@ TH1D *EnuWC_other_GiBBUnorw=new TH1D("EnuWC_other_GiBBUnorw", "EnuWC_other_GiBBU
 
 
 
-
-const Int_t NBINS=10;
-double_t bin_edges[NBINS+1] ={0.2,0.54,0.705,0.805,0.92,1.05,1.2,1.375,1.57,2.05,4.0};
-
-//************************************************Declaring_a_histogram_for_the_reconstruction_energy_in_WC)**************************************************//
-TH1D *Reco_WC=new TH1D("Reconstructed_Wire_Cell","Reconstructed_Wire_Cell",NBINS,bin_edges);
-TH1D *Reco_WC_reweighted=new TH1D("Reconstructed_Wire_Cell_reweighted","Reconstructed_Wire_Cell_reweighted",NBINS,bin_edges);
-
 //************************************************Some_vectors_and_matrices_needed_for_analysis**************************************************//
 std::vector<double> smearing_matrix;
 std::vector<double> Truth_bins;
 std::vector<double> Reconstructed_bins;
+
 
 //***************************************************************GENIE_REWEIGHTED****************************************************************//
 std::vector<double> Boogey;
@@ -293,10 +286,10 @@ TMatrixD *k=new TMatrixD(30,4);
 //*******************************Calculating 4-momentum transfer. We could also use as input any reconstructed neutrino energy********************//
 //************************************************************************************************************************************************//
 //************************************************************************************************************************************************//
-double GetQ2(double enu, double emu, double pmuz){ /// invariant 4-momentum transfer
+double GetQ2(double enu, double energy_electron, double p_electronz){ /// invariant 4-momentum transfer
 
-  double pmuL = pmuz;
-  double mom4 = 2 * enu * (emu - pmuL) - mumass*mumass;
+  double p_electronL = p_electronz;
+  double mom4 = 2 * enu * (energy_electron - p_electronL) - emass*emass;
   return mom4;
   
 }
@@ -305,9 +298,9 @@ double GetQ2(double enu, double emu, double pmuz){ /// invariant 4-momentum tran
 //************************************************************************************************************************************************//
 //************************************************************************************************************************************************//
 
-double w(double emu, double enu){ ///// energy transfer
+double w(double energy_electron, double enu){ ///// energy transfer
 
-  return (enu - emu);
+  return (enu - energy_electron);
   
 }
 
@@ -345,10 +338,10 @@ double GetEuB(double Epion, double Esum, int X , int np)
 //*************************************************************************************************************************************************/
 //**************************************************Energy_Reconstruction_through_CCCQE_Method***********************************************/
 //*************************************************************************************************************************************************/
-double Enu_CCQE(double M_Proton,double E_Muon,double M_Muon,double P_Muon, double Cosine_Muon)
+double Enu_CCQE(double M_Proton,double E_electron,double M_electron,double P_electron, double Cosine_electron)
 {
   double E_neutrino=0;
-  E_neutrino=((M_Proton*E_Muon)-(pow(M_Muon,2.0))/2)/(M_Proton-E_Muon+(P_Muon*Cosine_Muon));
+  E_neutrino=((M_Proton*E_electron)-(pow(M_electron,2.0))/2)/(M_Proton-E_electron+(P_electron*Cosine_electron));
   return E_neutrino;
 }
 
@@ -356,10 +349,10 @@ double Enu_CCQE(double M_Proton,double E_Muon,double M_Muon,double P_Muon, doubl
 //*************************************************************************************************************************************************/
 //**************************************************Energy_Reconstruction_through_CCRES_Method***********************************************/
 //*************************************************************************************************************************************************/
-double Enu_RES(double M_delta,double M_Proton,double E_Muon,double M_Muon, double Cosine_Muon)
+double Enu_RES(double M_delta,double M_Proton,double E_electron,double M_electron, double Cosine_electron)
 {
  double E_neutrino=0;
- E_neutrino= (pow(M_delta,2.0)-pow(M_Proton,2.0)+(2*M_Proton*E_Muon))/(2*(M_Proton-(E_Muon*(1-Cosine_Muon))));
+ E_neutrino= (pow(M_delta,2.0)-pow(M_Proton,2.0)+(2*M_Proton*E_electron))/(2*(M_Proton-(E_electron*(1-Cosine_electron))));
  return E_neutrino;
 }
 
@@ -367,19 +360,18 @@ double Enu_RES(double M_delta,double M_Proton,double E_Muon,double M_Muon, doubl
 //***********************************************************************************************************************************************//
 //**************************************************Energy_Reconstruction_through_Calorimetry_Methods********************************************//
 //***********************************************************************************************************************************************//
-double Enu_Calo(double Missing_PT, vector<double> M_Px[],vector<double> M_Py[],vector<double> M_Pz[],double Mu_E)
+double Enu_Calo(double Missing_PT, vector<double> M_Px[],vector<double> M_Py[],vector<double> M_Pz[],double elec_E)
 {
   double M_argon=37.205;
   double summa=0;
   double E_excited=0.0304;
   double E_kin_recoil=0;
-  double proton_mass=0.938;
   for (int k=0;k<M_Px->size();k++)
     {
      double hadron_momenta= momentum(M_Px,M_Py,M_Pz,k);
-     summa+=hadron_momenta/(2*proton_mass);  
+     summa+=hadron_momenta/(2*protonmass);
     }
-    summa=summa+Mu_E;
+    summa=summa+elec_E;
     E_kin_recoil=pow(Missing_PT+pow(M_argon,2.0),0.5)-M_argon;
     double reconstructed_neu_energy_calorie=summa+E_kin_recoil+E_excited;
     return reconstructed_neu_energy_calorie;
@@ -404,22 +396,22 @@ double Missing_PT(int index, vector<double> Hadron_Px[],vector<double> Hadron_Py
 //***********************************************************************************************************************************************//
 //**************************************************Finding_the_cos_theta***********************************************************************//
 //***********************************************************************************************************************************************//
-double cos_theta(double Mu_Px, double Mu_Py,double Mu_Pz)
+double cos_theta(double elec_Px, double elec_Py,double elec_Pz)
 {
-      double cosine_mu=0;
-      double norm=pow((pow(Mu_Px,2.0)+pow(Mu_Py,2.0)+pow(Mu_Pz,2.0)),0.5);
+      double cosine_elec=0;
+      double norm=pow((pow(elec_Px,2.0)+pow(elec_Py,2.0)+pow(elec_Pz,2.0)),0.5);
       if (norm==0)std::cout<<" Oh almighty god, what happened "<<std::endl;
-      cosine_mu=Mu_Pz/norm;
-      return cosine_mu;
+      cosine_elec=elec_Pz/norm;
+      return cosine_elec;
 }
 
 //***********************************************************************************************************************************************//
 //**************************************************Finding_the_Invariant_Mass*******************************************************************//
 //***********************************************************************************************************************************************//
-double invariant_mass(double nu_E,double mu_E, double mu_Pz)
+double invariant_mass(double nu_E,double elec_E, double elec_Pz)
 {
   double Nucelon_mass=0.9395;
-  double invariant_mass=pow(Nucelon_mass,2.0)+2*Nucelon_mass*(nu_E-mu_E)-2*nu_E*(mu_E-mu_Pz)-pow(0.10566,2.0);
+  double invariant_mass=pow(Nucelon_mass,2.0)+2*Nucelon_mass*(nu_E-elec_E)-2*nu_E*(elec_E-elec_Pz)-pow(0.10566,2.0);
   return invariant_mass;
 }
 
@@ -606,7 +598,6 @@ int count_anamoly=0;
 //***********************************************************************************************************************************************//
 //****************************************Applicable_for_the_microboone_formulae****************************************************************//
 //***********************************************************************************************************************************************//
-
 if (lepIn_E>3.0)continue;
 //total_weight=total_weight+weight;
 // std::cout<<" Energy is "<<lepIn_E<<std::endl;
@@ -616,8 +607,7 @@ if (lepIn_E>3.0)continue;
 
 
       int vi=0;
-      double proton_mass=0.938;
-      double muon_mass=0.106;
+      //double protonmass=0.938;
       double mass_delta=1.232;
       vi=indices_func(E,barcode,barcode->size());     
 //***********************************************************************************************************************************************//
@@ -626,21 +616,21 @@ if (lepIn_E>3.0)continue;
       float invari=invariant_mass(lepIn_E,lepOut_E, lepOut_Pz);
       
 //***********************************************************************************************************************************************//
-//********************************************************Muon_Momentum**************************************************************************//
+//********************************************************electron_Momentum**************************************************************************//
 //***********************************************************************************************************************************************//
-      float muon_momentum=pow((pow(lepOut_Px,2.0)+pow(lepOut_Py,2.0)+pow(lepOut_Pz,2.0)),0.5);
+      float electron_momentum=pow((pow(lepOut_Px,2.0)+pow(lepOut_Py,2.0)+pow(lepOut_Pz,2.0)),0.5);
      
 //***********************************************************************************************************************************************//
 //******************************************************Energy_Reconstruction********************************************************************//
 //***********************************************************************************************************************************************//
       
       
-      double Energy_CCQE=Enu_CCQE(proton_mass,lepOut_E,muon_mass,muon_momentum,cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz));
+      double Energy_CCQE=Enu_CCQE(protonmass,lepOut_E,emass,electron_momentum,cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz));
       Resolution_EnuCCQE_GiBBU->Fill(lepIn_E,lepIn_E-Energy_CCQE);
       hprof_EnuCCQE_GiBBU->Fill(lepIn_E,lepIn_E-Energy_CCQE);
       
-      double Energy_RES=Enu_RES(mass_delta,proton_mass,lepOut_E,muon_mass,cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz));
-      //std::cout<<" energy "<<muon_neutrino_1<<std::endl;
+      double Energy_RES=Enu_RES(mass_delta,protonmass,lepOut_E,emass,cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz));
+      //std::cout<<" energy "<<electron_neutrino_1<<std::endl;
       Resolution_EnuRes_GiBBU->Fill(lepIn_E,lepIn_E-Energy_RES);
       hprof_EnuRES_GiBBU->Fill(lepIn_E,lepIn_E-Energy_RES);
       
@@ -653,9 +643,9 @@ if (lepIn_E>3.0)continue;
       
          
 //***********************************************************************************************************************************************//
-//*************************************************Finding_the_cosine(muon)***********************************************************************//
+//*************************************************Finding_the_cosine(electron)***********************************************************************//
 //***********************************************************************************************************************************************//
-      cosine_muon->Fill(cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz),weight);
+      cosine_electron->Fill(cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz),weight);
       //***********************************************************************************************************************************************//
 //*************************************************boolean_for_eventType***********************************************************************//
 //***********************************************************************************************************************************************//
@@ -676,13 +666,13 @@ if (lepIn_E>3.0)continue;
       int nrho = 0;/// number of rhos (we don't care if negative or positive)
 
       /////// some true kinematics for all events //////
-      double deltax =lepOut_Px;/// muon px (momentum in x)
-      double deltay =lepOut_Py; // muon py (momentum in y)
+      double deltax =lepOut_Px;/// electron px (momentum in x)
+      double deltay =lepOut_Py; // electron py (momentum in y)
       double Esum =0; /// sum of total kinetic energies
-      double pmu = sqrt(lepOut_Px*lepOut_Px + lepOut_Py*lepOut_Py + lepOut_Pz*lepOut_Pz); /// true muon (absolute) momentum
-      double emu = sqrt(mumass*mumass + pmu*pmu); /// true muon energy
-      double q2 = GetQ2(lepOut_E, emu,lepOut_Pz); /// 4-momentum transfer from true kinematics
-      double omega = w(emu, lepOut_E); /// true energy transfer
+      double p_electron = sqrt(lepOut_Px*lepOut_Px + lepOut_Py*lepOut_Py + lepOut_Pz*lepOut_Pz); /// true electron (absolute) momentum
+      double energy_electron = sqrt(emass*emass + p_electron*p_electron); /// true electron energy
+      double q2 = GetQ2(lepOut_E, energy_electron,lepOut_Pz); /// 4-momentum transfer from true kinematics
+      double omega = w(energy_electron, lepOut_E); /// true energy transfer
       double protonmom =0; //// momentum of the proton
       double pionmom = 0.;
       double Epionplus = 0.;
@@ -742,7 +732,7 @@ int CCCOH_bin=0;
       //////////  end loop final state hadrons ///////////////
 
        double PTmiss = sqrt(deltax*deltax + deltay*deltay); /// missing transverse momentum (considering all protons in the final states)
-       Esum= Esum + emu; /// total energy of the muon + protons kinetic energy
+       Esum= Esum + energy_electron; /// total energy of the electron + protons kinetic energy
 //***********************************************************************************************************************************************//
 //************************************************Finding_Energy_and_boolean_values**************************************************************//
 //******************************************************************************************************************************************//      
@@ -765,19 +755,13 @@ int CCCOH_bin=0;
  //***********************************************************************************************************************************************//
 //*****************************Filling_the_vectors_by_calling_the_function********************************************************************//
 //*****************************************************************************************************************************************//
-         /// 1muon+ X proton //// Wire Cell signal (any number of protons)
+         /// 1electron+ X proton //// Wire Cell signal (any number of protons)
 	 EnuWC_CCQE_GiBBU->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
 	 //EnuWC_CCQE_GiBBU_GENIE_norw->Fill(GetEuB(Epion, Esum, 3 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCQE_bin-1)[0]);
 	 EnuWC_CCQE_GiBBUnorw->Fill(test.Reco_EnuWC,weight);
 	 hprof_EnuWC_GiBBU_CCQE->Fill(lepIn_E,lepIn_E - test.Reco_EnuWC,weight);
-
-     /***************************************************************Filling_the_reconstructed_WC_energy****************************************************************************************/
-
-     Reco_WC->Fill(test.Reco_EnuWC,weight);
-     Reco_WC_reweighted->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
-
-
-	 /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
+	 
+	 /// 1electron+ 0 proton + 0 pion //// Pandora 0proton signal
 	 if (test.Is_EnuPan0 ==1){
 	   EnuPan0_CCQE_GiBBU->Fill(test.Reco_EnuPan0,weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
 	   //EnuPan0_CCQE_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCQE_bin-1)[0]);
@@ -785,7 +769,7 @@ int CCCOH_bin=0;
 	   hprof_EnuPan0_GiBBU_CCQE->Fill(lepIn_E,lepIn_E - test.Reco_EnuPan0,weight);
 	 }
 	 
-	 /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
+	 /// 1electron+ N proton + 0 pion //// Pandora Nproton signal
 	 if (test.Is_EnuPanN==1) {
 	   EnuPanN_CCQE_GiBBU->Fill(test.Reco_EnuPanN, weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
 	   //EnuPanN_CCQE_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 1 , nproton), weight*TMatrixDRow(*m_GENIE_norw,CCQE_bin-1)[0]);
@@ -793,7 +777,7 @@ int CCCOH_bin=0;
 	   hprof_EnuPanN_GiBBU_CCQE->Fill(lepIn_E,lepIn_E - test.Reco_EnuPanN,weight);
 	 }
 	 
-	 //// 1muon+1 proton //// Deep Learning signal
+	 //// 1electron+1 proton //// Deep Learning signal
 	 if (test.Is_EnuDL==1) {
 	   EnuDL_CCQE_GiBBU->Fill(test.Reco_EnuDL, weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
 	   //EnuDL_CCQE_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 2 , nproton), weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
@@ -819,37 +803,31 @@ int CCCOH_bin=0;
 //*****************************Filling_the_vectors_by_calling_the_function********************************************************************//
 //*****************************************************************************************************************************************//
 
-          /// 1muon+ X proton //// Wire Cell signal (any number of protons)
-          EnuWC_CCRES_GiBBU->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
+          /// 1electron+ X proton //// Wire Cell signal (any number of protons)
+          EnuWC_CCRES_GiBBU->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCRES_bin-1)[0]);
           //EnuWC_CCRES_GiBBU_GENIE_norw->Fill(GetEuB(Epion, Esum, 3 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCRES_bin-1)[0]);
           EnuWC_CCRES_GiBBUnorw->Fill(test.Reco_EnuWC,weight);
           hprof_EnuWC_GiBBU_CCRES->Fill(lepIn_E,lepIn_E - test.Reco_EnuWC,weight);
 
-          /***************************************************************Filling_the_reconstructed_WC_energy****************************************************************************************/
-
-          Reco_WC->Fill(test.Reco_EnuWC,weight);
-          Reco_WC_reweighted->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
-
-
-          /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
+          /// 1electron+ 0 proton + 0 pion //// Pandora 0proton signal
           if (test.Is_EnuPan0 ==1){
-              EnuPan0_CCRES_GiBBU->Fill(test.Reco_EnuPan0,weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
+              EnuPan0_CCRES_GiBBU->Fill(test.Reco_EnuPan0,weight*TMatrixDRow(*m,CCRES_bin-1)[0]);
               //EnuPan0_CCRES_GiBBU_GENIE_norw->Fill(Gestd::cout<<" WC is "<<Mean_EnuWC_diff[i]<<" WC_norw is "<<Mean_EnuWC_norw_diff[i]<<" pan0 is "<<Mean_EnuPan0_diff[i]<<" pan0_norw is "<<Mean_EnuWC_norw_diff[i]<<" PanN is "<<Mean_EnuPanN_diff[i]<<" PanN_norw is "<<Mean_EnutEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCRES_bin-1)[0]);
               EnuPan0_CCRES_GiBBUnorw->Fill(test.Reco_EnuPan0,weight);
               hprof_EnuPan0_GiBBU_CCRES->Fill(lepIn_E,lepIn_E - test.Reco_EnuPan0,weight);
           }
 
-          /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
+          /// 1electron+ N proton + 0 pion //// Pandora Nproton signal
           if (test.Is_EnuPanN==1) {
-              EnuPanN_CCRES_GiBBU->Fill(test.Reco_EnuPanN, weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
+              EnuPanN_CCRES_GiBBU->Fill(test.Reco_EnuPanN, weight*TMatrixDRow(*m,CCRES_bin-1)[0]);
               //EnuPanN_CCRES_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 1 , nproton), weight*TMatrixDRow(*m_GENIE_norw,CCRES_bin-1)[0]);
               EnuPanN_CCRES_GiBBUnorw->Fill(test.Reco_EnuPanN,weight);
               hprof_EnuPanN_GiBBU_CCRES->Fill(lepIn_E,lepIn_E - test.Reco_EnuPanN,weight);
           }
 
-          //// 1muon+1 proton //// Deep Learning signal
+          //// 1electron+1 proton //// Deep Learning signal
           if (test.Is_EnuDL==1) {
-              EnuDL_CCRES_GiBBU->Fill(test.Reco_EnuDL, weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
+              EnuDL_CCRES_GiBBU->Fill(test.Reco_EnuDL, weight*TMatrixDRow(*m,CCRES_bin-1)[0]);
               //EnuDL_CCRES_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 2 , nproton), weight*TMatrixDRow(*m,CCRES_bin-1)[0]);
               EnuDL_CCRES_GiBBUnorw->Fill(test.Reco_EnuDL,weight);
               hprof_EnuDL_GiBBU_CCRES->Fill(lepIn_E,lepIn_E - test.Reco_EnuDL,weight);
@@ -874,36 +852,31 @@ int CCCOH_bin=0;
 //*****************************************************************************************************************************************//
 //*****************************Filling_the_vectors_by_calling_the_function********************************************************************//
 //*****************************************************************************************************************************************//
-          /// 1muon+ X proton //// Wire Cell signal (any number of protons)
-          EnuWC_CCDIS_GiBBU->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCDIS_bin-1)[3]);
+          /// 1electron+ X proton //// Wire Cell signal (any number of protons)
+          EnuWC_CCDIS_GiBBU->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCDIS_bin-1)[0]);
           //EnuWC_CCDIS_GiBBU_GENIE_norw->Fill(GetEuB(Epion, Esum, 3 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCDIS_bin-1)[0]);
           EnuWC_CCDIS_GiBBUnorw->Fill(test.Reco_EnuWC,weight);
           hprof_EnuWC_GiBBU_CCDIS->Fill(lepIn_E,lepIn_E - test.Reco_EnuWC,weight);
 
-          /***************************************************************Filling_the_reconstructed_WC_energy****************************************************************************************/
-
-          Reco_WC->Fill(test.Reco_EnuWC,weight);
-          Reco_WC_reweighted->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCDIS_bin-1)[3]);
-
-          /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
+          /// 1electron+ 0 proton + 0 pion //// Pandora 0proton signal
           if (test.Is_EnuPan0 ==1){
-              EnuPan0_CCDIS_GiBBU->Fill(test.Reco_EnuPan0,weight*TMatrixDRow(*m,CCDIS_bin-1)[3]);
+              EnuPan0_CCDIS_GiBBU->Fill(test.Reco_EnuPan0,weight*TMatrixDRow(*m,CCDIS_bin-1)[0]);
               //EnuPan0_CCDIS_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCDIS_bin-1)[0]);
               EnuPan0_CCDIS_GiBBUnorw->Fill(test.Reco_EnuPan0,weight);
               hprof_EnuPan0_GiBBU_CCDIS->Fill(lepIn_E,lepIn_E - test.Reco_EnuPan0,weight);
           }
 
-          /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
+          /// 1electron+ N proton + 0 pion //// Pandora Nproton signal
           if (test.Is_EnuPanN==1) {
-              EnuPanN_CCDIS_GiBBU->Fill(test.Reco_EnuPanN, weight*TMatrixDRow(*m,CCDIS_bin-1)[3]);
+              EnuPanN_CCDIS_GiBBU->Fill(test.Reco_EnuPanN, weight*TMatrixDRow(*m,CCDIS_bin-1)[0]);
               //EnuPanN_CCDIS_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 1 , nproton), weight*TMatrixDRow(*m_GENIE_norw,CCDIS_bin-1)[0]);
               EnuPanN_CCDIS_GiBBUnorw->Fill(test.Reco_EnuPanN,weight);
               hprof_EnuPanN_GiBBU_CCDIS->Fill(lepIn_E,lepIn_E - test.Reco_EnuPanN,weight);
           }
 
-          //// 1muon+1 proton //// Deep Learning signal
+          //// 1electron+1 proton //// Deep Learning signal
           if (test.Is_EnuDL==1) {
-              EnuDL_CCDIS_GiBBU->Fill(test.Reco_EnuDL, weight*TMatrixDRow(*m,CCDIS_bin-1)[3]);
+              EnuDL_CCDIS_GiBBU->Fill(test.Reco_EnuDL, weight*TMatrixDRow(*m,CCDIS_bin-1)[0]);
               //EnuDL_CCDIS_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 2 , nproton), weight*TMatrixDRow(*m,CCDIS_bin-1)[0]);
               EnuDL_CCDIS_GiBBUnorw->Fill(test.Reco_EnuDL,weight);
               hprof_EnuDL_GiBBU_CCDIS->Fill(lepIn_E,lepIn_E - test.Reco_EnuDL,weight);
@@ -941,36 +914,31 @@ int CCCOH_bin=0;
 //*****************************Filling_the_vectors_by_calling_the_function********************************************************************//
 //*****************************************************************************************************************************************//
 
-          /// 1muon+ X proton //// Wire Cell signal (any number of protons)
-          EnuWC_CCMEC_GiBBU->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCMEC_bin-1)[1]);
+          /// 1electron+ X proton //// Wire Cell signal (any number of protons)
+          EnuWC_CCMEC_GiBBU->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCMEC_bin-1)[0]);
           //EnuWC_CCMEC_GiBBU_GENIE_norw->Fill(GetEuB(Epion, Esum, 3 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCMEC_bin-1)[0]);
           EnuWC_CCMEC_GiBBUnorw->Fill(test.Reco_EnuWC,weight);
           hprof_EnuWC_GiBBU_CCMEC->Fill(lepIn_E,lepIn_E - test.Reco_EnuWC,weight);
 
-          /***************************************************************Filling_the_reconstructed_WC_energy****************************************************************************************/
-
-          Reco_WC->Fill(test.Reco_EnuWC,weight);
-          Reco_WC_reweighted->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCMEC_bin-1)[1]);
-
-          /// 1muon+ 0 proton + 0 pion //// Pandora 0proton signal
+          /// 1electron+ 0 proton + 0 pion //// Pandora 0proton signal
           if (test.Is_EnuPan0 ==1){
-              EnuPan0_CCMEC_GiBBU->Fill(test.Reco_EnuPan0,weight*TMatrixDRow(*m,CCMEC_bin-1)[1]);
+              EnuPan0_CCMEC_GiBBU->Fill(test.Reco_EnuPan0,weight*TMatrixDRow(*m,CCMEC_bin-1)[0]);
               //EnuPan0_CCMEC_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 1 , nproton),weight*TMatrixDRow(*m_GENIE_norw,CCMEC_bin-1)[0]);
               EnuPan0_CCMEC_GiBBUnorw->Fill(test.Reco_EnuPan0,weight);
               hprof_EnuPan0_GiBBU_CCMEC->Fill(lepIn_E,lepIn_E - test.Reco_EnuPan0,weight);
           }
 
-          /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
+          /// 1electron+ N proton + 0 pion //// Pandora Nproton signal
           if (test.Is_EnuPanN==1) {
-              EnuPanN_CCMEC_GiBBU->Fill(test.Reco_EnuPanN, weight*TMatrixDRow(*m,CCMEC_bin-1)[1]);
+              EnuPanN_CCMEC_GiBBU->Fill(test.Reco_EnuPanN, weight*TMatrixDRow(*m,CCMEC_bin-1)[0]);
               //EnuPanN_CCMEC_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 1 , nproton), weight*TMatrixDRow(*m_GENIE_norw,CCMEC_bin-1)[0]);
               EnuPanN_CCMEC_GiBBUnorw->Fill(test.Reco_EnuPanN,weight);
               hprof_EnuPanN_GiBBU_CCMEC->Fill(lepIn_E,lepIn_E - test.Reco_EnuPanN,weight);
           }
 
-          //// 1muon+1 proton //// Deep Learning signal
+          //// 1electron+1 proton //// Deep Learning signal
           if (test.Is_EnuDL==1) {
-              EnuDL_CCMEC_GiBBU->Fill(test.Reco_EnuDL, weight*TMatrixDRow(*m,CCMEC_bin-1)[1]);
+              EnuDL_CCMEC_GiBBU->Fill(test.Reco_EnuDL, weight*TMatrixDRow(*m,CCMEC_bin-1)[0]);
               //EnuDL_CCMEC_GiBBU_GENIE_norw->Fill(GetEuB(0, Esum, 2 , nproton), weight*TMatrixDRow(*m,CCMEC_bin-1)[0]);
               EnuDL_CCMEC_GiBBUnorw->Fill(test.Reco_EnuDL,weight);
               hprof_EnuDL_GiBBU_CCMEC->Fill(lepIn_E,lepIn_E - test.Reco_EnuDL,weight);
@@ -998,171 +966,171 @@ int CCCOH_bin=0;
 //***********************************************************************************************************************************************//
 //*****************************************Getting_the_bins_for_Truth_Simulation******************************************************************//
 //*******************************************************************************************************************************************//     
-      if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-1)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<-0.5)&&( muon_momentum>=0)&&( muon_momentum<0.18))
+      if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-1)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<-0.5)&&( electron_momentum>=0)&&( electron_momentum<0.18))
       {
       bin_1->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-1)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<-0.5)&&( muon_momentum>=0.18)&&( muon_momentum<0.30))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-1)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<-0.5)&&( electron_momentum>=0.18)&&( electron_momentum<0.30))
       {
       bin_2->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-1)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<-0.5)&&( muon_momentum>=0.30)&&( muon_momentum<0.45))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-1)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<-0.5)&&( electron_momentum>=0.30)&&( electron_momentum<0.45))
       {
       bin_3->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-1)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<-0.5)&&( muon_momentum>=0.45)&&( muon_momentum<0.77))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-1)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<-0.5)&&( electron_momentum>=0.45)&&( electron_momentum<0.77))
       {
       bin_4->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-1)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<-0.5)&&( muon_momentum>=0.77)&&( muon_momentum<2.50))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-1)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<-0.5)&&( electron_momentum>=0.77)&&( electron_momentum<2.50))
       {
       bin_5->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-0.5)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0)&&( muon_momentum>=0)&&( muon_momentum<0.18))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-0.5)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0)&&( electron_momentum>=0)&&( electron_momentum<0.18))
       {
       bin_6->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-0.5)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0)&&( muon_momentum>=0.18)&&( muon_momentum<0.30))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-0.5)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0)&&( electron_momentum>=0.18)&&( electron_momentum<0.30))
       {
       bin_7->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-0.5)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0)&&( muon_momentum>=0.30)&&( muon_momentum<0.45))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-0.5)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0)&&( electron_momentum>=0.30)&&( electron_momentum<0.45))
       {
       bin_8->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-0.5)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0)&&( muon_momentum>=0.45)&&( muon_momentum<0.77))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-0.5)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0)&&( electron_momentum>=0.45)&&( electron_momentum<0.77))
       {
       bin_9->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-0.5)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0)&&( muon_momentum>=0.77)&&( muon_momentum<2.50))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=-0.5)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0)&&( electron_momentum>=0.77)&&( electron_momentum<2.50))
       {
       bin_10->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.27)&&( muon_momentum>=0)&&( muon_momentum<0.18))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.27)&&( electron_momentum>=0)&&( electron_momentum<0.18))
       {
       bin_11->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.27)&&( muon_momentum>=0.18)&&( muon_momentum<0.30))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.27)&&( electron_momentum>=0.18)&&( electron_momentum<0.30))
       {
       bin_12->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.27)&&( muon_momentum>=0.30)&&( muon_momentum<0.45))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.27)&&( electron_momentum>=0.30)&&( electron_momentum<0.45))
       {
       bin_13->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.27)&&( muon_momentum>=0.45)&&( muon_momentum<0.77))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.27)&&( electron_momentum>=0.45)&&( electron_momentum<0.77))
       {
       bin_14->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.27)&&( muon_momentum>=0.77)&&( muon_momentum<2.50))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.27)&&( electron_momentum>=0.77)&&( electron_momentum<2.50))
       {
       bin_15->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.27)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.45)&&( muon_momentum>=0)&&( muon_momentum<0.30))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.27)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.45)&&( electron_momentum>=0)&&( electron_momentum<0.30))
       {
       bin_16->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.27)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.45)&&( muon_momentum>=0.30)&&( muon_momentum<0.45))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.27)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.45)&&( electron_momentum>=0.30)&&( electron_momentum<0.45))
       {
       bin_17->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.27)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.45)&&( muon_momentum>=0.45)&&( muon_momentum<0.77))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.27)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.45)&&( electron_momentum>=0.45)&&( electron_momentum<0.77))
       {
       bin_18->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.27)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.45)&&( muon_momentum>=0.77)&&( muon_momentum<2.50))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.27)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.45)&&( electron_momentum>=0.77)&&( electron_momentum<2.50))
       {
       bin_19->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.45)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.62)&&( muon_momentum>=0)&&( muon_momentum<0.30))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.45)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.62)&&( electron_momentum>=0)&&( electron_momentum<0.30))
       {
       bin_20->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.45)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.62)&&( muon_momentum>=0.30)&&( muon_momentum<0.45))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.45)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.62)&&( electron_momentum>=0.30)&&( electron_momentum<0.45))
       {
       bin_21->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.45)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.62)&&( muon_momentum>=0.45)&&( muon_momentum<0.77))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.45)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.62)&&( electron_momentum>=0.45)&&( electron_momentum<0.77))
       {
       bin_22->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.45)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.62)&&( muon_momentum>=0.77)&&( muon_momentum<2.50))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.45)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.62)&&( electron_momentum>=0.77)&&( electron_momentum<2.50))
       {
       bin_23->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.62)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.76)&&( muon_momentum>=0)&&( muon_momentum<0.30))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.62)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.76)&&( electron_momentum>=0)&&( electron_momentum<0.30))
       {
       bin_24->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.62)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.76)&&( muon_momentum>=0.30)&&( muon_momentum<0.45))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.62)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.76)&&( electron_momentum>=0.30)&&( electron_momentum<0.45))
       {
       bin_25->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.62)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.76)&&( muon_momentum>=0.45)&&( muon_momentum<0.77))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.62)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.76)&&( electron_momentum>=0.45)&&( electron_momentum<0.77))
       {
       bin_26->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.62)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.76)&&( muon_momentum>=0.77)&&( muon_momentum<2.50))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.62)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.76)&&( electron_momentum>=0.77)&&( electron_momentum<2.50))
       {
       bin_27->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.76)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.86)&&( muon_momentum>=0)&&( muon_momentum<0.30))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.76)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.86)&&( electron_momentum>=0)&&( electron_momentum<0.30))
       {
       bin_28->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.76)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.86)&&( muon_momentum>=0.30)&&( muon_momentum<0.45))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.76)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.86)&&( electron_momentum>=0.30)&&( electron_momentum<0.45))
       {
       bin_29->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.76)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.86)&&( muon_momentum>=0.45)&&( muon_momentum<0.77))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.76)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.86)&&( electron_momentum>=0.45)&&( electron_momentum<0.77))
       {
       bin_30->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.76)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.86)&&( muon_momentum>=0.77)&&( muon_momentum<1.28))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.76)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.86)&&( electron_momentum>=0.77)&&( electron_momentum<1.28))
       {
       bin_31->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.76)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.86)&&( muon_momentum>=1.28)&&( muon_momentum<2.50))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.76)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.86)&&( electron_momentum>=1.28)&&( electron_momentum<2.50))
       {
       bin_32->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.86)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.94)&&( muon_momentum>=0)&&( muon_momentum<0.30))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.86)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.94)&&( electron_momentum>=0)&&( electron_momentum<0.30))
       {
       bin_33->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.86)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.94)&&( muon_momentum>=0.30)&&( muon_momentum<0.45))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.86)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.94)&&( electron_momentum>=0.30)&&( electron_momentum<0.45))
       {
       bin_34->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.86)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.94)&&( muon_momentum>=0.45)&&( muon_momentum<0.77))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.86)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.94)&&( electron_momentum>=0.45)&&( electron_momentum<0.77))
       {
       bin_35->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.86)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.94)&&( muon_momentum>=0.77)&&( muon_momentum<1.28))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.86)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.94)&&( electron_momentum>=0.77)&&( electron_momentum<1.28))
       {
       bin_36->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.86)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.94)&&( muon_momentum>=1.28)&&( muon_momentum<2.50))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.86)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<0.94)&&( electron_momentum>=1.28)&&( electron_momentum<2.50))
       {
       bin_37->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.94)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<1)&&( muon_momentum>=0)&&( muon_momentum<0.30))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.94)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<1)&&( electron_momentum>=0)&&( electron_momentum<0.30))
       {
       bin_38->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.94)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<1)&&( muon_momentum>=0.30)&&( muon_momentum<0.45))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.94)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<1)&&( electron_momentum>=0.30)&&( electron_momentum<0.45))
       {
       bin_39->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.94)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<1)&&( muon_momentum>=0.45)&&( muon_momentum<0.77))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.94)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<1)&&( electron_momentum>=0.45)&&( electron_momentum<0.77))
       {
       bin_40->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.94)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<1)&&( muon_momentum>=0.77)&&( muon_momentum<1.28))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.94)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<1)&&( electron_momentum>=0.77)&&( electron_momentum<1.28))
       {
       bin_41->Fill(barcode->size(),weight);
       }
-      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.94)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<1)&&( muon_momentum>=1.28)&&( muon_momentum<2.50))
+      else if (( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)>=0.94)&&( cos_theta(lepOut_Px, lepOut_Py,lepOut_Pz)<1)&&( electron_momentum>=1.28)&&( electron_momentum<2.50))
       {
       bin_42->Fill(barcode->size(),weight);
       }
@@ -1384,7 +1352,6 @@ for (int i=0;i<30;i++)
 
 std::cout<<" CCQE: "<<Reweighting_Gibbu[i][0]<<" CCMEC: "<<Reweighting_Gibbu[i][1]<<" CCRES: "<<Reweighting_Gibbu[i][2]<<" CCDIS: "<<Reweighting_Gibbu[i][3]<<std::endl;
 }
-
 
 //***********************************************************************************************************************************************//
 //******************************************Filling_the_TMatrix(To_be_saved_in_the_file)*********************************************************//
@@ -1971,10 +1938,10 @@ l22->AddEntry(Resolution_EnuDL,"Resolution_EnuDL","P");
 
   
 l22->Draw();
-c22->Update();
+c22->Update();*/
 
 ///
-TCanvas *c23=new TCanvas("c23","",900, 900);
+/*TCanvas *c23=new TCanvas("c23","",900, 900);
 c23->SetTickx();
 c23->SetTicky();
 TMultiGraph *Reso_energy_norw=new TMultiGraph();
@@ -1998,8 +1965,8 @@ l23->AddEntry(Resolution_EnuDL_norw,"Resolution_EnuDL_norw","P");
 
   
 l23->Draw();
-c23->Update();
-*/
+c23->Update();*/
+
 TCanvas *c24 = new TCanvas("c24","",900, 900);
   
   TrueEnu_CCQE_GENIE->SetFillColor(kRed);
@@ -2035,18 +2002,7 @@ TCanvas *c24 = new TCanvas("c24","",900, 900);
   l24->Draw();
   c24->Update();
 
-    Reco_WC->Draw("HIST");
-    Reco_WC_reweighted->Draw("HIST SAME");
-    Reco_WC->SetStats(0);
-    Reco_WC_reweighted->SetStats(0);
-    auto l25 = new TLegend(0.1,0.7,0.48,0.9);
-    l25->SetHeader("The Legend Title","C"); // option "C" allows to center the header
-    l25->AddEntry(Reco_WC,"","P");
-    l25->AddEntry(Reco_WC_reweighted,"","P");
-    l25->Draw("SAME");
-
-
-
+    
 //***********************************************************************************************************************************************//
 //******************************************Storing_the_truth_bins********************************************//
 //***********************************************************************************************************************************************//
@@ -2177,8 +2133,6 @@ bins_33_37->Write();
 bins_38_42->Write();
 
 Resolution_EnuRes_GiBBU->Write();
-Reco_WC->Write();
-Reco_WC_reweighted->Write();
 TrueEnu_CCQE_GiBBU->Write();     
 TrueEnu_CCMEC_GiBBU->Write();  
 TrueEnu_CCRES_GiBBU->Write();
