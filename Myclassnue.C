@@ -24,6 +24,7 @@
 //*********************************************************Defining_Mass**************************************************************************//
 //************************************************************************************************************************************************//
 //************************************************************************************************************************************************//
+ofstream rwt_matrix;
 
 #define PI 3.14159265
 #define emass 0.00051099895000 // GeV/c2
@@ -531,7 +532,7 @@ void Myclassnue::Loop()
  TH1D *TrueEnu_CCDIS_GiBBU_extracted = (TH1D*)file_G->Get("TrueEnu_CCDIS_GiBBU");
  TH1D *TrueEnu_CCCOH_GiBBU_extracted = (TH1D*)file_G->Get("TrueEnu_CCCOH_GiBBU");
 
-
+    rwt_matrix.open("/home/shailesh/Documents/GiBUU_nue/rwt_matrix.txt");
  //std::cout<<" output "<<TrueEnu_CCQE_GiBBU_extracted->GetXaxis()->FindBin(2.97)<<std::endl;
 
 std::cout<<" output "<<TMatrixDRow(*m,29)[0]<<std::endl;
@@ -1154,7 +1155,7 @@ double norm_GiBBU=TrueEnu_CCQE_GiBBU->Integral()+TrueEnu_CCMEC_GiBBU->Integral()
 
 double norm_GiBBU_Reweighted=TrueEnu_CCQE_GiBBU_Reweighted->Integral()+TrueEnu_CCMEC_GiBBU_Reweighted->Integral()+ TrueEnu_CCRES_GiBBU_Reweighted->Integral()+TrueEnu_CCDIS_GiBBU_Reweighted->Integral();
 
-double norm_GENIE=TrueEnu_CCQE_GENIE->Integral()+TrueEnu_CCMEC_GENIE->Integral()+TrueEnu_CCRES_GENIE->Integral()+TrueEnu_CCDIS_GENIE->Integral();+TrueEnu_CCCOH_GENIE->Integral();//+TrueEnu_other_GENIE->Integral()
+double norm_GENIE=TrueEnu_CCQE_GENIE->Integral()+TrueEnu_CCMEC_GENIE->Integral()+TrueEnu_CCRES_GENIE->Integral()+TrueEnu_CCDIS_GENIE->Integral()+TrueEnu_CCCOH_GENIE->Integral();//+TrueEnu_other_GENIE->Integral()
 
 
 
@@ -1290,7 +1291,7 @@ for (int i=0;i<60;i++)
 		{
 	 	 Reweighting_Gibbu[i][3]=TrueEnu_CCDIS_GENIE->GetBinContent(i+1)/TrueEnu_CCDIS_GiBBU->GetBinContent(i+1);
 		}
-
+    rwt_matrix << "CCQE: " << Reweighting_Gibbu[i][0] << " CCMEC: " << Reweighting_Gibbu[i][1]<< " CCRES: " << Reweighting_Gibbu[i][2] << " CCDIS: " <<Reweighting_Gibbu[i][3] << endl;
 std::cout<<" CCQE: "<<Reweighting_Gibbu[i][0]<<" CCMEC: "<<Reweighting_Gibbu[i][1]<<" CCRES: "<<Reweighting_Gibbu[i][2]<<" CCDIS: "<<Reweighting_Gibbu[i][3]<<std::endl;
 }
 

@@ -30,6 +30,9 @@
 #define protonmass 0.93827208816 //GeV/c2
 #define pionmass 0.1349768  //GeV/c2
 
+//using namespace std;
+
+ofstream rwt_matrix;
 //*********************************************************Bins_For_comparison**************************************************************************//
 //************************************************************************************************************************************************//
 //************************************************************************************************************************************************//
@@ -520,7 +523,7 @@ void Myclass::Loop()
 //***************************************************************************************************************************************************************************//
 //********************************************************Getting_the_GiBUU_histograms_for_reweighting***********************************************************************//
 //***************************************************************************************************************************************************************************//
- TFile* file_G = TFile::Open("bins_my_friend.root");
+ TFile* file_G = TFile::Open("last_one.root");
  
  TMatrixD *m=(TMatrixD*)file_G->Get("TMatrixT<double>");
  TH1D *TrueEnu_CCQE_GiBBU_extracted = (TH1D*)file_G->Get("TrueEnu_CCQE_GiBBU");
@@ -528,6 +531,8 @@ void Myclass::Loop()
  TH1D *TrueEnu_CCRES_GiBBU_extracted = (TH1D*)file_G->Get("TrueEnu_CCRES_GiBBU");
  TH1D *TrueEnu_CCDIS_GiBBU_extracted = (TH1D*)file_G->Get("TrueEnu_CCDIS_GiBBU");
  TH1D *TrueEnu_CCCOH_GiBBU_extracted = (TH1D*)file_G->Get("TrueEnu_CCCOH_GiBBU");
+
+ rwt_matrix.open("/home/shailesh/Documents/GiBUU_numu/rwt_matrix.txt");
 
  //std::cout<<" output "<<TrueEnu_CCQE_GiBBU_extracted->GetXaxis()->FindBin(2.97)<<std::endl;
 
@@ -1073,7 +1078,7 @@ int CCCOH_bin=0;
       {
       //std::cout<<"dumped"<<std::endl;
       }
-   }
+   }// end of the event loop
    
 
 
@@ -1134,7 +1139,7 @@ double norm_GiBBU=TrueEnu_CCQE_GiBBU->Integral()+TrueEnu_CCMEC_GiBBU->Integral()
 
 double norm_GiBBU_Reweighted=TrueEnu_CCQE_GiBBU_Reweighted->Integral()+TrueEnu_CCMEC_GiBBU_Reweighted->Integral()+ TrueEnu_CCRES_GiBBU_Reweighted->Integral()+TrueEnu_CCDIS_GiBBU_Reweighted->Integral();
 
-double norm_GENIE=TrueEnu_CCQE_GENIE->Integral()+TrueEnu_CCMEC_GENIE->Integral()+TrueEnu_CCRES_GENIE->Integral()+TrueEnu_CCDIS_GENIE->Integral();+TrueEnu_CCCOH_GENIE->Integral();//+TrueEnu_other_GENIE->Integral()
+double norm_GENIE=TrueEnu_CCQE_GENIE->Integral()+TrueEnu_CCMEC_GENIE->Integral()+TrueEnu_CCRES_GENIE->Integral()+TrueEnu_CCDIS_GENIE->Integral()+TrueEnu_CCCOH_GENIE->Integral();//+TrueEnu_other_GENIE->Integral()
 
 
 //***********************************************************************************************************************************************//
@@ -1265,7 +1270,7 @@ for (int i=0;i<60;i++)
 		{
 	 	 Reweighting_Gibbu[i][3]=TrueEnu_CCDIS_GENIE->GetBinContent(i+1)/TrueEnu_CCDIS_GiBBU->GetBinContent(i+1);
 		}
-
+        rwt_matrix << "CCQE: " << Reweighting_Gibbu[i][0] << " CCMEC: " << Reweighting_Gibbu[i][1]<< " CCRES: " << Reweighting_Gibbu[i][2] << " CCDIS: " <<Reweighting_Gibbu[i][3] << endl;
 std::cout<<" CCQE: "<<Reweighting_Gibbu[i][0]<<" CCMEC: "<<Reweighting_Gibbu[i][1]<<" CCRES: "<<Reweighting_Gibbu[i][2]<<" CCDIS: "<<Reweighting_Gibbu[i][3]<<std::endl;
 }
 
@@ -1273,7 +1278,7 @@ std::cout<<" CCQE: "<<Reweighting_Gibbu[i][0]<<" CCMEC: "<<Reweighting_Gibbu[i][
 //***********************************************************************************************************************************************//
 //******************************************Filling_the_TMatrix(To_be_saved_in_the_file)*********************************************************//
 //***********************************************************************************************************************************************//
-   for (int i=0;i<60;i++)
+   for (int i=0;i<60;i++)//60*4=240
      {
 	Boogey.push_back(Reweighting_Gibbu[i][0]);
 	Boogey.push_back(Reweighting_Gibbu[i][1]);
@@ -1918,11 +1923,11 @@ TCanvas *c24 = new TCanvas("c24","",900, 900);
   
   l24->Draw();
   c24->Update();
-  for (int i=1;i<15;i++)
-  {
-      //*******************************************WC*******************************************************//
+ // for (int i=1;i<15;i++)
+ // {
+      /*******************************************WC*******************************************************/
       //std::cout<<"original bin content is"<<Reco_WC->GetBinContent(i)<<std::endl;
-      Reco_WC->SetBinContent(i,(Reco_WC->GetBinContent(i))/(Reco_WC->GetXaxis()->GetBinCenter(i)));
+      //Reco_WC->SetBinContent(i,(Reco_WC->GetBinContent(i))/(Reco_WC->GetXaxis()->GetBinCenter(i)));
      // std::cout<<"later bin content is"<<Reco_WC->GetBinContent(i)<<std::endl;
 
       //*******************************************WC_reweighted*******************************************************//
@@ -1930,7 +1935,7 @@ TCanvas *c24 = new TCanvas("c24","",900, 900);
      // Reco_WC_reweighted->SetBinContent(i,(Reco_WC_reweighted->GetBinContent(i))/(Reco_WC_reweighted->GetXaxis()->GetBinCenter(i)));
       //std::cout<<"later bin content_reweighted is"<<Reco_WC_reweighted->GetBinContent(i)<<std::endl;
 
-  }
+  //}
     Reco_WC->Draw("HIST");
     //Reco_WC_reweighted->Draw("HIST SAME");
     Reco_WC->SetStats(0);
@@ -2061,7 +2066,7 @@ if ((i>=37)&&(i<=41))bins_38_42->SetBinContent((i+6)%6,Reconstructed_bins[i]);
 //.............................................................Writing_in_a_file..............................................................//
 //............................................................................................................................................//
 //............................................................................................................................................//
-TFile blob("last_one.root", "RECREATE");
+TFile blob("very_last_one.root", "RECREATE");
 bins_1_5->Write();
 bins_6_10->Write();
 bins_11_15->Write();
