@@ -1250,7 +1250,7 @@ std::cout<<" Entries_CCDIS_GiBBU_Reweighted is "<<TrueEnu_CCDIS_GiBBU_Reweighted
 std::cout<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<std::endl;
 std::cout<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<std::endl;
 std::cout<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<std::endl;
-
+//making some changes
 for (int i=0;i<60;i++)
 {
 //std::cout<<" GiBBU "<<TrueEnu_CCQE_GiBBU->GetBinContent(i+1)<<" genie "<<TrueEnu_CCQE_GENIE->GetBinContent(i+1)<<std::endl;
