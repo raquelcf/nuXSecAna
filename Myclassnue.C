@@ -1251,6 +1251,7 @@ std::cout<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<"
 std::cout<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<std::endl;
 std::cout<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<std::endl;
 //making some changes
+std::cout<<"Does it work"<<std::endl;
 for (int i=0;i<60;i++)
 {
 //std::cout<<" GiBBU "<<TrueEnu_CCQE_GiBBU->GetBinContent(i+1)<<" genie "<<TrueEnu_CCQE_GENIE->GetBinContent(i+1)<<std::endl;
