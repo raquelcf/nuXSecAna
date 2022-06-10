@@ -537,7 +537,7 @@ void Myclass::Loop()
 
  //std::cout<<" output "<<TrueEnu_CCQE_GiBBU_extracted->GetXaxis()->FindBin(2.97)<<std::endl;
 
-//std::cout<<" output "<<TMatrixDRow(*m,29)[0]<<std::endl;
+std::cout<<" output "<<TMatrixDRow(*m,29)[0]<<std::endl;
 for (int i=0;i<80;i++)
 {
 std::cout<<" CCQE: "<<TMatrixDRow(*m,i)[0]<<" CCMEC: "<<TMatrixDRow(*m,i)[1]<<" CCRES: "<<TMatrixDRow(*m,i)[2]<<" CCDIS: "<<TMatrixDRow(*m,i)[3]<<" i "<<i<<std::endl;
