@@ -44,20 +44,21 @@ double_t bin_edges[NBINS+1] ={0.2,0.54,0.705,0.805,0.92,1.05,1.2,1.375,1.57,2.05
 //************************************************************************************************************************************************//
 //************************************************************************************************************************************************//
 TH1D* TrueEnu_Reweighted=new TH1D("TrueEnu_Reweighted","TrueEnu_Reweighted",NBINS,bin_edges);
+TH1D* TrueEnu=new TH1D("TrueEnu","TrueEnu",NBINS,bin_edges);
 
 
 //*********************************************************GiBBU_nomenclature*********************************************************************//
 //************************************************************************************************************************************************//
 //************************************************************************************************************************************************//
-TH1D* CCQE = new TH1D("CCQE","CCQE",60,0,3);
-TH1D* Cresonant = new TH1D("Cresonant","Cresonant",60,0,3);
-TH1D* pi_plus_plus_n_bkg = new TH1D("pi_plus_plus_n_bkg","pi_plus_plus_n_bkg",60,0,3);
-TH1D* pi_zero_plus_p_bkg = new TH1D("pi_zero_plus_p_bkg","pi_zero_plus_p_bkg",60,0,3);
+TH1D* CCQE = new TH1D("CCQE","CCQE",80,0,4);
+TH1D* Cresonant = new TH1D("Cresonant","Cresonant",80,0,4);
+TH1D* pi_plus_plus_n_bkg = new TH1D("pi_plus_plus_n_bkg","pi_plus_plus_n_bkg",80,0,4);
+TH1D* pi_zero_plus_p_bkg = new TH1D("pi_zero_plus_p_bkg","pi_zero_plus_p_bkg",80,0,4);
 TH1D* CCDIS = new TH1D("CCDIS","CCDIS",30,0,30);
 TH1D* CCQE_two_p_two_h = new TH1D("CCQE_two_p_two_h","CCQE_two_p_two_h",30,0,30);
 TH1D* Delta_two_p_two_h = new TH1D("Delta_two_p_two_h","Delta_two_p_two_h",30,0,30);
 TH1D* two_pion_bkg = new TH1D("two_pion_bkg","two_pion_bkg",30,0,30);
-TH1D* ninth= new TH1D("ninth","ninth",60,0,3);
+TH1D* ninth= new TH1D("ninth","ninth",80,0,4);
 
 //*********************************************Histogram_for_angle_of_muon************************************************************************//
 //************************************************************************************************************************************************//
@@ -75,20 +76,20 @@ TH2D* Resolution_EnuRes_GiBBU= new TH2D("Resolution_EnuRes_GiBBU", "Resolution_E
 //************************************************************************************************************************************************//
 //************************************************************************************************************************************************//
 
-TH1D* TrueEnu_CCQE_GiBBU= new TH1D("TrueEnu_CCQE_GiBBU", "TrueEnu_CCQE_GiBBU",60, 0, 3);
-TH1D* TrueEnu_CCMEC_GiBBU= new TH1D("TrueEnu_CCMEC_GiBBU", "TrueEnu_CCMEC_GiBBU",60, 0, 3);
-TH1D* TrueEnu_CCRES_GiBBU= new TH1D("TrueEnu_CCRES_GiBBU", "TrueEnu_CCRES_GiBBU",60, 0, 3);
-TH1D* TrueEnu_CCDIS_GiBBU= new TH1D("TrueEnu_CCDIS_GiBBU", "TrueEnu_CCDIS_GiBBU",60, 0, 3);
-TH1D* TrueEnu_CCCOH_GiBBU= new TH1D("TrueEnu_CCCOH_GiBBU", "TrueEnu_CCCOH_GiBBU",60, 0, 3);
+TH1D* TrueEnu_CCQE_GiBBU= new TH1D("TrueEnu_CCQE_GiBBU", "TrueEnu_CCQE_GiBBU",80, 0, 4);
+TH1D* TrueEnu_CCMEC_GiBBU= new TH1D("TrueEnu_CCMEC_GiBBU", "TrueEnu_CCMEC_GiBBU",80, 0, 4);
+TH1D* TrueEnu_CCRES_GiBBU= new TH1D("TrueEnu_CCRES_GiBBU", "TrueEnu_CCRES_GiBBU",80, 0, 4);
+TH1D* TrueEnu_CCDIS_GiBBU= new TH1D("TrueEnu_CCDIS_GiBBU", "TrueEnu_CCDIS_GiBBU",80, 0, 4);
+TH1D* TrueEnu_CCCOH_GiBBU= new TH1D("TrueEnu_CCCOH_GiBBU", "TrueEnu_CCCOH_GiBBU",80, 0, 4);
 
 //**************************************************GiBBU_Reweighted***********************************************************************//
 //************************************************************************************************************************************************//
 //************************************************************************************************************************************************//
-TH1D* TrueEnu_CCQE_GiBBU_Reweighted= new TH1D("TrueEnu_CCQE_GiBBU_Reweighted", "TrueEnu_CCQE_GiBBU_Reweighted", 60, 0, 3);
-TH1D* TrueEnu_CCMEC_GiBBU_Reweighted= new TH1D("TrueEnu_CCMEC_GiBBU_Reweighted", "TrueEnu_CCMEC_GiBBU_Reweighted", 60, 0, 3);
-TH1D* TrueEnu_CCRES_GiBBU_Reweighted= new TH1D("TrueEnu_CCRES_GiBBU_Reweighted", "TrueEnu_CCRES_GiBBU_Reweighted", 60, 0, 3);
-TH1D* TrueEnu_CCDIS_GiBBU_Reweighted= new TH1D("TrueEnu_CCDIS_GiBBU_Reweighted", "TrueEnu_CCDIS_GiBBU_Reweighted", 60, 0, 3);
-TH1D* TrueEnu_CCCOH_GiBBU_Reweighted= new TH1D("TrueEnu_CCCOH_GiBBU_Reweighted", "TrueEnu_CCCOH_GiBBU_Reweighted", 60, 0, 3);
+TH1D* TrueEnu_CCQE_GiBBU_Reweighted= new TH1D("TrueEnu_CCQE_GiBBU_Reweighted", "TrueEnu_CCQE_GiBBU_Reweighted", 80, 0, 4);
+TH1D* TrueEnu_CCMEC_GiBBU_Reweighted= new TH1D("TrueEnu_CCMEC_GiBBU_Reweighted", "TrueEnu_CCMEC_GiBBU_Reweighted", 80, 0, 4);
+TH1D* TrueEnu_CCRES_GiBBU_Reweighted= new TH1D("TrueEnu_CCRES_GiBBU_Reweighted", "TrueEnu_CCRES_GiBBU_Reweighted", 80, 0, 4);
+TH1D* TrueEnu_CCDIS_GiBBU_Reweighted= new TH1D("TrueEnu_CCDIS_GiBBU_Reweighted", "TrueEnu_CCDIS_GiBBU_Reweighted", 80, 0, 4);
+TH1D* TrueEnu_CCCOH_GiBBU_Reweighted= new TH1D("TrueEnu_CCCOH_GiBBU_Reweighted", "TrueEnu_CCCOH_GiBBU_Reweighted", 80, 0, 3);
 
 //**********************************************Histogram_for_the_Tprofile plots_&&_resolution_plots**********************************************//
 //************************************************************************************************************************************************//
@@ -101,28 +102,28 @@ TProfile *hprof_EnuCCQE_GiBBUnorw=new TProfile("hprof_EnuCCQE_GiBBUnorw", "",50,
 TProfile *hprof_EnuCalo_GiBBUnorw=new TProfile("hprof_EnuCalo_GiBBUnorw", "",50,0,1.5,-2.,2.);
 TProfile *hprof_EnuRes_GiBBUnorw=new TProfile("hprof_EnuRes_GiBBUnorw", "",50,0,1.5,-2.,2.);
                                         //CCQE//
-TProfile *hprof_EnuDL_GiBBU_CCQE=new TProfile("hprof_EnuDL_GiBBU_CCQE", "",30,0,3.0,-2.,2.);
-TProfile *hprof_EnuPanN_GiBBU_CCQE=new TProfile("hprof_EnuPanN_GiBBU_CCQE", "",30,0,3.0,-2.,2.);
-TProfile *hprof_EnuPan0_GiBBU_CCQE=new TProfile("hprof_EnuPan0_GiBBU_CCQE", "",30,0,3.0,-2.,2.);
-TProfile *hprof_EnuWC_GiBBU_CCQE=new TProfile("hprof_EnuWC_GiBBU_CCQE", "",30,0,3.0,-2.,2.);
+TProfile *hprof_EnuDL_GiBBU_CCQE=new TProfile("hprof_EnuDL_GiBBU_CCQE", "",40,0,4.0,-2.,2.);
+TProfile *hprof_EnuPanN_GiBBU_CCQE=new TProfile("hprof_EnuPanN_GiBBU_CCQE", "",30,0,4.0,-2.,2.);
+TProfile *hprof_EnuPan0_GiBBU_CCQE=new TProfile("hprof_EnuPan0_GiBBU_CCQE", "",30,0,4.0,-2.,2.);
+TProfile *hprof_EnuWC_GiBBU_CCQE=new TProfile("hprof_EnuWC_GiBBU_CCQE", "",30,0,4.0,-2.,2.);
 
                                         //CCMEC//
-TProfile *hprof_EnuDL_GiBBU_CCMEC=new TProfile("hprof_EnuDL_GiBBU_CCMEC", "",30,0,3.0,-2.,2.);
-TProfile *hprof_EnuPanN_GiBBU_CCMEC=new TProfile("hprof_EnuPanN_GiBBU_CCMEC", "",30,0,3.0,-2.,2.);
-TProfile *hprof_EnuPan0_GiBBU_CCMEC=new TProfile("hprof_EnuPan0_GiBBU_CCMEC", "",30,0,3.0,-2.,2.);
-TProfile *hprof_EnuWC_GiBBU_CCMEC=new TProfile("hprof_EnuWC_GiBBU_CCMEC", "",30,0,3.0,-2.,2.);
+TProfile *hprof_EnuDL_GiBBU_CCMEC=new TProfile("hprof_EnuDL_GiBBU_CCMEC", "",30,0,4.0,-2.,2.);
+TProfile *hprof_EnuPanN_GiBBU_CCMEC=new TProfile("hprof_EnuPanN_GiBBU_CCMEC", "",30,0,4.0,-2.,2.);
+TProfile *hprof_EnuPan0_GiBBU_CCMEC=new TProfile("hprof_EnuPan0_GiBBU_CCMEC", "",30,0,4.0,-2.,2.);
+TProfile *hprof_EnuWC_GiBBU_CCMEC=new TProfile("hprof_EnuWC_GiBBU_CCMEC", "",30,0,4.0,-2.,2.);
 
                                         //CCRES//
-TProfile *hprof_EnuDL_GiBBU_CCRES=new TProfile("hprof_EnuDL_GiBBU_CCRES", "",30,0,3.0,-2.,2.);
-TProfile *hprof_EnuPanN_GiBBU_CCRES=new TProfile("hprof_EnuPanN_GiBBU_CCRES", "",30,0,3.0,-2.,2.);
-TProfile *hprof_EnuPan0_GiBBU_CCRES=new TProfile("hprof_EnuPan0_GiBBU_CCRES", "",30,0,3.0,-2.,2.);
-TProfile *hprof_EnuWC_GiBBU_CCRES=new TProfile("hprof_EnuWC_GiBBU_CCRES", "",30,0,3.0,-2.,2.);
+TProfile *hprof_EnuDL_GiBBU_CCRES=new TProfile("hprof_EnuDL_GiBBU_CCRES", "",30,0,4.0,-2.,2.);
+TProfile *hprof_EnuPanN_GiBBU_CCRES=new TProfile("hprof_EnuPanN_GiBBU_CCRES", "",30,0,4.0,-2.,2.);
+TProfile *hprof_EnuPan0_GiBBU_CCRES=new TProfile("hprof_EnuPan0_GiBBU_CCRES", "",30,0,4.0,-2.,2.);
+TProfile *hprof_EnuWC_GiBBU_CCRES=new TProfile("hprof_EnuWC_GiBBU_CCRES", "",30,0,4.0,-2.,2.);
 
                                         //CCDIS//
-TProfile *hprof_EnuDL_GiBBU_CCDIS=new TProfile("hprof_EnuDL_GiBBU_CCDIS", "",30,0,3.0,-2.,2.);
-TProfile *hprof_EnuPanN_GiBBU_CCDIS=new TProfile("hprof_EnuPanN_GiBBU_CCDIS", "",30,0,3.0,-2.,2.);
-TProfile *hprof_EnuPan0_GiBBU_CCDIS=new TProfile("hprof_EnuPan0_GiBBU_CCDIS", "",30,0,3.0,-2.,2.);
-TProfile *hprof_EnuWC_GiBBU_CCDIS=new TProfile("hprof_EnuWC_GiBBU_CCDIS", "",30,0,3.0,-2.,2.);
+TProfile *hprof_EnuDL_GiBBU_CCDIS=new TProfile("hprof_EnuDL_GiBBU_CCDIS", "",30,0,4.0,-2.,2.);
+TProfile *hprof_EnuPanN_GiBBU_CCDIS=new TProfile("hprof_EnuPanN_GiBBU_CCDIS", "",30,0,4.0,-2.,2.);
+TProfile *hprof_EnuPan0_GiBBU_CCDIS=new TProfile("hprof_EnuPan0_GiBBU_CCDIS", "",30,0,4.0,-2.,2.);
+TProfile *hprof_EnuWC_GiBBU_CCDIS=new TProfile("hprof_EnuWC_GiBBU_CCDIS", "",30,0,4.0,-2.,2.);
 
 
 
@@ -191,68 +192,68 @@ TH1D* bin_42= new TH1D("bin_42","bin_42",30,0,30);
 /************************************************************************************************************************************************/
 /********************************************reconstructed neutrino energy in the Deep Learning analysis for 1muon+ 1 proton selection***********/
 
-TH1D *EnuDL_CCQE_GiBBU=new TH1D("EnuDL_CCQE_GiBBU", "EnuDL_CCQE_GiBBU", 60, 0, 3);
-TH1D *EnuDL_CCMEC_GiBBU=new TH1D("EnuDL_CCMEC_GiBBU", "EnuDL_CCMEC_GiBBU", 60, 0, 3);
-TH1D *EnuDL_CCRES_GiBBU=new TH1D("EnuDL_CCRES_GiBBU", "EnuDL_CCRES_GiBBU", 60, 0, 3);
-TH1D *EnuDL_CCDIS_GiBBU=new TH1D("EnuDL_CCDIS_GiBBU", "EnuDL_CCDIS_GiBBU", 60, 0, 3);
-TH1D *EnuDL_CCCOH_GiBBU=new TH1D("EnuDL_CCCOH_GiBBU", "EnuDL_CCCOH_GiBBU", 60, 0, 3);
-TH1D *EnuDL_other_GiBBU=new TH1D("EnuDL_other_GiBBU", "EnuDL_other_GiBBU", 60, 0, 3);
+TH1D *EnuDL_CCQE_GiBBU=new TH1D("EnuDL_CCQE_GiBBU", "EnuDL_CCQE_GiBBU", 80, 0, 4);
+TH1D *EnuDL_CCMEC_GiBBU=new TH1D("EnuDL_CCMEC_GiBBU", "EnuDL_CCMEC_GiBBU", 80, 0, 4);
+TH1D *EnuDL_CCRES_GiBBU=new TH1D("EnuDL_CCRES_GiBBU", "EnuDL_CCRES_GiBBU", 80, 0, 4);
+TH1D *EnuDL_CCDIS_GiBBU=new TH1D("EnuDL_CCDIS_GiBBU", "EnuDL_CCDIS_GiBBU", 80, 0, 4);
+TH1D *EnuDL_CCCOH_GiBBU=new TH1D("EnuDL_CCCOH_GiBBU", "EnuDL_CCCOH_GiBBU", 80, 0, 4);
+TH1D *EnuDL_other_GiBBU=new TH1D("EnuDL_other_GiBBU", "EnuDL_other_GiBBU", 80, 0, 4);
 
-TH1D *EnuDL_CCQE_GiBBUnorw=new TH1D("EnuDL_CCQE_GiBBUnorw", "EnuDL_CCQE_GiBBUnorw", 60, 0, 3);
-TH1D *EnuDL_CCMEC_GiBBUnorw=new TH1D("EnuDL_CCMEC_GiBBUnorw", "EnuDL_CCMEC_GiBBUnorw", 60, 0, 3);
-TH1D *EnuDL_CCRES_GiBBUnorw=new TH1D("EnuDL_CCRES_GiBBUnorw", "EnuDL_CCRES_GiBBUnorw", 60, 0, 3);
-TH1D *EnuDL_CCDIS_GiBBUnorw=new TH1D("EnuDL_CCDIS_GiBBUnorw", "EnuDL_CCDIS_GiBBUnorw", 60, 0, 3);
-TH1D *EnuDL_CCCOH_GiBBUnorw=new TH1D("EnuDL_CCCOH_GiBBUnorw", "EnuDL_CCCOH_GiBBUnorw", 60, 0, 3);
-TH1D *EnuDL_other_GiBBUnorw=new TH1D("EnuDL_other_GiBBUnorw", "EnuDL_other_GiBBUnorw", 60, 0, 3);
+TH1D *EnuDL_CCQE_GiBBUnorw=new TH1D("EnuDL_CCQE_GiBBUnorw", "EnuDL_CCQE_GiBBUnorw", 80, 0, 4);
+TH1D *EnuDL_CCMEC_GiBBUnorw=new TH1D("EnuDL_CCMEC_GiBBUnorw", "EnuDL_CCMEC_GiBBUnorw", 80, 0, 4);
+TH1D *EnuDL_CCRES_GiBBUnorw=new TH1D("EnuDL_CCRES_GiBBUnorw", "EnuDL_CCRES_GiBBUnorw", 80, 0, 4);
+TH1D *EnuDL_CCDIS_GiBBUnorw=new TH1D("EnuDL_CCDIS_GiBBUnorw", "EnuDL_CCDIS_GiBBUnorw", 80, 0, 4);
+TH1D *EnuDL_CCCOH_GiBBUnorw=new TH1D("EnuDL_CCCOH_GiBBUnorw", "EnuDL_CCCOH_GiBBUnorw", 80, 0, 4);
+TH1D *EnuDL_other_GiBBUnorw=new TH1D("EnuDL_other_GiBBUnorw", "EnuDL_other_GiBBUnorw", 80, 0, 4);
 
 //*****************************reconstructed neutrino energy in the Pandora analysis for 1muon+ N(>0) proton selection***************************// 
 
-TH1D *EnuPanN_CCQE_GiBBU=new TH1D("EnuPanN_CCQE_GiBBU", "EnuPanN_CCQE_GiBBU", 60, 0, 3);
-TH1D *EnuPanN_CCMEC_GiBBU=new TH1D("EnuPanN_CCMEC_GiBBU", "EnuPanN_CCMEC_GiBBU", 60, 0, 3);
-TH1D *EnuPanN_CCRES_GiBBU=new TH1D("EnuPanN_CCRES_GiBBU", "EnuPanN_CCRES_GiBBU", 60, 0, 3);
-TH1D *EnuPanN_CCDIS_GiBBU=new TH1D("EnuPanN_CCDIS_GiBBU", "EnuPanN_CCDIS_GiBBU", 60, 0, 3);
-TH1D *EnuPanN_CCCOH_GiBBU=new TH1D("EnuPanN_CCCOH_GiBBU", "EnuPanN_CCCOH_GiBBU", 60, 0, 3);
-TH1D *EnuPanN_other_GiBBU=new TH1D("EnuPanN_other_GiBBU", "EnuPanN_other_GiBBU", 60, 0, 3);
+TH1D *EnuPanN_CCQE_GiBBU=new TH1D("EnuPanN_CCQE_GiBBU", "EnuPanN_CCQE_GiBBU", 80, 0, 4);
+TH1D *EnuPanN_CCMEC_GiBBU=new TH1D("EnuPanN_CCMEC_GiBBU", "EnuPanN_CCMEC_GiBBU", 80, 0, 4);
+TH1D *EnuPanN_CCRES_GiBBU=new TH1D("EnuPanN_CCRES_GiBBU", "EnuPanN_CCRES_GiBBU", 80, 0, 4);
+TH1D *EnuPanN_CCDIS_GiBBU=new TH1D("EnuPanN_CCDIS_GiBBU", "EnuPanN_CCDIS_GiBBU", 80, 0, 4);
+TH1D *EnuPanN_CCCOH_GiBBU=new TH1D("EnuPanN_CCCOH_GiBBU", "EnuPanN_CCCOH_GiBBU", 80, 0, 4);
+TH1D *EnuPanN_other_GiBBU=new TH1D("EnuPanN_other_GiBBU", "EnuPanN_other_GiBBU", 80, 0, 4);
 
 
-TH1D *EnuPanN_CCQE_GiBBUnorw=new TH1D("EnuPanN_CCQE_GiBBUnorw", "EnuPanN_CCQE_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPanN_CCMEC_GiBBUnorw=new TH1D("EnuPanN_CCMEC_GiBBUnorw", "EnuPanN_CCMEC_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPanN_CCRES_GiBBUnorw=new TH1D("EnuPanN_CCRES_GiBBUnorw", "EnuPanN_CCRES_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPanN_CCDIS_GiBBUnorw=new TH1D("EnuPanN_CCDIS_GiBBUnorw", "EnuPanN_CCDIS_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPanN_CCCOH_GiBBUnorw=new TH1D("EnuPanN_CCCOH_GiBBUnorw", "EnuPanN_CCCOH_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPanN_other_GiBBUnorw=new TH1D("EnuPanN_other_GiBBUnorw", "EnuPanN_other_GiBBUnorw", 60, 0, 3);
+TH1D *EnuPanN_CCQE_GiBBUnorw=new TH1D("EnuPanN_CCQE_GiBBUnorw", "EnuPanN_CCQE_GiBBUnorw", 80, 0, 4);
+TH1D *EnuPanN_CCMEC_GiBBUnorw=new TH1D("EnuPanN_CCMEC_GiBBUnorw", "EnuPanN_CCMEC_GiBBUnorw", 80, 0, 4);
+TH1D *EnuPanN_CCRES_GiBBUnorw=new TH1D("EnuPanN_CCRES_GiBBUnorw", "EnuPanN_CCRES_GiBBUnorw", 80, 0, 4);
+TH1D *EnuPanN_CCDIS_GiBBUnorw=new TH1D("EnuPanN_CCDIS_GiBBUnorw", "EnuPanN_CCDIS_GiBBUnorw", 80, 0, 4);
+TH1D *EnuPanN_CCCOH_GiBBUnorw=new TH1D("EnuPanN_CCCOH_GiBBUnorw", "EnuPanN_CCCOH_GiBBUnorw", 80, 0, 4);
+TH1D *EnuPanN_other_GiBBUnorw=new TH1D("EnuPanN_other_GiBBUnorw", "EnuPanN_other_GiBBUnorw", 80, 0, 4);
 
 //******************************reconstructed neutrino energy in the Pandora analysis for 1muon+ 0 proton selection******************************//
 
-TH1D *EnuPan0_CCQE_GiBBU=new TH1D("EnuPan0_CCQE_GiBBU", "EnuPan0_CCQE_GiBBU", 60, 0, 3);
-TH1D *EnuPan0_CCMEC_GiBBU=new TH1D("EnuPan0_CCMEC_GiBBU", "EnuPan0_CCMEC_GiBBU", 60, 0, 3);
-TH1D *EnuPan0_CCRES_GiBBU=new TH1D("EnuPan0_CCRES_GiBBU", "EnuPan0_CCRES_GiBBU", 60, 0, 3);
-TH1D *EnuPan0_CCDIS_GiBBU=new TH1D("EnuPan0_CCDIS_GiBBU", "EnuPan0_CCDIS_GiBBU", 60, 0, 3);
-TH1D *EnuPan0_CCCOH_GiBBU=new TH1D("EnuPan0_CCCOH_GiBBU", "EnuPan0_CCCOH_GiBBU", 60, 0, 3);
-TH1D *EnuPan0_other_GiBBU=new TH1D("EnuPan0_other_GiBBU", "EnuPan0_other_GiBBU", 60, 0, 3);
+TH1D *EnuPan0_CCQE_GiBBU=new TH1D("EnuPan0_CCQE_GiBBU", "EnuPan0_CCQE_GiBBU", 80, 0, 4);
+TH1D *EnuPan0_CCMEC_GiBBU=new TH1D("EnuPan0_CCMEC_GiBBU", "EnuPan0_CCMEC_GiBBU", 80, 0, 4);
+TH1D *EnuPan0_CCRES_GiBBU=new TH1D("EnuPan0_CCRES_GiBBU", "EnuPan0_CCRES_GiBBU", 80, 0, 4);
+TH1D *EnuPan0_CCDIS_GiBBU=new TH1D("EnuPan0_CCDIS_GiBBU", "EnuPan0_CCDIS_GiBBU", 80, 0, 4);
+TH1D *EnuPan0_CCCOH_GiBBU=new TH1D("EnuPan0_CCCOH_GiBBU", "EnuPan0_CCCOH_GiBBU", 80, 0, 4);
+TH1D *EnuPan0_other_GiBBU=new TH1D("EnuPan0_other_GiBBU", "EnuPan0_other_GiBBU", 80, 0, 4);
 
-TH1D *EnuPan0_CCQE_GiBBUnorw=new TH1D("EnuPan0_CCQE_GiBBUnorw", "EnuPan0_CCQE_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPan0_CCMEC_GiBBUnorw=new TH1D("EnuPan0_CCMEC_GiBBUnorw", "EnuPan0_CCMEC_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPan0_CCRES_GiBBUnorw=new TH1D("EnuPan0_CCRES_GiBBUnorw", "EnuPan0_CCRES_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPan0_CCDIS_GiBBUnorw=new TH1D("EnuPan0_CCDIS_GiBBUnorw", "EnuPan0_CCDIS_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPan0_CCCOH_GiBBUnorw=new TH1D("EnuPan0_CCCOH_GiBBUnorw", "EnuPan0_CCCOH_GiBBUnorw", 60, 0, 3);
-TH1D *EnuPan0_other_GiBBUnorw=new TH1D("EnuPan0_other_GiBBUnorw", "EnuPan0_other_GiBBUnorw", 60, 0, 3);
+TH1D *EnuPan0_CCQE_GiBBUnorw=new TH1D("EnuPan0_CCQE_GiBBUnorw", "EnuPan0_CCQE_GiBBUnorw", 80, 0, 4);
+TH1D *EnuPan0_CCMEC_GiBBUnorw=new TH1D("EnuPan0_CCMEC_GiBBUnorw", "EnuPan0_CCMEC_GiBBUnorw", 80, 0, 4);
+TH1D *EnuPan0_CCRES_GiBBUnorw=new TH1D("EnuPan0_CCRES_GiBBUnorw", "EnuPan0_CCRES_GiBBUnorw", 80, 0, 4);
+TH1D *EnuPan0_CCDIS_GiBBUnorw=new TH1D("EnuPan0_CCDIS_GiBBUnorw", "EnuPan0_CCDIS_GiBBUnorw", 80, 0, 4);
+TH1D *EnuPan0_CCCOH_GiBBUnorw=new TH1D("EnuPan0_CCCOH_GiBBUnorw", "EnuPan0_CCCOH_GiBBUnorw", 80, 0, 4);
+TH1D *EnuPan0_other_GiBBUnorw=new TH1D("EnuPan0_other_GiBBUnorw", "EnuPan0_other_GiBBUnorw", 80, 0, 4);
 
 //****************reconstructed neutrino energy in the Wire Cell analysis for 1muon+ X (any) proton selection  (numu CC inclusive)***************//
 
-TH1D *EnuWC_CCQE_GiBBU=new TH1D("EnuWC_CCQE_GiBBU", "EnuWC_CCQE_GiBBU", 60, 0, 3);
-TH1D *EnuWC_CCMEC_GiBBU=new TH1D("EnuWC_CCMEC_GiBBU", "EnuWC_CCMEC_GiBBU", 60, 0, 3);
-TH1D *EnuWC_CCRES_GiBBU=new TH1D("EnuWC_CCRES_GiBBU", "EnuWC_CCRES_GiBBU", 60, 0, 3);
-TH1D *EnuWC_CCDIS_GiBBU=new TH1D("EnuWC_CCDIS_GiBBU", "EnuWC_CCDIS_GiBBU", 60, 0, 3);
-TH1D *EnuWC_CCCOH_GiBBU=new TH1D("EnuWC_CCCOH_GiBBU", "EnuWC_CCCOH_GiBBU", 60, 0, 3);
-TH1D *EnuWC_other_GiBBU=new TH1D("EnuWC_other_GiBBU", "EnuWC_other_GiBBU", 60, 0, 3);
+TH1D *EnuWC_CCQE_GiBBU=new TH1D("EnuWC_CCQE_GiBBU", "EnuWC_CCQE_GiBBU", 80, 0, 4);
+TH1D *EnuWC_CCMEC_GiBBU=new TH1D("EnuWC_CCMEC_GiBBU", "EnuWC_CCMEC_GiBBU", 80, 0, 4);
+TH1D *EnuWC_CCRES_GiBBU=new TH1D("EnuWC_CCRES_GiBBU", "EnuWC_CCRES_GiBBU", 80, 0, 4);
+TH1D *EnuWC_CCDIS_GiBBU=new TH1D("EnuWC_CCDIS_GiBBU", "EnuWC_CCDIS_GiBBU", 80, 0, 4);
+TH1D *EnuWC_CCCOH_GiBBU=new TH1D("EnuWC_CCCOH_GiBBU", "EnuWC_CCCOH_GiBBU", 80, 0, 4);
+TH1D *EnuWC_other_GiBBU=new TH1D("EnuWC_other_GiBBU", "EnuWC_other_GiBBU", 80, 0, 4);
 
-TH1D *EnuWC_CCQE_GiBBUnorw=new TH1D("EnuWC_CCQE_GiBBUnorw", "EnuWC_CCQE_GiBBUnorw", 60, 0, 3);
-TH1D *EnuWC_CCMEC_GiBBUnorw=new TH1D("EnuWC_CCMEC_GiBBUnorw", "EnuWC_CCMEC_GiBBUnorw", 60, 0, 3);
-TH1D *EnuWC_CCRES_GiBBUnorw=new TH1D("EnuWC_CCRES_GiBBUnorw", "EnuWC_CCRES_GiBBUnorw", 60, 0, 3);
-TH1D *EnuWC_CCDIS_GiBBUnorw=new TH1D("EnuWC_CCDIS_GiBBUnorw", "EnuWC_CCDIS_GiBBUnorw", 60, 0, 3);
-TH1D *EnuWC_CCCOH_GiBBUnorw=new TH1D("EnuWC_CCCOH_GiBBUnorw", "EnuWC_CCCOH_GiBBUnorw", 60, 0, 3);
-TH1D *EnuWC_other_GiBBUnorw=new TH1D("EnuWC_other_GiBBUnorw", "EnuWC_other_GiBBUnorw", 60, 0, 3);
+TH1D *EnuWC_CCQE_GiBBUnorw=new TH1D("EnuWC_CCQE_GiBBUnorw", "EnuWC_CCQE_GiBBUnorw", 80, 0, 4);
+TH1D *EnuWC_CCMEC_GiBBUnorw=new TH1D("EnuWC_CCMEC_GiBBUnorw", "EnuWC_CCMEC_GiBBUnorw", 80, 0, 4);
+TH1D *EnuWC_CCRES_GiBBUnorw=new TH1D("EnuWC_CCRES_GiBBUnorw", "EnuWC_CCRES_GiBBUnorw", 80, 0, 4);
+TH1D *EnuWC_CCDIS_GiBBUnorw=new TH1D("EnuWC_CCDIS_GiBBUnorw", "EnuWC_CCDIS_GiBBUnorw", 80, 0, 4);
+TH1D *EnuWC_CCCOH_GiBBUnorw=new TH1D("EnuWC_CCCOH_GiBBUnorw", "EnuWC_CCCOH_GiBBUnorw", 80, 0, 4);
+TH1D *EnuWC_other_GiBBUnorw=new TH1D("EnuWC_other_GiBBUnorw", "EnuWC_other_GiBBUnorw", 80, 0, 4);
 
 
 
@@ -268,9 +269,9 @@ std::vector<double> Reconstructed_bins;
 
 //***************************************************************GENIE_REWEIGHTED****************************************************************//
 std::vector<double> Boogey;
-TArrayD Reweighting_Vector(240);
-double Reweighting_Gibbu[60][4];
-TMatrixD *k=new TMatrixD(60,4);
+TArrayD Reweighting_Vector(320);
+double Reweighting_Gibbu[80][4];
+TMatrixD *k=new TMatrixD(80,4);
 
 
 
@@ -523,7 +524,7 @@ void Myclass::Loop()
 //***************************************************************************************************************************************************************************//
 //********************************************************Getting_the_GiBUU_histograms_for_reweighting***********************************************************************//
 //***************************************************************************************************************************************************************************//
- TFile* file_G = TFile::Open("last_one.root");
+ TFile* file_G = TFile::Open("Diff_Flux_Updated.root");
  
  TMatrixD *m=(TMatrixD*)file_G->Get("TMatrixT<double>");
  TH1D *TrueEnu_CCQE_GiBBU_extracted = (TH1D*)file_G->Get("TrueEnu_CCQE_GiBBU");
@@ -537,7 +538,7 @@ void Myclass::Loop()
  //std::cout<<" output "<<TrueEnu_CCQE_GiBBU_extracted->GetXaxis()->FindBin(2.97)<<std::endl;
 
 //std::cout<<" output "<<TMatrixDRow(*m,29)[0]<<std::endl;
-for (int i=0;i<60;i++)
+for (int i=0;i<80;i++)
 {
 std::cout<<" CCQE: "<<TMatrixDRow(*m,i)[0]<<" CCMEC: "<<TMatrixDRow(*m,i)[1]<<" CCRES: "<<TMatrixDRow(*m,i)[2]<<" CCDIS: "<<TMatrixDRow(*m,i)[3]<<" i "<<i<<std::endl;
 }
@@ -559,7 +560,9 @@ std::cout<<" CCQE: "<<TMatrixDRow(*m,i)[0]<<" CCMEC: "<<TMatrixDRow(*m,i)[1]<<" 
 //****************************************Applicable_for_the_microboone_formulae****************************************************************//
 //***********************************************************************************************************************************************//
 
-if (lepIn_E>3.0)continue;
+if (lepIn_E>4.0)continue;
+
+
       int vi=0;
       double proton_mass=0.938;
       double muon_mass=0.106;
@@ -636,7 +639,7 @@ int CCMEC_bin=0;
 int CCRES_bin=0;
 int CCDIS_bin=0;
 int CCCOH_bin=0;
-std::cout<<"Does it change anything"<<std::endl;
+
 //***********************************************************************************************************************************************//
 //************************************************Imported_Code_from_Raquel***********************************************************************//
 //************************************************Using_Microboone_Formulae********************************************************************//
@@ -706,6 +709,7 @@ std::cout<<"Does it change anything"<<std::endl;
 	 hprof_EnuWC_GiBBU_CCQE->Fill(lepIn_E,lepIn_E - test.Reco_EnuWC,weight);
 
      /***************************************************************Filling_the_reconstructed_WC_energy****************************************************************************************/
+     TrueEnu->Fill(lepIn_E,weight);
      TrueEnu_Reweighted->Fill(lepIn_E,weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
      Reco_WC->Fill(test.Reco_EnuWC,weight);
      Reco_WC_reweighted->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCQE_bin-1)[0]);
@@ -737,7 +741,7 @@ std::cout<<"Does it change anything"<<std::endl;
       if ((evType>=2)&&(evType<=31))
       {
 //***************************************************finding_bin_for_CCRES******************************************************************//  
-      CCRES_bin=TrueEnu_CCRES_GiBBU_extracted->GetXaxis()->FindBin(lepIn_E);    
+      CCRES_bin=TrueEnu_CCRES_GiBBU_extracted->GetXaxis()->FindBin(lepIn_E);
       TrueEnu_CCRES_GiBBU->Fill(lepIn_E,weight);
      //making some changes
       
@@ -748,11 +752,12 @@ std::cout<<"Does it change anything"<<std::endl;
 //*****************************************************************************************************************************************//
 
           /// 1muon+ X proton //// Wire Cell signal (any number of protons)
-          EnuWC_CCRES_GiBBU->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
+         EnuWC_CCRES_GiBBU->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
           EnuWC_CCRES_GiBBUnorw->Fill(test.Reco_EnuWC,weight);
           hprof_EnuWC_GiBBU_CCRES->Fill(lepIn_E,lepIn_E - test.Reco_EnuWC,weight);
 
           /***************************************************************Filling_the_reconstructed_WC_energy****************************************************************************************/
+          TrueEnu->Fill(lepIn_E,weight);
           TrueEnu_Reweighted->Fill(lepIn_E,weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
           Reco_WC->Fill(test.Reco_EnuWC,weight);
           Reco_WC_reweighted->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
@@ -768,7 +773,6 @@ std::cout<<"Does it change anything"<<std::endl;
           /// 1muon+ N proton + 0 pion //// Pandora Nproton signal
           if (test.Is_EnuPanN==1) {
               EnuPanN_CCRES_GiBBU->Fill(test.Reco_EnuPanN, weight*TMatrixDRow(*m,CCRES_bin-1)[2]);
-
               EnuPanN_CCRES_GiBBUnorw->Fill(test.Reco_EnuPanN,weight);
               hprof_EnuPanN_GiBBU_CCRES->Fill(lepIn_E,lepIn_E - test.Reco_EnuPanN,weight);
           }
@@ -787,7 +791,7 @@ std::cout<<"Does it change anything"<<std::endl;
       if ((evType==32)||(evType==33)||(evType==34)||(evType==37))
       {
 //*******************************************************finding_bin_for_CCDIS******************************************************************//  
-      CCDIS_bin=TrueEnu_CCDIS_GiBBU_extracted->GetXaxis()->FindBin(lepIn_E);    
+      CCDIS_bin=TrueEnu_CCDIS_GiBBU_extracted->GetXaxis()->FindBin(lepIn_E);
       
       TrueEnu_CCDIS_GiBBU->Fill(lepIn_E,weight);
 
@@ -802,6 +806,7 @@ std::cout<<"Does it change anything"<<std::endl;
           hprof_EnuWC_GiBBU_CCDIS->Fill(lepIn_E,lepIn_E - test.Reco_EnuWC,weight);
 
           /***************************************************************Filling_the_reconstructed_WC_energy****************************************************************************************/
+          TrueEnu->Fill(lepIn_E,weight);
           TrueEnu_Reweighted->Fill(lepIn_E,weight*TMatrixDRow(*m,CCDIS_bin-1)[3]);
           Reco_WC->Fill(test.Reco_EnuWC,weight);
           Reco_WC_reweighted->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCDIS_bin-1)[3]);
@@ -843,7 +848,7 @@ std::cout<<"Does it change anything"<<std::endl;
       if ((evType==35)||(evType==36))
       {
 //*******************************************************finding_bin_for_CCMEC******************************************************************//  
-      CCMEC_bin=TrueEnu_CCMEC_GiBBU_extracted->GetXaxis()->FindBin(lepIn_E);    
+      CCMEC_bin=TrueEnu_CCMEC_GiBBU_extracted->GetXaxis()->FindBin(lepIn_E);
             
       TrueEnu_CCMEC_GiBBU->Fill(lepIn_E,weight);
 
@@ -860,6 +865,7 @@ std::cout<<"Does it change anything"<<std::endl;
           hprof_EnuWC_GiBBU_CCMEC->Fill(lepIn_E,lepIn_E - test.Reco_EnuWC,weight);
 
           /***************************************************************Filling_the_reconstructed_WC_energy****************************************************************************************/
+          TrueEnu->Fill(lepIn_E,weight);
           TrueEnu_Reweighted->Fill(lepIn_E,weight*TMatrixDRow(*m,CCMEC_bin-1)[1]);
           Reco_WC->Fill(test.Reco_EnuWC,weight);
           Reco_WC_reweighted->Fill(test.Reco_EnuWC,weight*TMatrixDRow(*m,CCMEC_bin-1)[1]);
@@ -1106,31 +1112,6 @@ data.clear();
 myText.clear();
 MyReadFile.close();
 
-//**************************************************************************************************************************************************************//
-//*************************************************Rebinning_the_histograms_in_to_30_bins***********************************************************************//
-//**************************************************************************************************************************************************************//
-/*TrueEnu_CCQE_GiBBU->Rebin();
-TrueEnu_CCRES_GiBBU->Rebin();
-TrueEnu_CCMEC_GiBBU->Rebin();
-TrueEnu_CCDIS_GiBBU->Rebin();
-
-TrueEnu_CCQE_GENIE->Rebin();
-TrueEnu_CCRES_GENIE->Rebin();
-TrueEnu_CCMEC_GENIE->Rebin();
-TrueEnu_CCDIS_GENIE->Rebin();
-TrueEnu_CCCOH_GENIE->Rebin();
-
-TrueEnu_CCQE_GENIEnorw->Rebin();
-TrueEnu_CCRES_GENIEnorw->Rebin();
-TrueEnu_CCMEC_GENIEnorw->Rebin();
-TrueEnu_CCDIS_GENIEnorw->Rebin();
-
-TrueEnu_CCQE_GiBBU_Reweighted->Rebin();
-TrueEnu_CCMEC_GiBBU_Reweighted->Rebin();
-TrueEnu_CCDIS_GiBBU_Reweighted->Rebin();
-TrueEnu_CCRES_GiBBU_Reweighted->Rebin();*/
-
-
 
 
 //***********************************************************************************************************************************************//
@@ -1140,7 +1121,7 @@ double norm_GiBBU=TrueEnu_CCQE_GiBBU->Integral()+TrueEnu_CCMEC_GiBBU->Integral()
 
 double norm_GiBBU_Reweighted=TrueEnu_CCQE_GiBBU_Reweighted->Integral()+TrueEnu_CCMEC_GiBBU_Reweighted->Integral()+ TrueEnu_CCRES_GiBBU_Reweighted->Integral()+TrueEnu_CCDIS_GiBBU_Reweighted->Integral();
 
-double norm_GENIE=TrueEnu_CCQE_GENIE->Integral()+TrueEnu_CCMEC_GENIE->Integral()+TrueEnu_CCRES_GENIE->Integral()+TrueEnu_CCDIS_GENIE->Integral()+TrueEnu_CCCOH_GENIE->Integral();//+TrueEnu_other_GENIE->Integral()
+double norm_GENIE=TrueEnu_CCQE_GENIE->Integral()+TrueEnu_CCMEC_GENIE->Integral()+TrueEnu_CCRES_GENIE->Integral()+TrueEnu_CCDIS_GENIE->Integral();     //+TrueEnu_CCCOH_GENIE->Integral();//+TrueEnu_other_GENIE->Integral()
 
 
 //***********************************************************************************************************************************************//
@@ -1232,7 +1213,7 @@ std::cout<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<"
 std::cout<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<std::endl;
 std::cout<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<" ******GENIE REWEIGHTED****** "<<std::endl;
 
-for (int i=0;i<60;i++)
+for (int i=0;i<80;i++)
 {
 
 //*******************************************************************CCQE************************************************************************//
@@ -1271,7 +1252,7 @@ for (int i=0;i<60;i++)
 		{
 	 	 Reweighting_Gibbu[i][3]=TrueEnu_CCDIS_GENIE->GetBinContent(i+1)/TrueEnu_CCDIS_GiBBU->GetBinContent(i+1);
 		}
-        rwt_matrix << "CCQE: " << Reweighting_Gibbu[i][0] << " CCMEC: " << Reweighting_Gibbu[i][1]<< " CCRES: " << Reweighting_Gibbu[i][2] << " CCDIS: " <<Reweighting_Gibbu[i][3] << endl;
+rwt_matrix << "CCQE: " << Reweighting_Gibbu[i][0] << " CCMEC: " << Reweighting_Gibbu[i][1]<< " CCRES: " << Reweighting_Gibbu[i][2] << " CCDIS: " <<Reweighting_Gibbu[i][3] << endl;
 std::cout<<" CCQE: "<<Reweighting_Gibbu[i][0]<<" CCMEC: "<<Reweighting_Gibbu[i][1]<<" CCRES: "<<Reweighting_Gibbu[i][2]<<" CCDIS: "<<Reweighting_Gibbu[i][3]<<std::endl;
 }
 
@@ -1279,19 +1260,19 @@ std::cout<<" CCQE: "<<Reweighting_Gibbu[i][0]<<" CCMEC: "<<Reweighting_Gibbu[i][
 //***********************************************************************************************************************************************//
 //******************************************Filling_the_TMatrix(To_be_saved_in_the_file)*********************************************************//
 //***********************************************************************************************************************************************//
-   for (int i=0;i<60;i++)//60*4=240
+   for (int i=0;i<80;i++)//80*4=240
      {
 	Boogey.push_back(Reweighting_Gibbu[i][0]);
 	Boogey.push_back(Reweighting_Gibbu[i][1]);
 	Boogey.push_back(Reweighting_Gibbu[i][2]);
 	Boogey.push_back(Reweighting_Gibbu[i][3]);
      }
-   for (int i=0;i<240;i++)
+   for (int i=0;i<320;i++)
      {
   	   Reweighting_Vector[i]=Boogey[i];
      }
 (*k).SetMatrixArray(Reweighting_Vector.GetArray());
-/*for (int i=0;i<60;i++)
+/*for (int i=0;i<80;i++)
 {
 std::cout<<" CCQE: "<<TMatrixDRow(*k,i)[0]<<" CCMEC: "<<TMatrixDRow(*k,i)[1]<<" CCRES: "<<TMatrixDRow(*k,i)[2]<<" CCDIS: "<<TMatrixDRow(*k,i)[3]<<" i "<<i<<std::endl;
 }*/
@@ -1555,7 +1536,7 @@ c5->Update();
   l10 -> Draw();
   c10->Update();*/
   
-  /////
+
   TCanvas *c11 = new TCanvas("c11","",900, 900);
   
   TrueEnu_CCQE_GiBBU->SetFillColor(kRed);
@@ -2067,7 +2048,7 @@ if ((i>=37)&&(i<=41))bins_38_42->SetBinContent((i+6)%6,Reconstructed_bins[i]);
 //.............................................................Writing_in_a_file..............................................................//
 //............................................................................................................................................//
 //............................................................................................................................................//
-TFile blob("very_last_one.root", "RECREATE");
+TFile blob("Diff_Flux_Updated.root", "RECREATE");
 bins_1_5->Write();
 bins_6_10->Write();
 bins_11_15->Write();
@@ -2078,9 +2059,9 @@ bins_28_32->Write();
 bins_33_37->Write();
 bins_38_42->Write();
 
-Resolution_EnuRes_GiBBU->Write();
+//Resolution_EnuRes_GiBBU->Write();
 Reco_WC->Write();
-Reco_WC_reweighted->Write();
+//Reco_WC_reweighted->Write();
 TrueEnu_CCQE_GiBBU->Write();     
 TrueEnu_CCMEC_GiBBU->Write();  
 TrueEnu_CCRES_GiBBU->Write();
@@ -2089,7 +2070,7 @@ TrueEnu_CCCOH_GiBBU->Write();
 TrueEnu_CCQE_GENIE->Write();
 k->Write();
 TrueEnu_Reweighted->Write();
-
+TrueEnu->Write();
 //Stack_em->Write();
 blob.WriteObject(&Reconstructed_bins,"Reconstructed_bins");
 blob.Close();
